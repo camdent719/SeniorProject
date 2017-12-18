@@ -37,6 +37,8 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
         self.pageViewController!.view.frame = pageViewRect
 
         self.pageViewController!.didMove(toParentViewController: self)
+        
+        print("If this appears in the console then it ran successfully")
     }
 
     override func didReceiveMemoryWarning() {
