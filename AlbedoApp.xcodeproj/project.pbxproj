@@ -1,0 +1,544 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7072E0D01FE8557D002586EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0CF1FE8557D002586EC /* AppDelegate.swift */; };
+		7072E0D21FE8557D002586EC /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0D11FE8557D002586EC /* RootViewController.swift */; };
+		7072E0D41FE8557D002586EC /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0D31FE8557D002586EC /* DataViewController.swift */; };
+		7072E0D61FE8557D002586EC /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0D51FE8557D002586EC /* ModelController.swift */; };
+		7072E0D91FE8557D002586EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7072E0D71FE8557D002586EC /* Main.storyboard */; };
+		7072E0DB1FE8557D002586EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7072E0DA1FE8557D002586EC /* Assets.xcassets */; };
+		7072E0DE1FE8557D002586EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7072E0DC1FE8557D002586EC /* LaunchScreen.storyboard */; };
+		7072E0E91FE8557D002586EC /* AlbedoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0E81FE8557D002586EC /* AlbedoAppTests.swift */; };
+		7072E0F41FE8557D002586EC /* AlbedoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0F31FE8557D002586EC /* AlbedoAppUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7072E0E51FE8557D002586EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7072E0C41FE8557C002586EC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7072E0CB1FE8557C002586EC;
+			remoteInfo = AlbedoApp;
+		};
+		7072E0F01FE8557D002586EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7072E0C41FE8557C002586EC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7072E0CB1FE8557C002586EC;
+			remoteInfo = AlbedoApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7072E0CC1FE8557D002586EC /* AlbedoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlbedoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7072E0CF1FE8557D002586EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7072E0D11FE8557D002586EC /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		7072E0D31FE8557D002586EC /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		7072E0D51FE8557D002586EC /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		7072E0D81FE8557D002586EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7072E0DA1FE8557D002586EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7072E0DD1FE8557D002586EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7072E0DF1FE8557D002586EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7072E0E41FE8557D002586EC /* AlbedoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbedoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7072E0E81FE8557D002586EC /* AlbedoAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbedoAppTests.swift; sourceTree = "<group>"; };
+		7072E0EA1FE8557D002586EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7072E0EF1FE8557D002586EC /* AlbedoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbedoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7072E0F31FE8557D002586EC /* AlbedoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbedoAppUITests.swift; sourceTree = "<group>"; };
+		7072E0F51FE8557D002586EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7072E0C91FE8557C002586EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7072E0E11FE8557D002586EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7072E0EC1FE8557D002586EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7072E0C31FE8557C002586EC = {
+			isa = PBXGroup;
+			children = (
+				7072E0CE1FE8557D002586EC /* AlbedoApp */,
+				7072E0E71FE8557D002586EC /* AlbedoAppTests */,
+				7072E0F21FE8557D002586EC /* AlbedoAppUITests */,
+				7072E0CD1FE8557D002586EC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7072E0CD1FE8557D002586EC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7072E0CC1FE8557D002586EC /* AlbedoApp.app */,
+				7072E0E41FE8557D002586EC /* AlbedoAppTests.xctest */,
+				7072E0EF1FE8557D002586EC /* AlbedoAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7072E0CE1FE8557D002586EC /* AlbedoApp */ = {
+			isa = PBXGroup;
+			children = (
+				7072E0CF1FE8557D002586EC /* AppDelegate.swift */,
+				7072E0D11FE8557D002586EC /* RootViewController.swift */,
+				7072E0D31FE8557D002586EC /* DataViewController.swift */,
+				7072E0D51FE8557D002586EC /* ModelController.swift */,
+				7072E0D71FE8557D002586EC /* Main.storyboard */,
+				7072E0DA1FE8557D002586EC /* Assets.xcassets */,
+				7072E0DC1FE8557D002586EC /* LaunchScreen.storyboard */,
+				7072E0DF1FE8557D002586EC /* Info.plist */,
+			);
+			path = AlbedoApp;
+			sourceTree = "<group>";
+		};
+		7072E0E71FE8557D002586EC /* AlbedoAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				7072E0E81FE8557D002586EC /* AlbedoAppTests.swift */,
+				7072E0EA1FE8557D002586EC /* Info.plist */,
+			);
+			path = AlbedoAppTests;
+			sourceTree = "<group>";
+		};
+		7072E0F21FE8557D002586EC /* AlbedoAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7072E0F31FE8557D002586EC /* AlbedoAppUITests.swift */,
+				7072E0F51FE8557D002586EC /* Info.plist */,
+			);
+			path = AlbedoAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7072E0CB1FE8557C002586EC /* AlbedoApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7072E0F81FE8557D002586EC /* Build configuration list for PBXNativeTarget "AlbedoApp" */;
+			buildPhases = (
+				7072E0C81FE8557C002586EC /* Sources */,
+				7072E0C91FE8557C002586EC /* Frameworks */,
+				7072E0CA1FE8557C002586EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AlbedoApp;
+			productName = AlbedoApp;
+			productReference = 7072E0CC1FE8557D002586EC /* AlbedoApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7072E0E31FE8557D002586EC /* AlbedoAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7072E0FB1FE8557D002586EC /* Build configuration list for PBXNativeTarget "AlbedoAppTests" */;
+			buildPhases = (
+				7072E0E01FE8557D002586EC /* Sources */,
+				7072E0E11FE8557D002586EC /* Frameworks */,
+				7072E0E21FE8557D002586EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7072E0E61FE8557D002586EC /* PBXTargetDependency */,
+			);
+			name = AlbedoAppTests;
+			productName = AlbedoAppTests;
+			productReference = 7072E0E41FE8557D002586EC /* AlbedoAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7072E0EE1FE8557D002586EC /* AlbedoAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7072E0FE1FE8557D002586EC /* Build configuration list for PBXNativeTarget "AlbedoAppUITests" */;
+			buildPhases = (
+				7072E0EB1FE8557D002586EC /* Sources */,
+				7072E0EC1FE8557D002586EC /* Frameworks */,
+				7072E0ED1FE8557D002586EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7072E0F11FE8557D002586EC /* PBXTargetDependency */,
+			);
+			name = AlbedoAppUITests;
+			productName = AlbedoAppUITests;
+			productReference = 7072E0EF1FE8557D002586EC /* AlbedoAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7072E0C41FE8557C002586EC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				TargetAttributes = {
+					7072E0CB1FE8557C002586EC = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = V7438SH4VK;
+						ProvisioningStyle = Automatic;
+					};
+					7072E0E31FE8557D002586EC = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = V7438SH4VK;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7072E0CB1FE8557C002586EC;
+					};
+					7072E0EE1FE8557D002586EC = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = V7438SH4VK;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7072E0CB1FE8557C002586EC;
+					};
+				};
+			};
+			buildConfigurationList = 7072E0C71FE8557C002586EC /* Build configuration list for PBXProject "AlbedoApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7072E0C31FE8557C002586EC;
+			productRefGroup = 7072E0CD1FE8557D002586EC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7072E0CB1FE8557C002586EC /* AlbedoApp */,
+				7072E0E31FE8557D002586EC /* AlbedoAppTests */,
+				7072E0EE1FE8557D002586EC /* AlbedoAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7072E0CA1FE8557C002586EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7072E0DE1FE8557D002586EC /* LaunchScreen.storyboard in Resources */,
+				7072E0DB1FE8557D002586EC /* Assets.xcassets in Resources */,
+				7072E0D91FE8557D002586EC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7072E0E21FE8557D002586EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7072E0ED1FE8557D002586EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7072E0C81FE8557C002586EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7072E0D21FE8557D002586EC /* RootViewController.swift in Sources */,
+				7072E0D61FE8557D002586EC /* ModelController.swift in Sources */,
+				7072E0D41FE8557D002586EC /* DataViewController.swift in Sources */,
+				7072E0D01FE8557D002586EC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7072E0E01FE8557D002586EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7072E0E91FE8557D002586EC /* AlbedoAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7072E0EB1FE8557D002586EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7072E0F41FE8557D002586EC /* AlbedoAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7072E0E61FE8557D002586EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7072E0CB1FE8557C002586EC /* AlbedoApp */;
+			targetProxy = 7072E0E51FE8557D002586EC /* PBXContainerItemProxy */;
+		};
+		7072E0F11FE8557D002586EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7072E0CB1FE8557C002586EC /* AlbedoApp */;
+			targetProxy = 7072E0F01FE8557D002586EC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7072E0D71FE8557D002586EC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7072E0D81FE8557D002586EC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7072E0DC1FE8557D002586EC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7072E0DD1FE8557D002586EC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7072E0F61FE8557D002586EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7072E0F71FE8557D002586EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7072E0F91FE8557D002586EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = V7438SH4VK;
+				INFOPLIST_FILE = AlbedoApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.unh.cs.AlbedoApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		7072E0FA1FE8557D002586EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = V7438SH4VK;
+				INFOPLIST_FILE = AlbedoApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.unh.cs.AlbedoApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		7072E0FC1FE8557D002586EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = V7438SH4VK;
+				INFOPLIST_FILE = AlbedoAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.unh.cs.AlbedoAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AlbedoApp.app/AlbedoApp";
+			};
+			name = Debug;
+		};
+		7072E0FD1FE8557D002586EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = V7438SH4VK;
+				INFOPLIST_FILE = AlbedoAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.unh.cs.AlbedoAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AlbedoApp.app/AlbedoApp";
+			};
+			name = Release;
+		};
+		7072E0FF1FE8557D002586EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = V7438SH4VK;
+				INFOPLIST_FILE = AlbedoAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.unh.cs.AlbedoAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = AlbedoApp;
+			};
+			name = Debug;
+		};
+		7072E1001FE8557D002586EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = V7438SH4VK;
+				INFOPLIST_FILE = AlbedoAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.unh.cs.AlbedoAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = AlbedoApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7072E0C71FE8557C002586EC /* Build configuration list for PBXProject "AlbedoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7072E0F61FE8557D002586EC /* Debug */,
+				7072E0F71FE8557D002586EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7072E0F81FE8557D002586EC /* Build configuration list for PBXNativeTarget "AlbedoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7072E0F91FE8557D002586EC /* Debug */,
+				7072E0FA1FE8557D002586EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7072E0FB1FE8557D002586EC /* Build configuration list for PBXNativeTarget "AlbedoAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7072E0FC1FE8557D002586EC /* Debug */,
+				7072E0FD1FE8557D002586EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7072E0FE1FE8557D002586EC /* Build configuration list for PBXNativeTarget "AlbedoAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7072E0FF1FE8557D002586EC /* Debug */,
+				7072E1001FE8557D002586EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7072E0C41FE8557C002586EC /* Project object */;
+}
