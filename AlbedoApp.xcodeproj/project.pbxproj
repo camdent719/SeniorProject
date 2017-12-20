@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		7072E0D01FE8557D002586EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0CF1FE8557D002586EC /* AppDelegate.swift */; };
 		7072E0D21FE8557D002586EC /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0D11FE8557D002586EC /* RootViewController.swift */; };
-		7072E0D41FE8557D002586EC /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0D31FE8557D002586EC /* DataViewController.swift */; };
-		7072E0D61FE8557D002586EC /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0D51FE8557D002586EC /* ModelController.swift */; };
 		7072E0D91FE8557D002586EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7072E0D71FE8557D002586EC /* Main.storyboard */; };
 		7072E0DB1FE8557D002586EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7072E0DA1FE8557D002586EC /* Assets.xcassets */; };
 		7072E0DE1FE8557D002586EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7072E0DC1FE8557D002586EC /* LaunchScreen.storyboard */; };
@@ -39,8 +37,6 @@
 		7072E0CC1FE8557D002586EC /* AlbedoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlbedoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7072E0CF1FE8557D002586EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7072E0D11FE8557D002586EC /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		7072E0D31FE8557D002586EC /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
-		7072E0D51FE8557D002586EC /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		7072E0D81FE8557D002586EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7072E0DA1FE8557D002586EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7072E0DD1FE8557D002586EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -103,8 +99,6 @@
 			children = (
 				7072E0CF1FE8557D002586EC /* AppDelegate.swift */,
 				7072E0D11FE8557D002586EC /* RootViewController.swift */,
-				7072E0D31FE8557D002586EC /* DataViewController.swift */,
-				7072E0D51FE8557D002586EC /* ModelController.swift */,
 				7072E0D71FE8557D002586EC /* Main.storyboard */,
 				7072E0DA1FE8557D002586EC /* Assets.xcassets */,
 				7072E0DC1FE8557D002586EC /* LaunchScreen.storyboard */,
@@ -268,8 +262,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7072E0D21FE8557D002586EC /* RootViewController.swift in Sources */,
-				7072E0D61FE8557D002586EC /* ModelController.swift in Sources */,
-				7072E0D41FE8557D002586EC /* DataViewController.swift in Sources */,
 				7072E0D01FE8557D002586EC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,6 +513,7 @@
 				7072E0FA1FE8557D002586EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7072E0FB1FE8557D002586EC /* Build configuration list for PBXNativeTarget "AlbedoAppTests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +522,7 @@
 				7072E0FD1FE8557D002586EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7072E0FE1FE8557D002586EC /* Build configuration list for PBXNativeTarget "AlbedoAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -537,6 +531,7 @@
 				7072E1001FE8557D002586EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
