@@ -18,7 +18,7 @@
                         <viewControllerLayoutGuide type="top" id="I7W-xW-C47"/>
                         <viewControllerLayoutGuide type="bottom" id="IfR-02-kHw"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="502-Ir-ELC">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="RootViewController" id="502-Ir-ELC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -40,9 +40,12 @@
                                     <constraint firstAttribute="width" constant="46" id="Qph-AE-yt4"/>
                                 </constraints>
                                 <state key="normal" title="Try it"/>
+                                <connections>
+                                    <segue destination="qOs-UF-HJa" kind="showDetail" id="VS9-hO-U1q"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.76218940162271809" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="kQA-gl-WvX" firstAttribute="leading" secondItem="502-Ir-ELC" secondAttribute="leadingMargin" constant="149" id="0MQ-ln-LQK"/>
                             <constraint firstItem="3EA-Zk-o4i" firstAttribute="leading" secondItem="502-Ir-ELC" secondAttribute="leading" id="5uo-92-cG3"/>
@@ -59,6 +62,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3h-pU-vEd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-101.59999999999999" y="-243.32833583208398"/>
+        </scene>
+        <!--Raw Image View Controller-->
+        <scene sceneID="I9P-6n-Ozu">
+            <objects>
+                <viewController id="qOs-UF-HJa" customClass="RawImageViewController" customModule="AlbedoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sTv-JW-erf"/>
+                        <viewControllerLayoutGuide type="bottom" id="AYW-Qm-3O1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="RawImageViewController" id="H3G-00-Vd9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fbw-cR-lty" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="761" y="-243"/>
         </scene>
     </scenes>
 </document>
