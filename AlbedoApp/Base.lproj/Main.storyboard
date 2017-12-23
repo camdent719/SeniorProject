@@ -63,10 +63,10 @@
             </objects>
             <point key="canvasLocation" x="-101.59999999999999" y="-243.32833583208398"/>
         </scene>
-        <!--Raw Image View Controller-->
+        <!--Camera View Controller-->
         <scene sceneID="I9P-6n-Ozu">
             <objects>
-                <viewController id="qOs-UF-HJa" customClass="RawImageViewController" customModule="AlbedoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qOs-UF-HJa" customClass="CameraViewController" customModule="AlbedoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sTv-JW-erf"/>
                         <viewControllerLayoutGuide type="bottom" id="AYW-Qm-3O1"/>
@@ -74,12 +74,48 @@
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="RawImageViewController" id="H3G-00-Vd9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cao-g5-qgO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNA-qW-Eri">
+                                        <rect key="frame" x="144" y="560" width="86" height="86"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="86" id="K9s-Fw-aGk"/>
+                                            <constraint firstAttribute="width" constant="86" id="yFP-pD-O75"/>
+                                        </constraints>
+                                        <state key="normal" image="circle"/>
+                                        <connections>
+                                            <action selector="captureImage:" destination="qOs-UF-HJa" eventType="touchUpInside" id="RnH-5j-nmH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="XNA-qW-Eri" secondAttribute="bottom" constant="21" id="g3V-Um-Wpx"/>
+                                    <constraint firstItem="XNA-qW-Eri" firstAttribute="centerX" secondItem="cao-g5-qgO" secondAttribute="centerX" id="h9H-G2-vyy"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AYW-Qm-3O1" firstAttribute="top" secondItem="cao-g5-qgO" secondAttribute="bottom" id="QVa-km-Tko"/>
+                            <constraint firstItem="cao-g5-qgO" firstAttribute="top" secondItem="H3G-00-Vd9" secondAttribute="top" id="a7j-cK-KmX"/>
+                            <constraint firstItem="cao-g5-qgO" firstAttribute="leading" secondItem="H3G-00-Vd9" secondAttribute="leading" id="gN9-OO-Ik4"/>
+                            <constraint firstAttribute="trailing" secondItem="cao-g5-qgO" secondAttribute="trailing" id="mTn-Or-1ie"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="captureButton" destination="XNA-qW-Eri" id="kDe-CF-WMA"/>
+                        <outlet property="capturePreviewView" destination="cao-g5-qgO" id="E1P-u3-B3Q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fbw-cR-lty" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="761" y="-243"/>
+            <point key="canvasLocation" x="760.79999999999995" y="-243.32833583208398"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="circle" width="2228" height="2188"/>
+    </resources>
 </document>

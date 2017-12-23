@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		70163FD41FE9EF1A00836E5F /* RawImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70163FD31FE9EF1A00836E5F /* RawImageViewController.swift */; };
+		7022532B1FEC191100D6820F /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702253281FEC191100D6820F /* CameraViewController.swift */; };
 		7072E0D01FE8557D002586EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0CF1FE8557D002586EC /* AppDelegate.swift */; };
 		7072E0D21FE8557D002586EC /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0D11FE8557D002586EC /* RootViewController.swift */; };
 		7072E0D91FE8557D002586EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7072E0D71FE8557D002586EC /* Main.storyboard */; };
@@ -15,6 +15,7 @@
 		7072E0DE1FE8557D002586EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7072E0DC1FE8557D002586EC /* LaunchScreen.storyboard */; };
 		7072E0E91FE8557D002586EC /* AlbedoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0E81FE8557D002586EC /* AlbedoAppTests.swift */; };
 		7072E0F41FE8557D002586EC /* AlbedoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0F31FE8557D002586EC /* AlbedoAppUITests.swift */; };
+		7075A9291FED6B2D00B807F5 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7075A9281FED6B2D00B807F5 /* CameraController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		70163FD31FE9EF1A00836E5F /* RawImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawImageViewController.swift; sourceTree = "<group>"; };
+		702253281FEC191100D6820F /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		7072E0CC1FE8557D002586EC /* AlbedoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlbedoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7072E0CF1FE8557D002586EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7072E0D11FE8557D002586EC /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +50,7 @@
 		7072E0EF1FE8557D002586EC /* AlbedoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbedoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7072E0F31FE8557D002586EC /* AlbedoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbedoAppUITests.swift; sourceTree = "<group>"; };
 		7072E0F51FE8557D002586EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7075A9281FED6B2D00B807F5 /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +103,8 @@
 			children = (
 				7072E0CF1FE8557D002586EC /* AppDelegate.swift */,
 				7072E0D11FE8557D002586EC /* RootViewController.swift */,
-				70163FD31FE9EF1A00836E5F /* RawImageViewController.swift */,
+				702253281FEC191100D6820F /* CameraViewController.swift */,
+				7075A9281FED6B2D00B807F5 /* CameraController.swift */,
 				7072E0D71FE8557D002586EC /* Main.storyboard */,
 				7072E0DA1FE8557D002586EC /* Assets.xcassets */,
 				7072E0DC1FE8557D002586EC /* LaunchScreen.storyboard */,
@@ -264,9 +267,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70163FD41FE9EF1A00836E5F /* RawImageViewController.swift in Sources */,
 				7072E0D21FE8557D002586EC /* RootViewController.swift in Sources */,
 				7072E0D01FE8557D002586EC /* AppDelegate.swift in Sources */,
+				7075A9291FED6B2D00B807F5 /* CameraController.swift in Sources */,
+				7022532B1FEC191100D6820F /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
