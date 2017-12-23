@@ -103,7 +103,7 @@ extension CameraController {
         }
     }
     
-    //
+    // displays the camera view on the UI storyboard
     func displayPreview(on view: UIView) throws {
         guard let captureSession = self.captureSession, captureSession.isRunning else { throw CameraControllerError.captureSessionIsMissing }
         
@@ -115,7 +115,7 @@ extension CameraController {
         self.previewLayer?.frame = view.frame
     }
     
-    //
+    // switches camera between front and rear
     func switchCameras() throws {
         guard let currentCameraPosition = currentCameraPosition, let captureSession = self.captureSession, captureSession.isRunning else { throw CameraControllerError.captureSessionIsMissing }
 
@@ -165,12 +165,13 @@ extension CameraController {
         captureSession.commitConfiguration()
     }
     
-    //
+    // resposnible for capturing the image
     func captureImage(completion: @escaping (UIImage?, Error?) -> Void) {
         guard let captureSession = captureSession, captureSession.isRunning else { completion(nil, CameraControllerError.captureSessionIsMissing); return }
         
-        let settings = AVCapturePhotoSettings()
-        //settings.flashMode = self.flashMode
+        // specifies that the image must be raw
+        guard let availableRawFormat = self.photoOutput?.availableRawPhotoPixelFormatTypes.first else { return }
+        let settings = AVCapturePhotoSettings(rawPixelFormatType: availableRawFormat.uint32Value)
         
         self.photoOutput?.capturePhoto(with: settings, delegate: self)
         self.photoCaptureCompletionBlock = completion
