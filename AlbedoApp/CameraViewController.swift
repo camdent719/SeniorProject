@@ -53,6 +53,24 @@ class CameraViewController: UIViewController {
                 PHAssetChangeRequest.creationRequestForAsset(from: image)
             }
         }
+        flashEffect()
+    }
+    
+    func flashEffect() {
+        if let wnd = self.view{
+            
+            let v = UIView(frame: wnd.bounds)
+            v.backgroundColor = UIColor.white
+            v.alpha = 1
+            
+            wnd.addSubview(v)
+            UIView.animate(withDuration: 1, animations: {
+                v.alpha = 0.0
+            }, completion: {(finished:Bool) in
+                print("inside")
+                v.removeFromSuperview()
+            })
+        }
     }
 }
 
