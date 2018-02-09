@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G18013" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="703-4V-yAM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="703-4V-yAM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,10 +35,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQA-gl-WvX">
-                                <rect key="frame" x="165" y="350" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="Qph-AE-yt4"/>
-                                </constraints>
+                                <rect key="frame" x="16" y="350" width="343" height="30"/>
                                 <state key="normal" title="Try it"/>
                                 <connections>
                                     <segue destination="qOs-UF-HJa" kind="showDetail" id="VS9-hO-U1q"/>
@@ -47,15 +44,15 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="kQA-gl-WvX" firstAttribute="leading" secondItem="502-Ir-ELC" secondAttribute="leadingMargin" constant="149" id="0MQ-ln-LQK"/>
-                            <constraint firstItem="3EA-Zk-o4i" firstAttribute="leading" secondItem="502-Ir-ELC" secondAttribute="leading" id="5uo-92-cG3"/>
-                            <constraint firstAttribute="trailing" secondItem="3EA-Zk-o4i" secondAttribute="trailing" id="9HP-SD-zRc"/>
-                            <constraint firstItem="RV4-Dq-3rv" firstAttribute="leading" secondItem="502-Ir-ELC" secondAttribute="leading" id="PyP-lg-gGs"/>
-                            <constraint firstItem="kQA-gl-WvX" firstAttribute="top" secondItem="RV4-Dq-3rv" secondAttribute="bottom" constant="71" id="VvI-Ep-JHq"/>
-                            <constraint firstAttribute="trailing" secondItem="RV4-Dq-3rv" secondAttribute="trailing" id="YaB-iX-Bf8"/>
-                            <constraint firstItem="RV4-Dq-3rv" firstAttribute="top" secondItem="3EA-Zk-o4i" secondAttribute="bottom" constant="19" id="iat-Sr-kK6"/>
-                            <constraint firstItem="3EA-Zk-o4i" firstAttribute="top" secondItem="I7W-xW-C47" secondAttribute="bottom" constant="198" id="l1n-6q-iyg"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="kQA-gl-WvX" secondAttribute="trailing" constant="148" id="u8k-87-VQi"/>
+                            <constraint firstItem="kQA-gl-WvX" firstAttribute="top" secondItem="RV4-Dq-3rv" secondAttribute="bottom" constant="71" id="EyY-do-m6P"/>
+                            <constraint firstAttribute="trailing" secondItem="RV4-Dq-3rv" secondAttribute="trailing" id="Glz-we-t55"/>
+                            <constraint firstItem="3EA-Zk-o4i" firstAttribute="top" secondItem="I7W-xW-C47" secondAttribute="bottom" constant="198" id="Qc2-eA-hYD"/>
+                            <constraint firstAttribute="trailing" secondItem="3EA-Zk-o4i" secondAttribute="trailing" id="TBs-ms-FeB"/>
+                            <constraint firstItem="3EA-Zk-o4i" firstAttribute="leading" secondItem="502-Ir-ELC" secondAttribute="leading" id="Taf-dF-nHH"/>
+                            <constraint firstItem="RV4-Dq-3rv" firstAttribute="top" secondItem="3EA-Zk-o4i" secondAttribute="bottom" constant="19" id="fCY-IV-BJ0"/>
+                            <constraint firstItem="kQA-gl-WvX" firstAttribute="trailing" secondItem="502-Ir-ELC" secondAttribute="trailingMargin" id="knG-lc-bqc"/>
+                            <constraint firstItem="RV4-Dq-3rv" firstAttribute="leading" secondItem="502-Ir-ELC" secondAttribute="leading" id="oLm-Cl-5Mr"/>
+                            <constraint firstItem="kQA-gl-WvX" firstAttribute="leading" secondItem="502-Ir-ELC" secondAttribute="leadingMargin" id="zcL-VH-qfE"/>
                         </constraints>
                     </view>
                 </viewController>

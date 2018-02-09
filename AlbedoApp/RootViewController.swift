@@ -12,8 +12,6 @@ class RootViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        print("If this appears in the console then it ran successfully")
     }
 
     override func didReceiveMemoryWarning() {

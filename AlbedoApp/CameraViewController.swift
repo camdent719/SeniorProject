@@ -49,26 +49,26 @@ class CameraViewController: UIViewController {
                 return
             }
             
-            try? PHPhotoLibrary.shared().performChangesAndWait {
+            // this code saves the photo to the device so it has been commented out
+            /*try? PHPhotoLibrary.shared().performChangesAndWait {
                 PHAssetChangeRequest.creationRequestForAsset(from: image)
-            }
+            }*/
         }
         flashEffect()
     }
     
+    // creates a UI effect where the screen flashes when a photo is taken
     func flashEffect() {
-        if let wnd = self.view{
+        if let wnd = self.view { // check if view exists
+            let v = UIView(frame: wnd.bounds) // programatically create a UIView the size of the screen
+            v.backgroundColor = UIColor.white // set flash color
+            v.alpha = 1 // set opacity
+            wnd.addSubview(v) // add it to the window view
             
-            let v = UIView(frame: wnd.bounds)
-            v.backgroundColor = UIColor.white
-            v.alpha = 1
-            
-            wnd.addSubview(v)
-            UIView.animate(withDuration: 1, animations: {
+            UIView.animate(withDuration: 1, animations: { // handle the animation
                 v.alpha = 0.0
             }, completion: {(finished:Bool) in
-                print("inside")
-                v.removeFromSuperview()
+                v.removeFromSuperview() // remove when finished
             })
         }
     }
@@ -89,7 +89,6 @@ extension CameraViewController {
         func styleCaptureButton() {
             captureButton.layer.borderColor = UIColor.black.cgColor
             captureButton.layer.borderWidth = 2
-            
             captureButton.layer.cornerRadius = min(captureButton.frame.width, captureButton.frame.height) / 2
         }
         
