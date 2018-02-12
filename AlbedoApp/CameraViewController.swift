@@ -21,7 +21,7 @@ class CameraViewController: UIViewController {
     
     override var prefersStatusBarHidden: Bool { return true }
     
-    @IBAction func switchCameras(_ sender: UIButton) {
+    /*@IBAction func switchCameras(_ sender: UIButton) {
         do {
             try cameraController.switchCameras()
         }
@@ -40,7 +40,7 @@ class CameraViewController: UIViewController {
         case .none:
             return
         }
-    }
+    }*/
     
     @IBAction func captureImage(_ sender: UIButton) {
         cameraController.captureImage {(image, error) in

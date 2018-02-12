@@ -9,6 +9,12 @@
 import AVFoundation
 import UIKit
 
+//@objc protocol AVCapturePhotoOutputType {
+//   @objc(availableRawPhotoPixelFormatTypes)
+//    var __availableRawPhotoPixelFormatTypes: [NSNumber] {get}
+//    printf("Num Available Raw Photo Types: \(__availableRawPhotoPixelFormatTypes.length)")
+//}
+
 class CameraController: NSObject {
     var captureSession: AVCaptureSession?
     
@@ -26,6 +32,13 @@ class CameraController: NSObject {
     
     var flashMode = AVCaptureFlashMode.off
     var photoCaptureCompletionBlock: ((UIImage?, Error?) -> Void)?
+    
+    var photoSampleBuffer: CMSampleBuffer?
+    var previewPhotoSampleBuffer: CMSampleBuffer?
+    var rawSampleBuffer: CMSampleBuffer?
+    var rawPreviewPhotoSampleBuffer: CMSampleBuffer?
+    
+    var dngPhotoData: Data?
 }
 
 extension CameraController {
@@ -77,12 +90,15 @@ extension CameraController {
         }
         
         func configurePhotoOutput() throws {
+            print("Entered configuredPhotoOutput")
             guard let captureSession = self.captureSession else { throw CameraControllerError.captureSessionIsMissing }
             
             self.photoOutput = AVCapturePhotoOutput()
             self.photoOutput!.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecJPEG])], completionHandler: nil)
             
             if captureSession.canAddOutput(self.photoOutput) { captureSession.addOutput(self.photoOutput) }
+
+            //captureSession.commitConfiguration()
             captureSession.startRunning()
         }
         
@@ -110,7 +126,7 @@ extension CameraController {
     
     // displays the camera view on the UI storyboard
     func displayPreview(on view: UIView) throws {
-        guard let captureSession = self.captureSession, captureSession.isRunning else { throw CameraControllerError.captureSessionIsMissing }
+        //guard let captureSession = self.captureSession, captureSession.isRunning else { throw CameraControllerError.captureSessionIsMissing }
         
         self.previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         self.previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
@@ -175,31 +191,42 @@ extension CameraController {
     
     // resposnible for capturing the image
     func captureImage(completion: @escaping (UIImage?, Error?) -> Void) {
-        /*guard let captureSession = captureSession, captureSession.isRunning else { completion(nil, CameraControllerError.captureSessionIsMissing); return }
+        //guard let captureSession = captureSession, captureSession.isRunning else { completion(nil, CameraControllerError.captureSessionIsMissing); return }
         
-        // specifies that the image must be raw
-        guard let availableRawFormat = self.photoOutput?.availableRawPhotoPixelFormatTypes.first else { return }
+        /*// specifies that the image must be raw
+        guard let availableRawFormat = self.photoOutput?.availableRawPhotoPixelFormatTypes.first else { print("*** There are literally no raw formats available"); return }
         let settings = AVCapturePhotoSettings(rawPixelFormatType: availableRawFormat.uint32Value)
         
         self.photoOutput?.capturePhoto(with: settings, delegate: self)
         self.photoCaptureCompletionBlock = completion
-   
-        let rawFormatType = kCVPixelFormatType_14Bayer_RGGB
-        guard (photoOutput?.availableRawPhotoPixelFormatTypes.contains(NSNumber(value: rawFormatType)))!
-            else { return }
+        */
         
-        let photoSettings = AVCapturePhotoSettings(rawPixelFormatType: rawFormatType)//,
-                                                   //processedFormat: [AVVideoCodecKey : AVVideoCodecJPEG])
+        /*// this is the only type supported in modern iPhones besides kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange and kCVPixelFormatType_420YpCbCr8BiPlanarFullRange
+        let photoSettings =  try AVCapturePhotoSettings(format: [kCVPixelBufferPixelFormatTypeKey as String : NSNumber(value: kCVPixelFormatType_32BGRA)])
+        
+        guard (photoOutput?.availableRawPhotoPixelFormatTypes.contains(NSNumber(value: rawFormatType)))! else { print("*** Raw Format Type Unavailable"); return }
+        
         
         photoOutput?.capturePhoto(with: photoSettings, delegate: self)
-        */
-        guard let captureSession = captureSession, captureSession.isRunning else { completion(nil, CameraControllerError.captureSessionIsMissing); return }
-        
-        let settings = AVCapturePhotoSettings()
-        settings.flashMode = self.flashMode
-        
-        self.photoOutput?.capturePhoto(with: settings, delegate: self)
         self.photoCaptureCompletionBlock = completion
+        */
+        
+        //print("Here it is:")
+        //print("-----------")
+        //print(photoOutput?.__availableRawPhotoPixelFormatTypes)
+        
+        let rawFormatType = kCVPixelFormatType_32BGRA
+        guard (photoOutput?.availableRawPhotoPixelFormatTypes.contains(NSNumber(value: rawFormatType)))! else {
+            print("*** ERROR: No available raw pixel formats ***")
+            return
+        }
+        
+        print("1. if it gets this far print this")
+        let settings = AVCapturePhotoBracketSettings(rawPixelFormatType: (photoOutput?.__availableRawPhotoPixelFormatTypes[0].uint32Value)!, processedFormat: nil)
+        print("2. if it gets this far print this")
+        //let photoCaptureDelegate = CameraController(requestedPhotoSettings: settings, willCapturePhotoAnimation: nil)
+        self.photoOutput?.capturePhoto(with: settings, delegate: self)
+        print("3. if it gets this far print this")
     }
 }
 
@@ -220,62 +247,12 @@ extension CameraController {
 }
 
 extension CameraController: AVCapturePhotoCaptureDelegate {
-    /*
-    public func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?,
-                        resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Swift.Error?) {
-        print("capture function called")
-        if let error = error { self.photoCaptureCompletionBlock?(nil, error) }
-            
-        else if let buffer = photoSampleBuffer, let data = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: nil),
-            let image = UIImage(data: data) {
-            print("no error, should work")
-            self.photoCaptureCompletionBlock?(image, nil)
-        }
-            
-        else {
-            self.photoCaptureCompletionBlock?(nil, CameraControllerError.unknown)
-        }
-    }
- 
-    func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingRawPhotoSampleBuffer rawSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?,
+    
+    public func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingRawPhotoSampleBuffer rawSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?,
                  resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
-        
-        if ( rawSampleBuffer != nil) {
-            //let temporaryDNGFileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("\(resolvedSettings.uniqueID)lld.dng")!
-            let imageData = AVCapturePhotoOutput.dngPhotoDataRepresentation(forRawSampleBuffer: rawSampleBuffer!, previewPhotoSampleBuffer:       previewPhotoSampleBuffer)
-            let rawFilter = CIFilter(imageData: imageData! as Data, options:nil)
-            guard let opCiImage:CIImage = rawFilter!.outputImage else {
-                print("Error: could not capture raw image")
-                return
-            }
-            let dumpingContext:CIContext = CIContext(options: [kCIContextCacheIntermediates:false, kCIContextPriorityRequestLow:false])
-            let opCgImage = dumpingContext.createCGImage(opCiImage, from: opCiImage.extent, format: kCIFormatARGB8, colorSpace: CGColorSpace(name: CGColorSpace.sRGB), deferred: false)
-            print("this actually worked - wow")
-        } else {
-            print("error capturing image at all")
-        }
-    }
-     
-    func capture(_ captureOutput: AVCapturePhotoOutput,
-                 didFinishProcessingRawPhotoSampleBuffer rawSampleBuffer: CMSampleBuffer?,
-                 previewPhotoSampleBuffer: CMSampleBuffer?,
-                 resolvedSettings: AVCaptureResolvedPhotoSettings,
-                 bracketSettings: AVCaptureBracketedStillImageSettings?,
-                 error: Error?) {
-        guard error == nil, let rawSampleBuffer = rawSampleBuffer else {
-            print("Error capturing RAW photo:\(String(describing: error))")
-            return
-        }
-        
-        self.rawSampleBuffer = rawSampleBuffer
-        self.rawPreviewPhotoSampleBuffer = previewPhotoSampleBuffer
-    }
-    */
-    public func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?,
-                        resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Swift.Error?) {
-        if let error = error { self.photoCaptureCompletionBlock?(nil, error) }
+        /*if let error = error { self.photoCaptureCompletionBlock?(nil, error) }
             
-        else if let buffer = photoSampleBuffer, let data = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: nil),
+        else if let buffer = rawSampleBuffer, let data = AVCapturePhotoOutput.dngPhotoDataRepresentation(forRawSampleBuffer: buffer, previewPhotoSampleBuffer: nil),
             let image = UIImage(data: data) {
             
             self.photoCaptureCompletionBlock?(image, nil)
@@ -285,5 +262,18 @@ extension CameraController: AVCapturePhotoCaptureDelegate {
         else {
             self.photoCaptureCompletionBlock?(nil, CameraControllerError.unknown)
         }
+        print("did finish processing!!!!!!!!!!!")
+        guard error == nil, let rawSampleBuffer = rawSampleBuffer else {
+            print("Error capturing RAW photo:\(String(describing: error))")
+            return
+        }
+        
+        self.rawSampleBuffer = rawSampleBuffer
+        self.rawPreviewPhotoSampleBuffer = previewPhotoSampleBuffer*/
+        
+        if let error = error {
+            NSLog("Error - RAW image could not be captured: \(error)")
+        }
+        self.dngPhotoData = AVCapturePhotoOutput.dngPhotoDataRepresentation(forRawSampleBuffer: rawSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer)
     }
 }
