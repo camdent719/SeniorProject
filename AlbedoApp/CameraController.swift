@@ -215,18 +215,21 @@ extension CameraController {
         //print("-----------")
         //print(photoOutput?.__availableRawPhotoPixelFormatTypes)
         
-        let rawFormatType = kCVPixelFormatType_32BGRA
+        /*let rawFormatType = kCVPixelFormatType_32BGRA
         guard (photoOutput?.availableRawPhotoPixelFormatTypes.contains(NSNumber(value: rawFormatType)))! else {
             print("*** ERROR: No available raw pixel formats ***")
             return
-        }
+        }*/
         
-        print("1. if it gets this far print this")
-        let settings = AVCapturePhotoBracketSettings(rawPixelFormatType: (photoOutput?.__availableRawPhotoPixelFormatTypes[0].uint32Value)!, processedFormat: nil)
-        print("2. if it gets this far print this")
-        //let photoCaptureDelegate = CameraController(requestedPhotoSettings: settings, willCapturePhotoAnimation: nil)
+        let pixelFormatType = NSNumber(value: kCVPixelFormatType_32BGRA)
+        guard (photoOutput?.availableRawPhotoPixelFormatTypes.contains(pixelFormatType))! else { print("ERROR: No available raw pixel formats"); return }
+        
+        let settings = AVCapturePhotoSettings(format: [
+            kCVPixelBufferPixelFormatTypeKey as String : pixelFormatType
+            ])
+
         self.photoOutput?.capturePhoto(with: settings, delegate: self)
-        print("3. if it gets this far print this")
+        print("Capture Photo Occurred!")
     }
 }
 
