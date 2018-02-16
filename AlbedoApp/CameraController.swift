@@ -38,7 +38,7 @@ class CameraController: NSObject {
     var rawSampleBuffer: CMSampleBuffer?
     var rawPreviewPhotoSampleBuffer: CMSampleBuffer?
     
-    var dngPhotoData: Data?
+    var dngPhotoData: Data? // this is where the raw image data gets stored
 }
 
 extension CameraController {
@@ -275,8 +275,39 @@ extension CameraController: AVCapturePhotoCaptureDelegate {
         self.rawPreviewPhotoSampleBuffer = previewPhotoSampleBuffer*/
         
         if let error = error {
-            NSLog("Error - RAW image could not be captured: \(error)")
+            print("Error - RAW image could not be captured: \(error)")
         }
         self.dngPhotoData = AVCapturePhotoOutput.dngPhotoDataRepresentation(forRawSampleBuffer: rawSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer)
+        
+        /*
+        // convert the NSData object to a CGImage so that the individual pixels can be analyzed
+        //let myDataRef:CFData = self.dngPhotoData as! CFData
+        //let imageSource:CGImageSource = CGImageSourceCreateWithData(myDataRef, nil)!
+        //let rawCGImage:CGImage = CGImageSourceCreateImageAtIndex(imageSource, 0, nil)!
+        
+        // convert the NSData object to a UIImage so that the individual pixels can be analyzed
+        let rawUIImage:UIImage = UIImage(data:dngPhotoData!, scale:1.0)!
+        
+        // check to be sure the conversion worked before using
+        if rawUIImage == .none {
+            print("Error - image could not be converted")
+        }
+        calculate(image:rawUIImage)
+         */
     }
+    
+    /*func calculate(image:UIImage) {
+        var sumR:UInt8 = 0, sumG:UInt8 = 0, sumB:UInt8 = 0
+        if let reader = ImagePixelReader(image: image) {
+            // iterate over all pixels
+            for x in 0 ..< Int(image.size.width){
+                for y in 0 ..< Int(image.size.height){
+                    let color = reader.colorAt(x: x, y: y)
+                    sumR += color.r
+                    sumG += color.g
+                    sumB += color.b
+                }
+            }
+        }
+    }*/
 }
