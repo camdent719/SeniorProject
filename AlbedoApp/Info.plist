@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Albedo App must use your current location in order to properly submit albedo measurements.</string>
 	<key>UIRequiresFullScreen</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
