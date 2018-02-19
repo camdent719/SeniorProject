@@ -137,7 +137,7 @@ extension CameraController {
     }
     
     // switches camera between front and rear
-    func switchCameras() throws {
+    /*func switchCameras() throws {
         guard let currentCameraPosition = currentCameraPosition, let captureSession = self.captureSession, captureSession.isRunning else { throw CameraControllerError.captureSessionIsMissing }
         
         captureSession.beginConfiguration()
@@ -187,7 +187,7 @@ extension CameraController {
         }
         
         captureSession.commitConfiguration()
-    }
+    }*/
     
     // resposnible for capturing the image
     func captureImage(completion: @escaping (UIImage?, Error?) -> Void) {
