@@ -83,7 +83,7 @@
                                         </constraints>
                                         <state key="normal" image="circle"/>
                                         <connections>
-                                            <action selector="captureImage:" destination="qOs-UF-HJa" eventType="touchUpInside" id="RnH-5j-nmH"/>
+                                            <action selector="captureImageButtonPressed:" destination="qOs-UF-HJa" eventType="touchUpInside" id="lI8-xd-iGp"/>
                                         </connections>
                                     </button>
                                 </subviews>
