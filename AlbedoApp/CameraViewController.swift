@@ -1,9 +1,22 @@
-/*
-See LICENSE.txt for this sample’s licensing information.
-
-Abstract:
-View controller for camera interface.
-*/
+//
+//  CameraViewController.swift
+//  AlbedoApp
+//
+//  Created by crt2004 on 12/22/17.
+//
+//  Adapted from "Building a Full Screen Camera App Using AVFoundation" by Pranjal Satija
+//  AppCoda.com https://www.appcoda.com/avfoundation-swift-guide/
+//
+//  and
+//
+//  Apple's Photo Capture Guide
+//  https://developer.apple.com/library/content/documentation/AudioVideo/Conceptual/PhotoCaptureGuide/index.html
+//
+//  and
+//
+//  Apple's CoreMotion Demo App - MotionGraphs
+//  https://developer.apple.com/library/content/samplecode/MotionGraphs/Introduction/Intro.html
+//
 
 import UIKit
 import Photos

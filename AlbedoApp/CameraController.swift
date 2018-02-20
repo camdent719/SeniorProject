@@ -1,9 +1,16 @@
 //
 //  CameraController.swift
-//  AV Foundation
+//  AlbedoApp
 //
 //  Created by crt2004 on 12/22/17.
-//  Copyright © 2017 Pranjal Satija. All rights reserved.
+//
+//  Adapted from "Building a Full Screen Camera App Using AVFoundation" by Pranjal Satija
+//  AppCoda.com https://www.appcoda.com/avfoundation-swift-guide/
+//
+//  and
+//  
+//  Apple's Photo Capture Guide 
+//  https://developer.apple.com/library/content/documentation/AudioVideo/Conceptual/PhotoCaptureGuide/index.html
 //
 
 import AVFoundation
