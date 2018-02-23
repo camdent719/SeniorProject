@@ -4,15 +4,13 @@
 //
 //  Created by crt2004 on 12/22/17.
 //
-//  Adapted from "Building a Full Screen Camera App Using AVFoundation" by Pranjal Satija
-//  AppCoda.com https://www.appcoda.com/avfoundation-swift-guide/
+//  Adapted from:
 //
-//  and
+//  "Building a Full Screen Camera App Using AVFoundation" by Pranjal Satija, AppCoda.com
+//  https://www.appcoda.com/avfoundation-swift-guide/
 //
 //  Apple's Photo Capture Guide
 //  https://developer.apple.com/library/content/documentation/AudioVideo/Conceptual/PhotoCaptureGuide/index.html
-//
-//  and
 //
 //  Apple's CoreMotion Demo App - MotionGraphs
 //  https://developer.apple.com/library/content/samplecode/MotionGraphs/Introduction/Intro.html
@@ -30,20 +28,39 @@ class CameraViewController: UIViewController {
     
     // MotionGraphContainer properties
     let motionManager = CMMotionManager() // motion manager object
-    let levelingThreshold = 0.1 // this accounts for how level device must actually be (0.00 is perfectly level)
+    let levelingThreshold = 5.0 // within how many degrees the device must be in order to count as level
     let updateInterval = 0.25 // measured in seconds
+    
+    var circularLevel:CircularLevel!
     
     override var prefersStatusBarHidden: Bool { return true }
     
     // MARK: UIViewController overrides
+    override func viewDidLoad() {
+        circularLevel = CircularLevel(frame: UIScreen.main.bounds)
+        self.view.addSubview(circularLevel)
+        
+        func configureCameraController() {
+            cameraController.prepare {(error) in
+                if let error = error {
+                    print(error)
+                }
+                
+                try? self.cameraController.displayPreview(on: self.capturePreviewView)
+            }
+        }
+        configureCameraController()
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        startUpdates()
+        startMotionUpdates()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        stopUpdates()
+        stopMotionUpdates()
     }
     
     func captureImage() {
@@ -59,17 +76,21 @@ class CameraViewController: UIViewController {
              }*/
         }
         flashEffect()
-        stopUpdates()
+        stopMotionUpdates()
     }
     
     // MARK: MotionGraphContainer implementation
     
     // start updates for leveling data. Captures image when roll, pitch, and yaw meet the established
     // threshold set by the property levelingThreshold
-    func startUpdates() {
+    func startMotionUpdates() {
         if !motionManager.isDeviceMotionAvailable {
             print("ERROR - dev motion not available");
             return
+        }
+        if self.motionManager.isAccelerometerAvailable {
+            self.motionManager.accelerometerUpdateInterval = 1.0 / 10.0 // 10 Hz
+            self.motionManager.startAccelerometerUpdates()
         }
         
         motionManager.deviceMotionUpdateInterval = self.updateInterval
@@ -77,24 +98,30 @@ class CameraViewController: UIViewController {
         motionManager.startDeviceMotionUpdates(to: .main) { deviceMotion, error in
             guard let deviceMotion = deviceMotion else { return }
             
-            let roll = deviceMotion.attitude.roll
-            let pitch = deviceMotion.attitude.pitch
-            let yaw = deviceMotion.attitude.yaw
+            let accelX:Double = (self.motionManager.accelerometerData?.acceleration.x)!
+            let accelY:Double = (self.motionManager.accelerometerData?.acceleration.y)!
+            self.circularLevel.updatePos(accelX: accelX, accelY: accelY)
+            
+            let roll = deviceMotion.attitude.roll * (180 / Double.pi) // get roll, convert from radians to degrees
+            let pitch = deviceMotion.attitude.pitch * (180 / Double.pi) // get pitch, convert from radians to degrees
+            let yaw = deviceMotion.attitude.yaw * (180 / Double.pi) // get yaw, convert from radians to degrees
             let thresh = self.levelingThreshold
             
+            // ensure that roll, pitch, and yaw are all within the threshold to take a picture
             if abs(roll) <= thresh && abs(pitch) <= thresh && abs(yaw) <= thresh {
-                print("*** Device is level - capturing image - roll:\(roll) pitch:\(pitch) yaw:\(yaw)")
+                //print("*** Device is level - capturing image - roll:\(roll) pitch:\(pitch) yaw:\(yaw)")
                 self.captureImage()
             } else {
-                print("Device not level: roll:\(roll) pitch:\(pitch) yaw:\(yaw)")
+                //print("Device not level: roll:\(roll) pitch:\(pitch) yaw:\(yaw)")
             }
         }
     }
     
     // stop the leveling data updates
-    func stopUpdates() {
+    func stopMotionUpdates() {
         if !motionManager.isDeviceMotionActive { return }
         motionManager.stopDeviceMotionUpdates()
+        motionManager.stopAccelerometerUpdates()
     }
     
     // creates a UI effect where the screen flashes when a photo is taken
@@ -113,20 +140,4 @@ class CameraViewController: UIViewController {
         }
     }
     
-    
-}
-
-extension CameraViewController {
-    override func viewDidLoad() {
-        func configureCameraController() {
-            cameraController.prepare {(error) in
-                if let error = error {
-                    print(error)
-                }
-                
-                try? self.cameraController.displayPreview(on: self.capturePreviewView)
-            }
-        }
-        configureCameraController()
-    }
 }
