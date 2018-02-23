@@ -34,8 +34,8 @@ class RootViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("Current location: \(location.latitude), \(location.longitude)")
+        //guard let location: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        //print("Current location: \(location.latitude), \(location.longitude)")
     }
 }
 

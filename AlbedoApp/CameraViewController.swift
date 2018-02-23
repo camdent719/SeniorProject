@@ -109,10 +109,10 @@ class CameraViewController: UIViewController {
             
             // ensure that roll, pitch, and yaw are all within the threshold to take a picture
             if abs(roll) <= thresh && abs(pitch) <= thresh && abs(yaw) <= thresh {
-                //print("*** Device is level - capturing image - roll:\(roll) pitch:\(pitch) yaw:\(yaw)")
+                print("*** Device is level - capturing image - roll:\(roll) pitch:\(pitch) yaw:\(yaw)")
                 self.captureImage()
             } else {
-                //print("Device not level: roll:\(roll) pitch:\(pitch) yaw:\(yaw)")
+                print("Device not level: roll:\(roll) pitch:\(pitch) yaw:\(yaw)")
             }
         }
     }
