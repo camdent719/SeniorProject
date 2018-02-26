@@ -112,7 +112,7 @@ class CameraViewController: UIViewController {
                 print("*** Device is level - capturing image - roll:\(roll) pitch:\(pitch) yaw:\(yaw)")
                 self.captureImage()
             } else {
-                print("Device not level: roll:\(roll) pitch:\(pitch) yaw:\(yaw)")
+                //print("Device not level: roll:\(roll) pitch:\(pitch) yaw:\(yaw)")
             }
         }
     }
