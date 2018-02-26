@@ -23,15 +23,12 @@ import UIKit
 
 class CameraController: NSObject {
     var captureSession: AVCaptureSession?
-    
     var photoOutput: AVCapturePhotoOutput?
-    
     var rearCamera: AVCaptureDevice?
     var rearCameraInput: AVCaptureDeviceInput?
     
     var previewLayer: AVCaptureVideoPreviewLayer?
     
-    var flashMode = AVCaptureFlashMode.off
     var photoCaptureCompletionBlock: ((UIImage?, Error?) -> Void)?
     
     var photoSampleBuffer: CMSampleBuffer?
@@ -46,6 +43,7 @@ extension CameraController {
     func prepare(completionHandler: @escaping (Error?) -> Void) {
         func createCaptureSession() {
             self.captureSession = AVCaptureSession()
+            self.captureSession?.beginConfiguration()
         }
         
         func configureCaptureDevices() throws {
@@ -60,7 +58,7 @@ extension CameraController {
         func configureDeviceInputs() throws {
             guard let captureSession = self.captureSession else { throw CameraControllerError.captureSessionIsMissing }
             
-            guard let rearCameraInput = try? AVCaptureDeviceInput(device: rearCamera) else {
+            guard let rearCameraInput = try? AVCaptureDeviceInput(device: self.rearCamera) else {
                 print("Error - could not create video input for rear camera")
                 return
             }
@@ -77,7 +75,7 @@ extension CameraController {
             print("Entered configuredPhotoOutput")
             guard let captureSession = self.captureSession else { throw CameraControllerError.captureSessionIsMissing }
             
-            captureSession.beginConfiguration()
+            
             let photoOutput = AVCapturePhotoOutput()
             //photoOutput.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecJPEG])], completionHandler: nil)
             if captureSession.canAddOutput(photoOutput) {

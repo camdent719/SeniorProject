@@ -17,7 +17,6 @@
 //
 
 import UIKit
-import Photos
 import CoreMotion
 
 class CameraViewController: UIViewController {
@@ -37,8 +36,8 @@ class CameraViewController: UIViewController {
     
     // MARK: UIViewController overrides
     override func viewDidLoad() {
-        circularLevel = CircularLevel(frame: UIScreen.main.bounds)
-        self.view.addSubview(circularLevel)
+        circularLevel = CircularLevel(frame: UIScreen.main.bounds) // create a new Circular Level object
+        self.view.addSubview(circularLevel) // add it to the view
         
         func configureCameraController() {
             cameraController.prepare {(error) in
