@@ -27,10 +27,10 @@ class CameraViewController: UIViewController {
     
     // MotionGraphContainer properties
     let motionManager = CMMotionManager() // motion manager object
-    let levelingThreshold = 5.0 // within how many degrees the device must be in order to count as level
-    let updateInterval = 0.25 // measured in seconds
+    let levelingThreshold = 1.5 // within how many degrees the device must be in order to count as level
+    let updateInterval = 0.02 // measured in seconds
     
-    var circularLevel:CircularLevel!
+    var circularLevel:CircularLevel! // create a circular level object
     
     override var prefersStatusBarHidden: Bool { return true }
     
@@ -87,19 +87,12 @@ class CameraViewController: UIViewController {
             print("ERROR - dev motion not available");
             return
         }
-        if self.motionManager.isAccelerometerAvailable {
-            self.motionManager.accelerometerUpdateInterval = 1.0 / 10.0 // 10 Hz
-            self.motionManager.startAccelerometerUpdates()
-        }
-        
         motionManager.deviceMotionUpdateInterval = self.updateInterval
         
         motionManager.startDeviceMotionUpdates(to: .main) { deviceMotion, error in
             guard let deviceMotion = deviceMotion else { return }
-            
-            let accelX:Double = (self.motionManager.accelerometerData?.acceleration.x)!
-            let accelY:Double = (self.motionManager.accelerometerData?.acceleration.y)!
-            self.circularLevel.updatePos(accelX: accelX, accelY: accelY)
+
+            self.circularLevel.getPoint(attitude: deviceMotion.attitude)
             
             let roll = deviceMotion.attitude.roll * (180 / Double.pi) // get roll, convert from radians to degrees
             let pitch = deviceMotion.attitude.pitch * (180 / Double.pi) // get pitch, convert from radians to degrees
@@ -120,7 +113,6 @@ class CameraViewController: UIViewController {
     func stopMotionUpdates() {
         if !motionManager.isDeviceMotionActive { return }
         motionManager.stopDeviceMotionUpdates()
-        motionManager.stopAccelerometerUpdates()
     }
     
     // creates a UI effect where the screen flashes when a photo is taken
