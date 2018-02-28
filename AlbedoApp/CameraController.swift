@@ -53,6 +53,12 @@ extension CameraController {
             }
             self.rearCamera = rearCamera
             print("Success: got rear camera")
+            
+            if self.rearCamera?.activeFormat.isVideoHDRSupported == true {
+                print("HDR is indeed supported")
+            } else {
+                print("sorry no HDR")
+            }
         }
         
         func configureDeviceInputs() throws {
@@ -67,6 +73,7 @@ extension CameraController {
                 captureSession.addInput(rearCameraInput)
                 print("Success: added input to capture session: \(rearCameraInput)")
             }
+            
             self.rearCameraInput = rearCameraInput
             self.captureSession = captureSession
         }

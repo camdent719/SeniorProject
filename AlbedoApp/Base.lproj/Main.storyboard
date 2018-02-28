@@ -55,6 +55,9 @@
                             <constraint firstItem="kQA-gl-WvX" firstAttribute="leading" secondItem="502-Ir-ELC" secondAttribute="leadingMargin" id="zcL-VH-qfE"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btn" destination="kQA-gl-WvX" id="H9o-n3-4Hj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3h-pU-vEd" sceneMemberID="firstResponder"/>
             </objects>
