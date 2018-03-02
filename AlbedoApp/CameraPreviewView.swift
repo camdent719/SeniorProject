@@ -10,14 +10,6 @@
 //  https://developer.apple.com/library/content/samplecode/AVCamManual/Introduction/Intro.html
 //
 
-/*
- Copyright (C) 2015 Apple Inc. All Rights Reserved.
- See LICENSE.txt for this sample’s licensing information
- 
- Abstract:
- Camera preview.
- */
-
 import UIKit
 import AVFoundation
 

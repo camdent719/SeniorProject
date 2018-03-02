@@ -25,8 +25,8 @@ class CircularLevel: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.width = frame.width
-        self.height = frame.height
+        self.width = frame.width // get the device's screen width
+        self.height = frame.height // get the device's screen height
         self.outerCircle = makeCircle(diameter: 150, borderWidth: 8, color: UIColor.black)
         self.innerCircle = makeCircle(diameter: 30, borderWidth: 2, color: UIColor.black)
         self.ball = makeCircle(diameter: 8, borderWidth: 4, color: UIColor.red)
@@ -41,11 +41,11 @@ class CircularLevel: UIView {
     private func makeCircle(diameter: CGFloat, borderWidth: CGFloat, color: UIColor) -> UIView {
         let circle = UIView(frame: CGRect(x:0.0, y:0.0, width:diameter, height:diameter))
         circle.center = CGPoint(x:self.width / 2, y:self.height / 2) // center the circle in the view
-        circle.layer.cornerRadius = diameter / 2.0 // half of frame width to make a circle
+        circle.layer.cornerRadius = diameter / 2.0 // half of diameter to make a circle
         circle.layer.borderColor = color.cgColor
         circle.layer.borderWidth = borderWidth
         circle.clipsToBounds = true
-        self.addSubview(circle)
+        self.addSubview(circle) // add the circle to the view
         return circle
     }
     
@@ -76,7 +76,7 @@ class CircularLevel: UIView {
         
         if distance < self.distanceRange { // if the distance is within the range, change the ball to green
             self.ball.layer.borderColor = UIColor.green.cgColor
-        } else {
+        } else { // otherwise make it red
             self.ball.layer.borderColor = UIColor.red.cgColor
         }
         

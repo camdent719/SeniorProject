@@ -90,8 +90,6 @@ class CameraViewController: UIViewController {
         self.sessionQueue.async {
             self.configureSession()
         }
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,10 +103,9 @@ class CameraViewController: UIViewController {
             switch self.setupResult {
             case .success:
                 // Only setup observers and start the session running if setup succeeded.
-                //self.addObservers() ------------------------------------------------------------------------------------------------------------------------------------ <-- add observers?
                 self.captureSession?.startRunning()
                 self.isSessionRunning = (self.captureSession?.isRunning)!
-            case .cameraNotAuthorized:
+            case .cameraNotAuthorized: // if camera not authorized, alert user
                 DispatchQueue.main.async {
                     let message = NSLocalizedString("Albedo App requires access to the camera in order to take images needed to calculate albedo.", comment: "Needs camera permission")
                     let alertController = UIAlertController(title: "AVCamManual", message: message, preferredStyle: .alert)
@@ -125,7 +122,7 @@ class CameraViewController: UIViewController {
                     alertController.addAction(settingsAction)
                     self.present(alertController, animated: true, completion: nil)
                 }
-            case .sessionConfigurationFailed:
+            case .sessionConfigurationFailed: // if session config failed, alert user
                 DispatchQueue.main.async {
                     let message = NSLocalizedString("Unable to capture media", comment: "Alert if capture session configuration error")
                     let alertController = UIAlertController(title: "Albedo App", message: message, preferredStyle: .alert)
@@ -137,27 +134,27 @@ class CameraViewController: UIViewController {
         }
     }
     
+    // stop capture session and motion updates when view disappears
     override func viewDidDisappear(_ animated: Bool) {
         stopMotionUpdates()
         self.sessionQueue.async {
             if self.setupResult == .success {
                 self.captureSession?.stopRunning()
-                // self.removeObservers()
             }
         }
         super.viewDidDisappear(animated)
     }
     
+    // function that is responsible for configuring all necessary objects for image capture
     func configureSession() {
         guard self.setupResult == .success else {
             return
         }
         
         self.captureSession?.beginConfiguration()
-        
         self.captureSession?.sessionPreset = AVCaptureSessionPresetPhoto
         
-        // Add video input
+        // Add video input - get the rear camera and create a video input object for the rear camera
         let videoDevice: AVCaptureDevice!
         videoDevice = AVCaptureDevice.defaultDevice(withDeviceType: AVCaptureDevice.DeviceType.builtInWideAngleCamera, mediaType:AVMediaTypeVideo, position: .unspecified)
         let videoDeviceInput: AVCaptureDeviceInput
@@ -170,22 +167,12 @@ class CameraViewController: UIViewController {
             return
         }
         
-        if (self.captureSession?.canAddInput(videoDeviceInput))! {
+        if (self.captureSession?.canAddInput(videoDeviceInput))! { // if input can be added to the capture session, add it
             self.captureSession?.addInput(videoDeviceInput)
             self.rearCameraInput = videoDeviceInput
             self.rearCamera = videoDevice
             
             DispatchQueue.main.async {
-                /*
-                 Why are we dispatching this to the main queue?
-                 Because AVCaptureVideoPreviewLayer is the backing layer for AVCamManualPreviewView and UIView
-                 can only be manipulated on the main thread.
-                 Note: As an exception to the above rule, it is not necessary to serialize video orientation changes
-                 on the AVCaptureVideoPreviewLayer’s connection with other session manipulation.
-                 
-                 Use the status bar orientation as the initial video orientation. Subsequent orientation changes are
-                 handled by -[AVCamManualCameraViewController viewWillTransitionToSize:withTransitionCoordinator:].
-                 */
                 let statusBarOrientation = UIApplication.shared.statusBarOrientation
                 var initialVideoOrientation = AVCaptureVideoOrientation.portrait
                 if statusBarOrientation != UIInterfaceOrientation.unknown {
@@ -194,7 +181,6 @@ class CameraViewController: UIViewController {
                 
                 let previewLayer = self.capturePreviewView.layer as! AVCaptureVideoPreviewLayer
                 previewLayer.connection?.videoOrientation = initialVideoOrientation
-                
             }
         } else {
             NSLog("Could not add video device input to the session")
@@ -203,7 +189,7 @@ class CameraViewController: UIViewController {
             return
         }
         
-        // Add photo output
+        // Add photo output to session
         let photoOutput = AVCapturePhotoOutput()
         if (self.captureSession?.canAddOutput(photoOutput))! {
             self.captureSession?.addOutput(photoOutput)
@@ -218,7 +204,7 @@ class CameraViewController: UIViewController {
             return
         }
         
-        self.captureSession?.commitConfiguration()
+        self.captureSession?.commitConfiguration() // commit configuration
     }
     
     private func captureImage() {
@@ -227,12 +213,6 @@ class CameraViewController: UIViewController {
         
         guard let availableRawFormat = photoOutput?.availableRawPhotoPixelFormatTypes[0] else { print("ERROR - There are no raw formats available"); return }
         let settings = AVCapturePhotoSettings(rawPixelFormatType: availableRawFormat.uint32Value)
-        
-        /*if !(photoOutput?.availableRawPhotoPixelFormatTypes.isEmpty)! { //availableRawPhotoFileTypes
-            settings = AVCapturePhotoSettings(rawPixelFormatType: (photoOutput?.availableRawPhotoPixelFormatTypes[0].uint32Value)!, processedFormat: [AVVideoCodecKey : AVVideoCodecJPEG])
-        } else {
-            print("ERROR - no raw format types available")
-        }*/
         
         self.sessionQueue.async {
             let photoCaptureDelegate = AlbedoPhotoCaptureDelegate(requestedPhotoSettings: settings, willCapturePhotoAnimation: {
@@ -250,19 +230,13 @@ class CameraViewController: UIViewController {
                 }
             })
             
-            /*
-             The Photo Output keeps a weak reference to the photo capture delegate so
-             we store it in an array to maintain a strong reference to this object
-             until the capture is completed.
-             */
+            // capture the photo using the photo capture delegate
             self.inProgressPhotoCaptureDelegates[photoCaptureDelegate.requestedPhotoSettings.uniqueID] = photoCaptureDelegate
             self.photoOutput?.capturePhoto(with: settings, delegate: photoCaptureDelegate)
         }
         
-        stopMotionUpdates()
+        stopMotionUpdates() // stop device motion updates
     }
-    
-    // MARK: MotionGraphContainer implementation
     
     // start updates for leveling data. Captures image when roll, pitch, and yaw meet the established
     // threshold set by the property levelingThreshold
@@ -273,10 +247,11 @@ class CameraViewController: UIViewController {
         }
         motionManager.deviceMotionUpdateInterval = self.updateInterval
         
+        // this function runs every self.updateInterval seconds to constantly update motion data
         motionManager.startDeviceMotionUpdates(to: .main) { deviceMotion, error in
             guard let deviceMotion = deviceMotion else { return }
 
-            self.circularLevel.getPoint(attitude: deviceMotion.attitude)
+            self.circularLevel.getPoint(attitude: deviceMotion.attitude) // this updates the ball's position
             
             let roll = deviceMotion.attitude.roll * (180 / Double.pi) // get roll, convert from radians to degrees
             let pitch = deviceMotion.attitude.pitch * (180 / Double.pi) // get pitch, convert from radians to degrees
@@ -286,7 +261,7 @@ class CameraViewController: UIViewController {
             // ensure that roll, pitch, and yaw are all within the threshold to take a picture
             if abs(roll) <= thresh && abs(pitch) <= thresh && abs(yaw) <= thresh {
                 print("*** Device is level - capturing image - roll:\(roll) pitch:\(pitch) yaw:\(yaw)")
-                self.captureImage()
+                self.captureImage() // calls the capture image function when level
             } else {
                 print("Device not level: roll:\(roll) pitch:\(pitch) yaw:\(yaw)")
             }
