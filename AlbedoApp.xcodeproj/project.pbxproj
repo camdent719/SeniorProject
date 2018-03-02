@@ -15,8 +15,9 @@
 		7072E0DE1FE8557D002586EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7072E0DC1FE8557D002586EC /* LaunchScreen.storyboard */; };
 		7072E0E91FE8557D002586EC /* AlbedoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0E81FE8557D002586EC /* AlbedoAppTests.swift */; };
 		7072E0F41FE8557D002586EC /* AlbedoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0F31FE8557D002586EC /* AlbedoAppUITests.swift */; };
-		7075A9291FED6B2D00B807F5 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7075A9281FED6B2D00B807F5 /* CameraController.swift */; };
+		BE0718CC20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0718CB20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift */; };
 		BEA77E1820407EA000A6B9D6 /* CircularLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA77E1720407EA000A6B9D6 /* CircularLevel.swift */; };
+		BED376802049932300B3601E /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED3767F2049932300B3601E /* CameraPreviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +52,9 @@
 		7072E0EF1FE8557D002586EC /* AlbedoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbedoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7072E0F31FE8557D002586EC /* AlbedoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbedoAppUITests.swift; sourceTree = "<group>"; };
 		7072E0F51FE8557D002586EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7075A9281FED6B2D00B807F5 /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		BE0718CB20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbedoPhotoCaptureDelegate.swift; sourceTree = "<group>"; };
 		BEA77E1720407EA000A6B9D6 /* CircularLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLevel.swift; sourceTree = "<group>"; };
+		BED3767F2049932300B3601E /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +108,8 @@
 				7072E0CF1FE8557D002586EC /* AppDelegate.swift */,
 				7072E0D11FE8557D002586EC /* RootViewController.swift */,
 				702253281FEC191100D6820F /* CameraViewController.swift */,
-				7075A9281FED6B2D00B807F5 /* CameraController.swift */,
+				BED3767F2049932300B3601E /* CameraPreviewView.swift */,
+				BE0718CB20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift */,
 				BEA77E1720407EA000A6B9D6 /* CircularLevel.swift */,
 				7072E0D71FE8557D002586EC /* Main.storyboard */,
 				7072E0DA1FE8557D002586EC /* Assets.xcassets */,
@@ -273,7 +276,8 @@
 				7072E0D21FE8557D002586EC /* RootViewController.swift in Sources */,
 				BEA77E1820407EA000A6B9D6 /* CircularLevel.swift in Sources */,
 				7072E0D01FE8557D002586EC /* AppDelegate.swift in Sources */,
-				7075A9291FED6B2D00B807F5 /* CameraController.swift in Sources */,
+				BED376802049932300B3601E /* CameraPreviewView.swift in Sources */,
+				BE0718CC20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift in Sources */,
 				7022532B1FEC191100D6820F /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
