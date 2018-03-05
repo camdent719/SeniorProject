@@ -94,7 +94,78 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fbw-cR-lty" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="760.79999999999995" y="-243.32833583208398"/>
+            <point key="canvasLocation" x="620" y="-243"/>
+        </scene>
+        <!--Intermediate View Controller-->
+        <scene sceneID="f8J-sG-ik0">
+            <objects>
+                <viewController storyboardIdentifier="IntermediateViewController" title="Intermediate View Controller" id="oPZ-p3-pSZ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PdC-h9-vZa"/>
+                        <viewControllerLayoutGuide type="bottom" id="UtB-Tr-bed"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FJZ-iS-UMQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take the 2nd photo now" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yd0-0i-HzE">
+                                <rect key="frame" x="0.0" y="221" width="375" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDM-8M-fx7">
+                                <rect key="frame" x="16" y="362" width="343" height="30"/>
+                                <state key="normal" title="Try it"/>
+                                <connections>
+                                    <segue destination="qgZ-eC-eRg" kind="showDetail" id="f36-Go-av9"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.93000000000000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vDM-8M-fx7" firstAttribute="leading" secondItem="FJZ-iS-UMQ" secondAttribute="leadingMargin" id="NXb-K5-lJM"/>
+                            <constraint firstItem="UtB-Tr-bed" firstAttribute="top" secondItem="vDM-8M-fx7" secondAttribute="bottom" constant="275" id="bNa-da-y7f"/>
+                            <constraint firstItem="Yd0-0i-HzE" firstAttribute="leading" secondItem="FJZ-iS-UMQ" secondAttribute="leading" id="f8n-xf-Hjf"/>
+                            <constraint firstItem="Yd0-0i-HzE" firstAttribute="centerX" secondItem="vDM-8M-fx7" secondAttribute="centerX" id="lhV-VG-W4h"/>
+                            <constraint firstAttribute="trailing" secondItem="Yd0-0i-HzE" secondAttribute="trailing" id="ofn-H5-Je9"/>
+                            <constraint firstItem="Yd0-0i-HzE" firstAttribute="top" secondItem="PdC-h9-vZa" secondAttribute="bottom" constant="201" id="wI0-B4-SUQ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YLA-Is-l9j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1329" y="-242"/>
+        </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="Oqf-oq-NlD">
+            <objects>
+                <viewController id="qgZ-eC-eRg" customClass="CameraViewController" customModule="AlbedoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gTh-dr-I5j"/>
+                        <viewControllerLayoutGuide type="bottom" id="Swn-er-OGs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YsA-uj-rW3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XR6-hP-RKB" customClass="CameraPreviewView" customModule="AlbedoApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XR6-hP-RKB" firstAttribute="top" secondItem="YsA-uj-rW3" secondAttribute="top" id="Fmk-iC-zHR"/>
+                            <constraint firstItem="XR6-hP-RKB" firstAttribute="leading" secondItem="YsA-uj-rW3" secondAttribute="leading" id="kRL-Op-eIP"/>
+                            <constraint firstAttribute="trailing" secondItem="XR6-hP-RKB" secondAttribute="trailing" id="qzt-OQ-Iee"/>
+                            <constraint firstItem="Swn-er-OGs" firstAttribute="top" secondItem="XR6-hP-RKB" secondAttribute="bottom" id="uyv-Gd-H9m"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NJf-TE-8nw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2084" y="-241"/>
         </scene>
     </scenes>
 </document>

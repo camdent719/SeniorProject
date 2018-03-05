@@ -18,6 +18,7 @@
 		BE0718CC20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0718CB20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift */; };
 		BEA77E1820407EA000A6B9D6 /* CircularLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA77E1720407EA000A6B9D6 /* CircularLevel.swift */; };
 		BED376802049932300B3601E /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED3767F2049932300B3601E /* CameraPreviewView.swift */; };
+		BEDE099C204D9E7A00CA5E7F /* PhotoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDE099B204D9E7A00CA5E7F /* PhotoData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		BE0718CB20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbedoPhotoCaptureDelegate.swift; sourceTree = "<group>"; };
 		BEA77E1720407EA000A6B9D6 /* CircularLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLevel.swift; sourceTree = "<group>"; };
 		BED3767F2049932300B3601E /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		BEDE099B204D9E7A00CA5E7F /* PhotoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				7072E0CF1FE8557D002586EC /* AppDelegate.swift */,
 				7072E0D11FE8557D002586EC /* RootViewController.swift */,
 				702253281FEC191100D6820F /* CameraViewController.swift */,
+				BEDE099B204D9E7A00CA5E7F /* PhotoData.swift */,
 				BED3767F2049932300B3601E /* CameraPreviewView.swift */,
 				BE0718CB20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift */,
 				BEA77E1720407EA000A6B9D6 /* CircularLevel.swift */,
@@ -276,6 +279,7 @@
 				7072E0D21FE8557D002586EC /* RootViewController.swift in Sources */,
 				BEA77E1820407EA000A6B9D6 /* CircularLevel.swift in Sources */,
 				7072E0D01FE8557D002586EC /* AppDelegate.swift in Sources */,
+				BEDE099C204D9E7A00CA5E7F /* PhotoData.swift in Sources */,
 				BED376802049932300B3601E /* CameraPreviewView.swift in Sources */,
 				BE0718CC20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift in Sources */,
 				7022532B1FEC191100D6820F /* CameraViewController.swift in Sources */,
