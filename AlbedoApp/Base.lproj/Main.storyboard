@@ -89,7 +89,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="capturePreviewView" destination="cao-g5-qgO" id="E1P-u3-B3Q"/>
+                        <outletCollection property="capturePreviewViews" destination="cao-g5-qgO" collectionClass="NSMutableArray" id="f3t-xV-Bi3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fbw-cR-lty" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -162,6 +162,10 @@
                             <constraint firstItem="Swn-er-OGs" firstAttribute="top" secondItem="XR6-hP-RKB" secondAttribute="bottom" id="uyv-Gd-H9m"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outletCollection property="capturePreviewViews" destination="XR6-hP-RKB" collectionClass="NSMutableArray" id="hlb-AV-1kN"/>
+                        <outletCollection property="capturePreviewViews" destination="XR6-hP-RKB" collectionClass="NSMutableArray" id="W9k-r8-gWe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJf-TE-8nw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
