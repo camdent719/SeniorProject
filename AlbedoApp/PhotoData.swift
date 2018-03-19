@@ -9,4 +9,6 @@ import Foundation
 
 struct PhotoData {
     static var rawPhotos: [Data] = [] // the two raw photos that are taken will be appended to this array
+    static var screenWidth: Int = 0
+    static var screenHeight: Int = 0
 }
