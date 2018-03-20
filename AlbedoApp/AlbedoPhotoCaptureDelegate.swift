@@ -54,45 +54,11 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
         }
         
         self.dngPhotoData = AVCapturePhotoOutput.dngPhotoDataRepresentation(forRawSampleBuffer: rawSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer)
-        PhotoData.rawPhotos.append(self.dngPhotoData!)
+        PhotoData.rawPhotos.append(rawSampleBuffer!)
         if PhotoData.rawPhotos.count == 2 {
             print("*** There Are 2 Photos ***")
-            guard let pixelBuffer = CMSampleBufferGetImageBuffer(rawSampleBuffer!) else {
-                print("rawSampleBuffer does not contain a CVPixelBuffer")
-                return
-            }
-            
-            CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
-            let int32Buffer = unsafeBitCast(CVPixelBufferGetBaseAddress(pixelBuffer), to: UnsafeMutablePointer<UInt32>.self)
-            let int32PerRow = CVPixelBufferGetBytesPerRow(pixelBuffer)
-  
-            //let x = 0
-            //let y = 0
-            //let width = CVPixelBufferGetWidth(pixelBuffer)
-            //let height = CVPixelBufferGetHeight(pixelBuffer)
-            let width = PhotoData.screenWidth
-            let height = PhotoData.screenHeight
-            print("width:\(width)")
-            print("height:\(height)")
-            
-            var b: UInt32 = 0
-            var g: UInt32 = 0
-            var r: UInt32 = 0
-            for h in 0 ..< height {
-                for w in 0 ..< width {
-                    b = int32Buffer[(w * 4) + (h * int32PerRow)];
-                    g = int32Buffer[((w * 4) + (h * int32PerRow)) + 1];
-                    r = int32Buffer[((w * 4) + (h * int32PerRow)) + 2];
-                    //print("\(r),\(g),\(b)")
-                }
-            }
-            print("done")
-            
-            
-            let luma = int32Buffer[43 + (int32PerRow * 17)]
-            CVPixelBufferUnlockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
-            print("luma for 43,17: \(luma)")
-            
+            PhotoData.calculate()
+        
         }
     }
     
