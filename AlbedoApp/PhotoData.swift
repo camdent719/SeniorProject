@@ -62,7 +62,8 @@ struct PhotoData {
         var b: UInt32 = 0
         var g: UInt32 = 0
         var r: UInt32 = 0
-        /*let kBytesPerPixel: Int = 4
+        // ---------- This is the first algorithm that apparently works in obj C but not Swift --------
+        let kBytesPerPixel: Int = 4
         for row: Int in 0 ..< bufferHeight {
             var pixel = (baseAddress + row * bytesPerRow) as? [UInt32]//var pixel = Int(baseAddress) + row * bytesPerRow
             for col in 0 ..< bufferWidth {
@@ -71,18 +72,19 @@ struct PhotoData {
                 r += pixel[2] // red val
             }
             pixel += kBytesPerPixel
-        }*/
+        }
       
-        
-        /*for h in 0 ..< height {
-            for w in 0 ..< width {
-                b += int32Buffer[(w * 4) + (h * int32PerRow)];
-                g += int32Buffer[((w * 4) + (h * int32PerRow)) + 1];
-                r += int32Buffer[((w * 4) + (h * int32PerRow)) + 2];
+        // ---------- This is a second algorithm --------
+        //for h in 0 ..< height {
+        //    for w in 0 ..< width {
+        /*for w in 0 ..< width {
+            for h in 0 ..< height {
+                b += int32Buffer[(w * 4) + (h * bytesPerRow)];
+                g += int32Buffer[((w * 4) + (h * bytesPerRow)) + 1];
+                r += int32Buffer[((w * 4) + (h * bytesPerRow)) + 2];
                 //print("r:\(r) g:\(g) b\(b)")
             }
         }*/
-        
         //let luma = int32Buffer[43 + (int32PerRow * 17)]
         CVPixelBufferUnlockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
         //print("luma for 43,17: \(luma)")
