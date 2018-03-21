@@ -56,8 +56,9 @@ class RootViewController: UIViewController, CLLocationManagerDelegate {
             return identifier
         }
         
+        // Determine validity of given device. If model appears in list of unsupported devices, it's invalid
         func isDeviceInvalid(model: String) -> Bool {
-            if invalidDevices.contains(model) { // if model appears in list of unsupported devices, it's invalid
+            if invalidDevices.contains(model) {
                 return true
             } else {
                 return false
