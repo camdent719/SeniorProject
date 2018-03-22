@@ -48,27 +48,33 @@ struct PhotoData {
         var g: UInt32 = 0
         var r: UInt32 = 0
         
-        var width: Int = CVPixelBufferGetWidth(pixelBuffer)
-        var height: Int = CVPixelBufferGetHeight(pixelBuffer)
-        var row: Int = CVPixelBufferGetBytesPerRow(pixelBuffer)
-        var bytesPerPixel: Int = row / width
-        var buffer = CVPixelBufferGetBaseAddress(pixelBuffer)
+        let width: Int = CVPixelBufferGetWidth(pixelBuffer)
+        let height: Int = CVPixelBufferGetHeight(pixelBuffer)
+        let row: Int = CVPixelBufferGetBytesPerRow(pixelBuffer)
+        let bytesPerPixel: Int = row / width
+        let buffer = CVPixelBufferGetBaseAddress(pixelBuffer)
         UIGraphicsBeginImageContext(CGSize(width: CGFloat(width), height: CGFloat(height)))
-        var c = UIGraphicsGetCurrentContext()
-        var data = c?.data()
-        if data != nil {
-            var maxY: Int = height
+        let c: CGContext = UIGraphicsGetCurrentContext()!
+        
+        let pointer: UnsafeMutableRawPointer = c.data! // objc: unsigned char* data = CGBitmapContextGetData(c);
+        //let i32 = pointer.load(fromByteOffset: 4, as: UInt32.self)
+        let i32bufferPointer = UnsafeBufferPointer(start: buffer?.assumingMemoryBound(to: UInt32.self), count: 1) // pointer
+        
+        
+        if i32bufferPointer != nil {
+            let maxY: Int = height
             for y in 0..<maxY {
                 for x in 0..<width {
-                    var offset: Int = bytesPerPixel * ((width * y) + x)
-                    data[offset] = buffer[offset] // R
-                    data[offset + 1] = buffer[offset + 1] // G
-                    data[offset + 2] = buffer[offset + 2] // B
-                    data[offset + 3] = buffer[offset + 3] // A
+                    let offset: Int = bytesPerPixel * ((width * y) + x)
+                    r += i32bufferPointer[offset] // R
+                    g += i32bufferPointer[offset + 1] // G
+                    b += i32bufferPointer[offset + 2] // B
+                    //i16bufferPointer[offset + 3] // A
                 }
             }
         }
-        var img: UIImage? = UIGraphicsGetImageFromCurrentImageContext()
+        print("loop done. r:\(r) g:\(g) b\(b)")
+        let img: UIImage? = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         CVPixelBufferUnlockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
     
