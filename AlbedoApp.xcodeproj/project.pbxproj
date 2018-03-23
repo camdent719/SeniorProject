@@ -16,6 +16,7 @@
 		7072E0E91FE8557D002586EC /* AlbedoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0E81FE8557D002586EC /* AlbedoAppTests.swift */; };
 		7072E0F41FE8557D002586EC /* AlbedoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0F31FE8557D002586EC /* AlbedoAppUITests.swift */; };
 		BE0718CC20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0718CB20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift */; };
+		BE3A0B7920643A9C00793170 /* Pixels.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3A0B7820643A9C00793170 /* Pixels.m */; };
 		BEA77E1820407EA000A6B9D6 /* CircularLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA77E1720407EA000A6B9D6 /* CircularLevel.swift */; };
 		BED376802049932300B3601E /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED3767F2049932300B3601E /* CameraPreviewView.swift */; };
 		BEDE099C204D9E7A00CA5E7F /* PhotoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDE099B204D9E7A00CA5E7F /* PhotoData.swift */; };
@@ -54,6 +55,9 @@
 		7072E0F31FE8557D002586EC /* AlbedoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbedoAppUITests.swift; sourceTree = "<group>"; };
 		7072E0F51FE8557D002586EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE0718CB20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbedoPhotoCaptureDelegate.swift; sourceTree = "<group>"; };
+		BE3A0B7720643A9C00793170 /* AlbedoApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlbedoApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		BE3A0B7820643A9C00793170 /* Pixels.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pixels.m; sourceTree = "<group>"; };
+		BE3A0B7C20643B7F00793170 /* Pixels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pixels.h; sourceTree = "<group>"; };
 		BEA77E1720407EA000A6B9D6 /* CircularLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLevel.swift; sourceTree = "<group>"; };
 		BED3767F2049932300B3601E /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		BEDE099B204D9E7A00CA5E7F /* PhotoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoData.swift; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 				7072E0D11FE8557D002586EC /* RootViewController.swift */,
 				702253281FEC191100D6820F /* CameraViewController.swift */,
 				BEDE099B204D9E7A00CA5E7F /* PhotoData.swift */,
+				BE3A0B7820643A9C00793170 /* Pixels.m */,
+				BE3A0B7C20643B7F00793170 /* Pixels.h */,
 				BED3767F2049932300B3601E /* CameraPreviewView.swift */,
 				BE0718CB20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift */,
 				BEA77E1720407EA000A6B9D6 /* CircularLevel.swift */,
@@ -118,6 +124,7 @@
 				7072E0DA1FE8557D002586EC /* Assets.xcassets */,
 				7072E0DC1FE8557D002586EC /* LaunchScreen.storyboard */,
 				7072E0DF1FE8557D002586EC /* Info.plist */,
+				BE3A0B7720643A9C00793170 /* AlbedoApp-Bridging-Header.h */,
 			);
 			path = AlbedoApp;
 			sourceTree = "<group>";
@@ -208,6 +215,7 @@
 					7072E0CB1FE8557C002586EC = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = V7438SH4VK;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					7072E0E31FE8557D002586EC = {
@@ -276,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE3A0B7920643A9C00793170 /* Pixels.m in Sources */,
 				7072E0D21FE8557D002586EC /* RootViewController.swift in Sources */,
 				BEA77E1820407EA000A6B9D6 /* CircularLevel.swift in Sources */,
 				7072E0D01FE8557D002586EC /* AppDelegate.swift in Sources */,
@@ -434,11 +443,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = V7438SH4VK;
 				INFOPLIST_FILE = AlbedoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.unh.cs.AlbedoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AlbedoApp/AlbedoApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -447,11 +459,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = V7438SH4VK;
 				INFOPLIST_FILE = AlbedoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.unh.cs.AlbedoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AlbedoApp/AlbedoApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

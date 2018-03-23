@@ -262,7 +262,6 @@ class CameraViewController: UIViewController {
                 return // will lead to future views
             }
         })
-        
     }
     
     // start updates for leveling data. Captures image when roll, pitch, and yaw meet the established
@@ -282,15 +281,20 @@ class CameraViewController: UIViewController {
             
             let roll = deviceMotion.attitude.roll * (180 / Double.pi) // get roll, convert from radians to degrees
             let pitch = deviceMotion.attitude.pitch * (180 / Double.pi) // get pitch, convert from radians to degrees
-            let yaw = deviceMotion.attitude.yaw * (180 / Double.pi) // get yaw, convert from radians to degrees
+            //let yaw = deviceMotion.attitude.yaw * (180 / Double.pi) // get yaw, convert from radians to degrees
             let thresh = self.levelingThreshold
             
             // ensure that roll, pitch, and yaw are all within the threshold to take a picture
-            if abs(roll) <= thresh && abs(pitch) <= thresh && abs(yaw) <= thresh {
-                print("*** Device is level - capturing image - roll:\(roll) pitch:\(pitch) yaw:\(yaw)")
-                self.captureImage() // calls the capture image function when level
-            } else {
-                //print("Device not level: roll:\(roll) pitch:\(pitch) yaw:\(yaw)")
+            if PhotoData.photoDownRGB.isEmpty { // no photos have been taken yet; this is the first photo
+                if abs(roll) <= thresh && abs(pitch) <= thresh {
+                    print("*** Device is level - capturing image - roll:\(roll) pitch:\(pitch)")
+                    self.captureImage() // calls the capture image function when level
+                }
+            } else { // the down photo has been taken already, so now take the up photo
+                if (180 - abs(roll)) <= thresh && abs(pitch) <= thresh {
+                    print("*** Device is level - capturing image - roll:\(roll) pitch:\(pitch)")
+                    self.captureImage() // calls the capture image function when level
+                }
             }
         }
     }

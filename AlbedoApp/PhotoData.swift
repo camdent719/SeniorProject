@@ -10,37 +10,39 @@ import UIKit
 
 struct PhotoData {
     static var rawPhotos: [CMSampleBuffer] = [] // the two raw photos that are taken will be appended to this array
+    static var photoDownRGB: [UInt64] = []
+    static var photoUpRGB: [UInt64] = []
     static var screenWidth: Int = 0
     static var screenHeight: Int = 0
 
-    static func calculate() {
-        if PhotoData.rawPhotos.count < 2 { // error check: this function only works if there are two sample buffers
+    static func calculateAlbedo() {
+        if PhotoData.photoDownRGB.isEmpty && PhotoData.photoUpRGB.isEmpty {//PhotoData.rawPhotos.count < 2 { // error check: this function only works if there are two sample buffers
             print("Error - there must be at least two photos to calculate.")
             return
         }
         
-        guard let pixelBufferDown = CMSampleBufferGetImageBuffer(PhotoData.rawPhotos[0]) else {
+        /*guard let pixelBufferDown: CVPixelBuffer = CMSampleBufferGetImageBuffer(PhotoData.rawPhotos[0]) else {
             print("rawSampleBuffer does not contain a CVPixelBuffer")
             return
         }
-        let rgbDown: [UInt32] = PhotoData.sumByConversion(pixelBuffer: pixelBufferDown)
+        let rgbDown: [UInt32] = PhotoData.sumByConversion(pixelBuffer: pixelBufferDown)*/
+        //let arr = Pixels.getPixelData(PhotoData.rawPhotos[0])
         
-        /*guard let pixelBufferUp = CMSampleBufferGetImageBuffer(PhotoData.rawPhotos[1]) else {
+        /*guard let pixelBufferUp: CVPixelBuffer = CMSampleBufferGetImageBuffer(PhotoData.rawPhotos[1]) else {
             print("rawSampleBuffer does not contain a CVPixelBuffer")
             return
         }
-        let rgbUp: [UInt32] = PhotoData.sum(pixelBuffer: pixelBufferUp)
+        let rgbUp: [UInt32] = PhotoData.sum(pixelBuffer: pixelBufferUp)*/
         
-        let albedoR = rgbDown[0] / rgbUp[0]
-        let albedoG = rgbDown[1] / rgbUp[1]
-        let albedoB = rgbDown[2] / rgbUp[2]
-        
+        let albedoR: Double = Double(photoDownRGB[0]) / Double(photoUpRGB[0])
+        let albedoG: Double = Double(photoDownRGB[1]) / Double(photoUpRGB[1])
+        let albedoB: Double = Double(photoDownRGB[2]) / Double(photoUpRGB[2])
         let albedo = albedoR + albedoG + albedoB
-        print("******* Albedo (does this number make any sense?! who knows: \(albedo)")*/
+        print("******* Albedo (does this number make any sense?! who knows: \(albedo)")
     }
     
     // questions/8072208/how-to-turn-a-cvpixelbuffer-into-a-uiimage
-    private static func sumByConversion(pixelBuffer: CVPixelBuffer) -> [UInt32] {
+    /*private static func sumByConversion(pixelBuffer: CVPixelBuffer) -> [UInt32] {
         CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
        
         // create r, g, and b variables
@@ -86,9 +88,9 @@ struct PhotoData {
         // create and return array
         let rgb: [UInt32] = [r, g, b]
         return rgb
-    }
+    }*/
     
-    //static func sum(pixelBuffer: CVPixelBuffer) -> [UInt32] {
+    /*//static func sum(pixelBuffer: CVPixelBuffer) -> [UInt32] {
     private static func sum(pixelBuffer: CVPixelBuffer) -> [UInt32] {
         CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
         //let int32Buffer = unsafeBitCast(CVPixelBufferGetBaseAddress(pixelBuffer), to: UnsafeMutablePointer<UInt32>.self)
@@ -141,5 +143,5 @@ struct PhotoData {
         
         let rgb: [UInt32] = [r, g, b]
         return rgb
-    }
+    }*/
 }

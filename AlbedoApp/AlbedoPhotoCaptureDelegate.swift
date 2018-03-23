@@ -11,6 +11,7 @@
 //
 
 import AVFoundation
+import UIKit
 
 protocol AlbedoPhotoCaptureDelegateType: class {}
 
@@ -55,11 +56,47 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
         
         self.dngPhotoData = AVCapturePhotoOutput.dngPhotoDataRepresentation(forRawSampleBuffer: rawSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer)
         PhotoData.rawPhotos.append(rawSampleBuffer!)
-        if PhotoData.rawPhotos.count == 2 {
-            print("*** There Are 2 Photos ***")
-            PhotoData.calculate()
-        
+        //if PhotoData.rawPhotos.count == 2 {
+            //print("*** There Are 2 Photos ***")
+            //PhotoData.calculate()
+            
+        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(rawSampleBuffer!) else {
+            return
         }
+        CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
+        let int32Buffer = unsafeBitCast(CVPixelBufferGetBaseAddress(pixelBuffer), to: UnsafeMutablePointer<UInt32>.self)
+        let int32PerRow = CVPixelBufferGetBytesPerRow(pixelBuffer)
+        
+        let width = 2656//CVPixelBufferGetWidth(pixelBuffer)
+        let height = 755//CVPixelBufferGetHeight(pixelBuffer)
+        //let width = PhotoData.screenWidth
+        //let height = PhotoData.screenHeight
+    
+        print("width:\(width)")
+        print("height:\(height)")
+    
+        var b: UInt64 = 0
+        var g: UInt64 = 0
+        var r: UInt64 = 0
+        for h in 0 ..< height {
+            for w in 0 ..< width {
+                b += UInt64(int32Buffer[(w * 4) + (h * int32PerRow)]);
+                g += UInt64(int32Buffer[((w * 4) + (h * int32PerRow)) + 1]);
+                r += UInt64(int32Buffer[((w * 4) + (h * int32PerRow)) + 2]);
+                //print("\(r),\(g),\(b)")
+            }
+        }
+    
+        if PhotoData.photoDownRGB.isEmpty { // if the first photo (down) hasn't been taken, then this is the down photo
+            PhotoData.photoDownRGB = [r, g, b]
+        } else { // if the first photo hasn't been taken, then this is the up photo
+            PhotoData.photoUpRGB = [r, g, b]
+            PhotoData.calculateAlbedo()
+        }
+        //print("PhotoDownRGB: \(PhotoData.photoDownRGB)")
+        //print("PhotoUpRGB:   \(PhotoData.photoUpRGB)")
+        
+        CVPixelBufferUnlockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
     }
     
     func capture(_ captureOutput: AVCapturePhotoOutput, didFinishCaptureForResolvedSettings resolvedSettings: AVCaptureResolvedPhotoSettings, error: Error?) {
