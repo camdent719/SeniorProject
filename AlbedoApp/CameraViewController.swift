@@ -255,12 +255,13 @@ class CameraViewController: UIViewController {
         
         // move to next view controller
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            var nextViewController: UIViewController
             if PhotoData.rawPhotos.count == 1 { // if this was the first photo, then move to next view so the 2nd photo can be taken
-                let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "IntermediateViewController")
-                self.present(nextViewController!, animated: true)
+                nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: "IntermediateViewController"))!
             } else { // otherwise, both photos have been taken, so move to next appropriate view
-                return // will lead to future views
+                nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: "DataViewController"))!
             }
+            self.present(nextViewController, animated: true)
         })
     }
     

@@ -6,7 +6,6 @@
 //
 
 import AVFoundation
-import UIKit
 
 struct PhotoData {
     static var rawPhotos: [CMSampleBuffer] = [] // the two raw photos that are taken will be appended to this array
@@ -14,6 +13,7 @@ struct PhotoData {
     static var photoUpRGB: [UInt64] = []
     static var screenWidth: Int = 0
     static var screenHeight: Int = 0
+    static var albedo: String = "" // saves a string representation of the albedo measurement
 
     static func calculateAlbedo() {
         if PhotoData.photoDownRGB.isEmpty && PhotoData.photoUpRGB.isEmpty {//PhotoData.rawPhotos.count < 2 { // error check: this function only works if there are two sample buffers
@@ -37,8 +37,12 @@ struct PhotoData {
         let albedoR: Double = Double(photoDownRGB[0]) / Double(photoUpRGB[0])
         let albedoG: Double = Double(photoDownRGB[1]) / Double(photoUpRGB[1])
         let albedoB: Double = Double(photoDownRGB[2]) / Double(photoUpRGB[2])
-        let albedo = albedoR + albedoG + albedoB
-        print("******* Albedo (does this number make any sense?! who knows: \(albedo)")
+        let albedo: Double = albedoR + albedoG + albedoB
+        
+        // format albedo to 2 decimal places
+        PhotoData.albedo = String(format: "%.2f", arguments: [albedo])
+        
+        print("******* Albedo (does this number make any sense?! who knows: \(PhotoData.albedo)")
     }
     
     // questions/8072208/how-to-turn-a-cvpixelbuffer-into-a-uiimage

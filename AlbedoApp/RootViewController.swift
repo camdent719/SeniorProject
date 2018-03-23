@@ -9,15 +9,11 @@
 //
 
 import UIKit
-import MapKit
-import CoreLocation
 
-class RootViewController: UIViewController, CLLocationManagerDelegate {
+class RootViewController: UIViewController {
 
     @IBOutlet weak var btn: UIButton!
-    
-    let locationManager = CLLocationManager()
-    
+
     // This array contains string representations of different iPhone models. This app will not work on any iPhone that is older
     // than 6S because these devices lack raw image capture capabilities. The device codes conform to the following key:
     //   "iPhone1,1" = iPhone
@@ -71,26 +67,11 @@ class RootViewController: UIViewController, CLLocationManagerDelegate {
                 self.btn.isEnabled = false
             }))
             self.present(alert, animated: true, completion: nil)
-        }
-        
-        // get user's location
-        self.locationManager.requestWhenInUseAuthorization() // user must agree to use location (first time only)
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-        }
+        }   
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //guard let location: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        //print("Current location: \(location.latitude), \(location.longitude)")
-    }
 }
-
