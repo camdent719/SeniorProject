@@ -43,6 +43,7 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
         lblAlbedo.text = PhotoData.albedo
     }
     
+    // returns a tuple with string representations of the current latitude and longitude
     func printLocation(manager: CLLocationManager) -> (latitude: String, longitude: String) {
         guard let location: CLLocationCoordinate2D = manager.location?.coordinate else {
             print("Error - could not get location")
@@ -51,19 +52,21 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
         return ("\(location.latitude)", "\(location.longitude)")
     }
     
+    // returns the current date formatted as: March 23, 2018
     func getDate() -> String {
         let today = Date()
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         formatter.timeStyle = .none
-        return formatter.string(from: today) // March 23, 2018
+        return formatter.string(from: today)
     }
     
+    // returns the current time formatted as: 4:44 PM
     func getTime() -> String {
         let now = Date()
         let formatter = DateFormatter()
         formatter.dateStyle = .none
         formatter.timeStyle = .short
-        return formatter.string(from: now) // 4:44 PM
+        return formatter.string(from: now)
     }
 }

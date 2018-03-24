@@ -65,15 +65,18 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
         }
         CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
         let int32Buffer = unsafeBitCast(CVPixelBufferGetBaseAddress(pixelBuffer), to: UnsafeMutablePointer<UInt32>.self)
-        let int32PerRow = CVPixelBufferGetBytesPerRow(pixelBuffer)
+        let int32PerRow = CVPixelBufferGetBytesPerRow(pixelBuffer) // 8064
         
-        let width = 2656//CVPixelBufferGetWidth(pixelBuffer)
-        let height = 755//CVPixelBufferGetHeight(pixelBuffer)
+        //let width = CVPixelBufferGetWidth(pixelBuffer) // 2656
+        //let height = CVPixelBufferGetHeight(pixelBuffer) // 755
         //let width = PhotoData.screenWidth
         //let height = PhotoData.screenHeight
+        
+        let height = 750
+        let width = 1334
     
-        print("width:\(width)")
-        print("height:\(height)")
+        //print("width:\(width)")
+        //print("height:\(height)")
     
         var b: UInt64 = 0
         var g: UInt64 = 0
@@ -86,6 +89,17 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
                 //print("\(r),\(g),\(b)")
             }
         }
+        /*
+        let widthMax = width
+        let heightMax = height
+        for indexX in 0..<widthMax {
+            for indexY in 0..<heightMax {
+                let offSet = indexY * bytesPerRow + indexX * bytesPerPixel
+                r += UInt64(int32Buffer[pixelInfo + offSet])
+                g += UInt64(int32Buffer[pixelInfo + 1 + offSet])
+                b += UInt64(int32Buffer[pixelInfo + 2 + offSet])
+            }
+        }*/
     
         if PhotoData.photoDownRGB.isEmpty { // if the first photo (down) hasn't been taken, then this is the down photo
             PhotoData.photoDownRGB = [r, g, b]
