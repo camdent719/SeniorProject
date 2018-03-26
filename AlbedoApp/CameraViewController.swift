@@ -227,6 +227,7 @@ class CameraViewController: UIViewController {
         //let previewLayer = self.capturePreviewView.layer as! AVCaptureVideoPreviewLayer
         //let videoPreviewLayerVideoOrientation = previewLayer.connection?.videoOrientation
         
+        // kCVPixelFormatType_14Bayer_RGGB
         guard let availableRawFormat = photoOutput?.availableRawPhotoPixelFormatTypes[0] else { print("ERROR - There are no raw formats available"); return }
         let settings = AVCapturePhotoSettings(rawPixelFormatType: availableRawFormat.uint32Value)
         

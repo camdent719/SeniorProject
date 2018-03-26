@@ -67,13 +67,22 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
         let int32Buffer = unsafeBitCast(CVPixelBufferGetBaseAddress(pixelBuffer), to: UnsafeMutablePointer<UInt32>.self)
         let int32PerRow = CVPixelBufferGetBytesPerRow(pixelBuffer) // 8064
         
-        //let width = CVPixelBufferGetWidth(pixelBuffer) // 2656
-        //let height = CVPixelBufferGetHeight(pixelBuffer) // 755
+        let width = CVPixelBufferGetWidth(pixelBuffer) // 2656
+        let height = CVPixelBufferGetHeight(pixelBuffer) // 755
+        
+        let colorspace = CGColorSpaceCreateDeviceRGB()
+        let bitmapInfo: UInt32 = CGImageAlphaInfo.none.rawValue//CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
+        guard let context: CGContext = CGContext.init(data: int32Buffer, width: width, height: height, bitsPerComponent: 8, bytesPerRow: int32PerRow, space: colorspace, bitmapInfo: bitmapInfo)!
+        else {
+            print("Could not create context");
+            return
+        }
+        
         //let width = PhotoData.screenWidth
         //let height = PhotoData.screenHeight
         
-        let height = 750
-        let width = 1334
+        //let height = 750
+        //let width = 1334
     
         //print("width:\(width)")
         //print("height:\(height)")
