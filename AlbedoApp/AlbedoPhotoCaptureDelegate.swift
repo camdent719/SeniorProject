@@ -64,15 +64,15 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
             return
         }
         CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
-        let int32Buffer = unsafeBitCast(CVPixelBufferGetBaseAddress(pixelBuffer), to: UnsafeMutablePointer<UInt32>.self)
+        //let int32Buffer = unsafeBitCast(CVPixelBufferGetBaseAddress(pixelBuffer), to: UnsafeMutablePointer<UInt32>.self)
+        let baseAddress = CVPixelBufferGetBaseAddress(pixelBuffer)
         let int32PerRow = CVPixelBufferGetBytesPerRow(pixelBuffer) // 8064
         
-        let width = CVPixelBufferGetWidth(pixelBuffer) // 2656
-        let height = CVPixelBufferGetHeight(pixelBuffer) // 755
-        
+        let width: Int = CVPixelBufferGetWidth(pixelBuffer) // 2656
+        let height: Int = CVPixelBufferGetHeight(pixelBuffer) // 755
         let colorspace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo: UInt32 = CGImageAlphaInfo.none.rawValue//CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
-        guard let context: CGContext = CGContext.init(data: int32Buffer, width: width, height: height, bitsPerComponent: 8, bytesPerRow: int32PerRow, space: colorspace, bitmapInfo: bitmapInfo)!
+        let bitmapInfo: UInt32 = CGImageAlphaInfo.premultipliedFirst.rawValue  //none.rawValue//CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
+        guard let context: CGContext = CGContext.init(data: baseAddress, width: width, height: height, bitsPerComponent: 16, bytesPerRow: int32PerRow, space: colorspace, bitmapInfo: bitmapInfo)!
         else {
             print("Could not create context");
             return
@@ -90,14 +90,15 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
         var b: UInt64 = 0
         var g: UInt64 = 0
         var r: UInt64 = 0
-        for h in 0 ..< height {
+        /*for h in 0 ..< height {
             for w in 0 ..< width {
                 b += UInt64(int32Buffer[(w * 4) + (h * int32PerRow)]);
                 g += UInt64(int32Buffer[((w * 4) + (h * int32PerRow)) + 1]);
                 r += UInt64(int32Buffer[((w * 4) + (h * int32PerRow)) + 2]);
                 //print("\(r),\(g),\(b)")
             }
-        }
+        }*/
+        
         /*
         let widthMax = width
         let heightMax = height
