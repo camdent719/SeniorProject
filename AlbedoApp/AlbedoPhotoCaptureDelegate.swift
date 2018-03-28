@@ -55,11 +55,28 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
         }
         
         self.dngPhotoData = AVCapturePhotoOutput.dngPhotoDataRepresentation(forRawSampleBuffer: rawSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer)
+        var img = UIImage(data: self.dngPhotoData!)
+        
         PhotoData.rawPhotos.append(rawSampleBuffer!)
         //if PhotoData.rawPhotos.count == 2 {
             //print("*** There Are 2 Photos ***")
             //PhotoData.calculate()
-            
+        
+        var i = 0
+        self.dngPhotoData?.forEach { element in
+            if i > 1000000 && i < 1000250 {//i % 10000 == 0 {
+                print(element)
+            }
+            i += 1
+        }
+        print("\nCount: \(i)")
+        print("Max: \(String(describing: self.dngPhotoData!.max()))")
+        print("First: \(self.dngPhotoData!.first!)")
+        
+        
+        
+        return
+        /*// most recent attempt
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(rawSampleBuffer!) else {
             return
         }
@@ -76,7 +93,7 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
         else {
             print("Could not create context");
             return
-        }
+        }*/
         
         //let width = PhotoData.screenWidth
         //let height = PhotoData.screenHeight
@@ -120,7 +137,7 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
         //print("PhotoDownRGB: \(PhotoData.photoDownRGB)")
         //print("PhotoUpRGB:   \(PhotoData.photoUpRGB)")
         
-        CVPixelBufferUnlockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
+        //CVPixelBufferUnlockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
     }
     
     func capture(_ captureOutput: AVCapturePhotoOutput, didFinishCaptureForResolvedSettings resolvedSettings: AVCaptureResolvedPhotoSettings, error: Error?) {

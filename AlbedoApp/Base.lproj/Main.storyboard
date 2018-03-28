@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="703-4V-yAM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4Ho-Mf-nR6">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,217 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Sky View Controller-->
+        <scene sceneID="Tvl-Fp-gxg">
+            <objects>
+                <viewController storyboardIdentifier="SkyViewController" title="Sky View Controller" id="4Ho-Mf-nR6" customClass="SkyViewController" customModule="AlbedoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NSt-af-cEf"/>
+                        <viewControllerLayoutGuide type="bottom" id="8RQ-eu-2bx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zIo-rI-8QO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KT5-fo-Dyy">
+                                <rect key="frame" x="-1" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Sky Analysis" id="ZnI-OE-ILW"/>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which of the following best describes the sky right now?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2t-mX-ha1">
+                                <rect key="frame" x="30" y="76" width="313" height="75"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sky-clear" translatesAutoresizingMaskIntoConstraints="NO" id="kc7-23-j0e">
+                                <rect key="frame" x="30" y="159" width="313" height="72"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sky-clouds" translatesAutoresizingMaskIntoConstraints="NO" id="9C6-S9-FqA">
+                                <rect key="frame" x="30" y="250" width="313" height="72"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clear Sky - No Clouds or Contrails" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ys-Wf-dpx">
+                                <rect key="frame" x="48" y="185" width="278" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Ypf-LS-Rhu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clouds or Contrails Present" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQR-GS-IEI">
+                                <rect key="frame" x="30" y="276" width="313" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Iib-y9-r61"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sky-clouds" translatesAutoresizingMaskIntoConstraints="NO" id="cJJ-rA-9Eb">
+                                <rect key="frame" x="31" y="341" width="313" height="72"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sky is Obscured" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5k-bf-T19">
+                                <rect key="frame" x="31" y="367" width="313" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.93000000000000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cJJ-rA-9Eb" firstAttribute="top" secondItem="9C6-S9-FqA" secondAttribute="bottom" constant="19" id="0qj-ZJ-ZsA"/>
+                            <constraint firstAttribute="trailing" secondItem="KT5-fo-Dyy" secondAttribute="trailing" id="67z-Ac-BDo"/>
+                            <constraint firstItem="kc7-23-j0e" firstAttribute="top" secondItem="p2t-mX-ha1" secondAttribute="bottom" constant="8" id="844-XC-ypU"/>
+                            <constraint firstItem="cJJ-rA-9Eb" firstAttribute="leading" secondItem="zIo-rI-8QO" secondAttribute="leading" constant="31" id="AB1-k6-vj4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p2t-mX-ha1" secondAttribute="trailing" constant="16" id="DAa-lV-fek"/>
+                            <constraint firstItem="p2t-mX-ha1" firstAttribute="leading" secondItem="zIo-rI-8QO" secondAttribute="leadingMargin" constant="14" id="EIl-Uo-BNv"/>
+                            <constraint firstItem="8RQ-eu-2bx" firstAttribute="top" secondItem="R5k-bf-T19" secondAttribute="bottom" constant="279" id="JoZ-QP-f07"/>
+                            <constraint firstItem="R5k-bf-T19" firstAttribute="top" secondItem="9C6-S9-FqA" secondAttribute="bottom" constant="45" id="Jwc-uQ-G5p"/>
+                            <constraint firstItem="R5k-bf-T19" firstAttribute="centerY" secondItem="cJJ-rA-9Eb" secondAttribute="centerY" id="KWu-CD-B44"/>
+                            <constraint firstItem="KT5-fo-Dyy" firstAttribute="top" secondItem="zIo-rI-8QO" secondAttribute="top" constant="20" id="Pu8-bT-Qk8"/>
+                            <constraint firstItem="p2t-mX-ha1" firstAttribute="top" secondItem="KT5-fo-Dyy" secondAttribute="bottom" constant="12" id="S48-lM-ROQ"/>
+                            <constraint firstItem="KT5-fo-Dyy" firstAttribute="leading" secondItem="zIo-rI-8QO" secondAttribute="leading" id="Tur-d4-MWB"/>
+                            <constraint firstItem="5Ys-Wf-dpx" firstAttribute="centerY" secondItem="kc7-23-j0e" secondAttribute="centerY" id="a7s-MZ-lGl"/>
+                            <constraint firstItem="TQR-GS-IEI" firstAttribute="leading" secondItem="zIo-rI-8QO" secondAttribute="leading" constant="30" id="bHA-HC-Fyh"/>
+                            <constraint firstItem="5Ys-Wf-dpx" firstAttribute="centerX" secondItem="TQR-GS-IEI" secondAttribute="centerX" id="cCi-ou-fX7"/>
+                            <constraint firstItem="9C6-S9-FqA" firstAttribute="top" secondItem="kc7-23-j0e" secondAttribute="bottom" constant="19" id="cNy-aI-vbZ"/>
+                            <constraint firstItem="kc7-23-j0e" firstAttribute="leading" secondItem="zIo-rI-8QO" secondAttribute="leading" constant="30" id="dBQ-FO-1lq"/>
+                            <constraint firstItem="5Ys-Wf-dpx" firstAttribute="centerX" secondItem="R5k-bf-T19" secondAttribute="centerX" id="dZB-Ey-Eeo"/>
+                            <constraint firstItem="R5k-bf-T19" firstAttribute="leading" secondItem="cJJ-rA-9Eb" secondAttribute="leading" id="iXI-Mg-9Ac"/>
+                            <constraint firstItem="TQR-GS-IEI" firstAttribute="centerY" secondItem="9C6-S9-FqA" secondAttribute="centerY" id="j4P-k9-31P"/>
+                            <constraint firstItem="cJJ-rA-9Eb" firstAttribute="top" secondItem="TQR-GS-IEI" secondAttribute="bottom" constant="44" id="lU4-uX-aGB"/>
+                            <constraint firstAttribute="trailing" secondItem="cJJ-rA-9Eb" secondAttribute="trailing" constant="31" id="nbR-HS-lIb"/>
+                            <constraint firstItem="5Ys-Wf-dpx" firstAttribute="centerX" secondItem="kc7-23-j0e" secondAttribute="centerX" id="qvO-o8-7V0"/>
+                            <constraint firstItem="8RQ-eu-2bx" firstAttribute="top" secondItem="p2t-mX-ha1" secondAttribute="bottom" constant="516" id="saJ-XA-Wfk"/>
+                            <constraint firstAttribute="trailing" secondItem="9C6-S9-FqA" secondAttribute="trailing" constant="32" id="v8g-lQ-WA9"/>
+                            <constraint firstAttribute="trailing" secondItem="kc7-23-j0e" secondAttribute="trailing" constant="32" id="x0s-8b-QPF"/>
+                            <constraint firstItem="5Ys-Wf-dpx" firstAttribute="top" secondItem="p2t-mX-ha1" secondAttribute="bottom" constant="34" id="xMd-7B-Jlx"/>
+                            <constraint firstItem="5Ys-Wf-dpx" firstAttribute="centerX" secondItem="9C6-S9-FqA" secondAttribute="centerX" id="zgw-hC-Qn5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnCloud" destination="9C6-S9-FqA" id="da6-8z-h4S"/>
+                        <outlet property="btnNoCloud" destination="kc7-23-j0e" id="iIN-hT-mQg"/>
+                        <outlet property="btnObstructed" destination="cJJ-rA-9Eb" id="lKr-ZO-X0q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MnC-gi-Xna" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2402.4000000000001" y="-240.62968515742131"/>
+        </scene>
+        <!--Cloud Coverage View Controller-->
+        <scene sceneID="WUM-OF-Ogg">
+            <objects>
+                <viewController storyboardIdentifier="CloudCoverageViewController" title="Cloud Coverage View Controller" id="L70-P8-0Vl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L56-rk-BeE"/>
+                        <viewControllerLayoutGuide type="bottom" id="mz8-oT-za4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TYU-4y-Ole">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zRw-Lu-qda">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Cloud Coverage" id="2lf-fO-SuU">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="okH-Du-nRw">
+                                            <connections>
+                                                <segue destination="4Ho-Mf-nR6" kind="showDetail" id="Qt3-Se-Jkj"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.93000000000000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zRw-Lu-qda" firstAttribute="leading" secondItem="TYU-4y-Ole" secondAttribute="leading" id="65T-tN-qv2"/>
+                            <constraint firstAttribute="trailing" secondItem="zRw-Lu-qda" secondAttribute="trailing" id="g8N-ig-XuK"/>
+                            <constraint firstItem="zRw-Lu-qda" firstAttribute="top" secondItem="L56-rk-BeE" secondAttribute="bottom" id="l3i-cV-VU9"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LVc-K5-j4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1306" y="-306"/>
+        </scene>
+        <!--Obstruction View Controller-->
+        <scene sceneID="xId-6u-e9W">
+            <objects>
+                <viewController storyboardIdentifier="ObstructionViewController" title="Obstruction View Controller" id="cAD-pL-Ub4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OZS-v3-sfc"/>
+                        <viewControllerLayoutGuide type="bottom" id="1gf-nE-bGq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bkf-4r-Obj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qpg-cE-hTy">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Obstructions" id="Nvw-pn-GFo">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="cZs-b3-CeR">
+                                            <connections>
+                                                <segue destination="4Ho-Mf-nR6" kind="showDetail" id="6oQ-Ib-IDe"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.93000000000000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Qpg-cE-hTy" secondAttribute="trailing" id="Y9U-YU-O7g"/>
+                            <constraint firstItem="Qpg-cE-hTy" firstAttribute="leading" secondItem="bkf-4r-Obj" secondAttribute="leading" id="rSK-Ol-jMt"/>
+                            <constraint firstItem="Qpg-cE-hTy" firstAttribute="top" secondItem="OZS-v3-sfc" secondAttribute="bottom" id="v9n-28-1zd"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EAt-NU-AMB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1310" y="457"/>
+        </scene>
+        <!--Sky Color View Controller-->
+        <scene sceneID="qMA-p1-5YN">
+            <objects>
+                <viewController storyboardIdentifier="SkyColorViewController" title="Sky Color View Controller" id="WX7-wF-JpP" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="e3H-SB-cQZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="4yM-nE-htf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="815-PV-4ub">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSx-NJ-Nez">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Sky Color" id="P9A-al-icm">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="7Xy-vd-ejA">
+                                            <connections>
+                                                <segue destination="4Ho-Mf-nR6" kind="showDetail" id="cR9-hx-fJh"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.93000000000000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="rSx-NJ-Nez" secondAttribute="trailing" id="G6H-sG-gJn"/>
+                            <constraint firstItem="rSx-NJ-Nez" firstAttribute="top" secondItem="e3H-SB-cQZ" secondAttribute="bottom" id="ZWi-do-rm1"/>
+                            <constraint firstItem="rSx-NJ-Nez" firstAttribute="leading" secondItem="815-PV-4ub" secondAttribute="leading" id="shS-VI-I5I"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F0s-US-D1Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1306" y="-1055"/>
+        </scene>
         <!--Root View Controller-->
         <scene sceneID="clB-vc-fyl">
             <objects>
@@ -303,4 +514,11 @@
             <point key="canvasLocation" x="2840.8000000000002" y="-240.62968515742131"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="sky-clear" width="800" height="600"/>
+        <image name="sky-clouds" width="3264" height="2448"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="6oQ-Ib-IDe"/>
+    </inferredMetricsTieBreakers>
 </document>
