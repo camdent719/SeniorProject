@@ -8,11 +8,13 @@
 import AVFoundation
 
 struct PhotoData {
+    static var skyAnalysis = ""
     static var photoDownRGB: [UInt64] = []
     static var photoUpRGB: [UInt64] = []
+    static var albedo: String = "" // saves a string representation of the albedo measurement
+    
     static var screenWidth: Int = 0
     static var screenHeight: Int = 0
-    static var albedo: String = "" // saves a string representation of the albedo measurement
 
     static func calculateAlbedo() {
         if PhotoData.photoDownRGB.isEmpty && PhotoData.photoUpRGB.isEmpty { // error check: this function only works if there are two sample buffers

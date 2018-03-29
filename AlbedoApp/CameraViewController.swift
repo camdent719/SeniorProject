@@ -26,7 +26,7 @@ class CameraViewController: UIViewController {
     // Currently, there is not a way to analyze the RAW bayer filter pixel data to get RGB, so if this flag is set
     // to true, the app will run by taking a JPEG and doing the RGB calculation. The resulting albedo value will not
     // be accurate, but this is merely to demonstrate the app's capabilities.
-    private let JPEG_MODE = true
+    private let JPEG_MODE = false
     
     // Camera and UI properties
     @IBOutlet var capturePreviewViews: [CameraPreviewView]!
@@ -267,7 +267,7 @@ class CameraViewController: UIViewController {
             if !PhotoData.photoDownRGB.isEmpty && PhotoData.photoUpRGB.isEmpty { // if this was the first photo, then move to next view so the 2nd photo can be taken
                 nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: "IntermediateViewController"))!
             } else { // otherwise, both photos have been taken, so move to next appropriate view
-                nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: "DataViewController"))!
+                nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: "OptionalDataViewController"))!
             }
             self.present(nextViewController, animated: true)
         })
