@@ -39,7 +39,7 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
         self.willCapturePhotoAnimation()
     }
 
-    // this is the JPEG capture delegate method, which we don't need
+    // this is the JPEG capture delegate method
     func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
         if let error = error {
             NSLog("Error capturing photo: \(error)")
@@ -49,19 +49,45 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
         self.jpegPhotoData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer!)
     }
     
+    // this is the RAW capture delegate method
     func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingRawPhotoSampleBuffer rawSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
         if let error = error {
             NSLog("Error capturing RAW photo: \(error)")
         }
         
         self.dngPhotoData = AVCapturePhotoOutput.dngPhotoDataRepresentation(forRawSampleBuffer: rawSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer)
-        var img = UIImage(data: self.dngPhotoData!)
         
-        PhotoData.rawPhotos.append(rawSampleBuffer!)
+        /*autoreleasepool {
+            let imageBuffer = CMSampleBufferGetImageBuffer(rawSampleBuffer!)
+            CVPixelBufferLockBaseAddress(imageBuffer!, CVPixelBufferLockFlags(rawValue: 0))
+            let bytesPerRow: size_t = CVPixelBufferGetBytesPerRow(imageBuffer!)
+            let width: size_t = CVPixelBufferGetWidth(imageBuffer!)
+            let height: size_t = CVPixelBufferGetHeight(imageBuffer!)
+            let sourceBuffer = unsafeBitCast(CVPixelBufferGetBaseAddress(imageBuffer!), to: UnsafeMutablePointer<UInt8>.self)
+            CVPixelBufferUnlockBaseAddress(imageBuffer!, CVPixelBufferLockFlags(rawValue: 0))
+            let bufferSize = Int((bytesPerRow * height))
+            let bgraData = malloc(bufferSize)
+            memcpy(bgraData, sourceBuffer, bufferSize)
+            let rgbData = malloc(width * height * 3)
+            var rgbCount: Int = 0
+            for i in 0..<height {
+                var ii = 0
+                while ii < width {
+                    var current = Int(((i * height) + ii))
+                    rgbData![rgbCount] = bgraData[current + 2]
+                    rgbData[rgbCount + 1] = bgraData[current + 1]
+                    rgbData[rgbCount + 2] = bgraData[current]
+                    rgbCount += 3
+                    ii += 4
+                }
+            }
+            free(rgbData)
+        */
         //if PhotoData.rawPhotos.count == 2 {
             //print("*** There Are 2 Photos ***")
             //PhotoData.calculate()
         
+        /* // ---------------------------------------------------------- DNG Photo Data Attempt ----------------------------------------------------------
         var i = 0
         self.dngPhotoData?.forEach { element in
             if i > 1000000 && i < 1000250 {//i % 10000 == 0 {
@@ -72,10 +98,9 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
         print("\nCount: \(i)")
         print("Max: \(String(describing: self.dngPhotoData!.max()))")
         print("First: \(self.dngPhotoData!.first!)")
+        // -------------------------------------------------------------------------------------------------------------------------------------------- */
         
         
-        
-        return
         /*// most recent attempt
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(rawSampleBuffer!) else {
             return
