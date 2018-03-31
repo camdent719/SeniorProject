@@ -8,7 +8,12 @@
 import AVFoundation
 
 struct PhotoData {
-    static var skyAnalysis = ""
+    static var skyAnalysis: SkyAnalysis = SkyAnalysis.none
+    static var snowState: SnowState = SnowState.none
+    static var patchinessPercentage: Int = 0
+    static var groundCover: GroundCover = GroundCover.none
+    static var snowSurfaceAge: SnowSurfaceAge = SnowSurfaceAge.none
+    
     static var photoDownRGB: [UInt64] = []
     static var photoUpRGB: [UInt64] = []
     static var albedo: String = "" // saves a string representation of the albedo measurement
@@ -32,4 +37,53 @@ struct PhotoData {
         
         print("******* Albedo Value: \(PhotoData.albedo)")
     }
+    
+    static func clearData() {
+        skyAnalysis = SkyAnalysis.none
+        snowState = SnowState.none
+        patchinessPercentage = 0
+        groundCover = GroundCover.none
+        snowSurfaceAge = SnowSurfaceAge.none
+        
+        photoDownRGB.removeAll()
+        photoUpRGB.removeAll()
+        albedo = ""
+    }
 }
+
+enum SkyAnalysis: String {
+    case none = "None" // default value
+    case clear = "Clear"
+    case mostlyClear = "Mostly Clear"
+    case cloudy = "Cloudy"
+    case obscured = "Obscured"
+}
+
+enum SnowState: String {
+    case none = "None" // default value
+    case snowCovered = "Snow-covered"
+    case patchySnow = "Patchy Snow"
+    case snowFreeDormant = "Snow-free/Dormant"
+    case snowFreeGreen = "Snow-free/Green"
+}
+
+enum GroundCover: String {
+    case none = "None" // default value
+    case grass = "Grass"
+    case wetSoil = "Wet Soil"
+    case drySoil = "Dry Soil"
+    case pavement = "Pavement"
+    case woodenDeck = "Wooden Deck"
+}
+
+enum SnowSurfaceAge: String {
+    case none = "None" // default value
+    case fresh = "Fresh Snow"
+    case snow2Days = "Snow Within Past 2 Days"
+    case snow3Days = "Snow Within Past 3 Days"
+    case snow4Days = "Snow Within Past 4 Days"
+    case snowOver4Days = "Snow Older Than 4 Days"
+    case dontKnow = "Don't Know"
+}
+
+

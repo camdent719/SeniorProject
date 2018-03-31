@@ -14,6 +14,8 @@ class SkyViewController: UIViewController {
     @IBOutlet weak var btnCloudy: UIImageView!
     @IBOutlet weak var btnObscured: UIImageView!
     
+    private let nextViewName = "SnowStateViewController"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,26 +37,26 @@ class SkyViewController: UIViewController {
     }
     
     func clearTapped(clearTapped: UIGestureRecognizer) {
-        let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: "SnowStateViewController"))!
+        let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
-        PhotoData.skyAnalysis = "Clear"
+        PhotoData.skyAnalysis = SkyAnalysis.clear
     }
     
     func mostlyClearTapped(mostlyClearTapped: UIGestureRecognizer) {
-        let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: "SnowStateViewController"))!
+        let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
-        PhotoData.skyAnalysis = "Mostly Clear"
+        PhotoData.skyAnalysis = SkyAnalysis.mostlyClear
     }
     
     func cloudyTapped(cloudyTapped: UIGestureRecognizer) {
-        let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: "SnowStateViewController"))!
+        let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
-        PhotoData.skyAnalysis = "Cloudy"
+        PhotoData.skyAnalysis = SkyAnalysis.cloudy
     }
     
     func obscuredTapped(obscuredTapped: UIGestureRecognizer) {
-        let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: "SnowStateViewController"))!
+        let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
-        PhotoData.skyAnalysis = "Obstructed"
+        PhotoData.skyAnalysis = SkyAnalysis.obscured
     }
 }
