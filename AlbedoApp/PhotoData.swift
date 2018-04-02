@@ -18,6 +18,11 @@ struct PhotoData {
     static var photoUpRGB: [UInt64] = []
     static var albedo: String = "" // saves a string representation of the albedo measurement
     
+    static var snowDepth: Float = Float.nan
+    static var snowWeight: Float = Float.nan
+    static var snowTemp: Float = Float.nan
+    static var debrisDescription: String = ""
+    
     static var screenWidth: Int = 0
     static var screenHeight: Int = 0
 

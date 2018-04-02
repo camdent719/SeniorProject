@@ -972,7 +972,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yCy-2v-5qF">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="These values are optional, and can be entered if the proper equipment is available." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O36-tj-Ved">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These values are optional, and can be entered if the proper equipment is available." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O36-tj-Ved">
                                                 <rect key="frame" x="16" y="14" width="343" height="53"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -1016,19 +1016,19 @@
                                                 <rect key="frame" x="221" y="137" width="97" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dwn-Mm-pTM">
                                                 <rect key="frame" x="221" y="177" width="97" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acE-7n-JUB">
                                                 <rect key="frame" x="221" y="217" width="97" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is there any debris on the surface of the snow? Please describe:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQv-8K-5Az">
                                                 <rect key="frame" x="16" y="286" width="334" height="48"/>
@@ -1039,22 +1039,24 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BNG-Uh-b9W">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BNG-Uh-b9W">
                                                 <rect key="frame" x="16" y="335" width="334" height="74"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="74" id="CgN-zN-V3e"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rzA-hQ-82z">
-                                                <rect key="frame" x="267" y="440" width="83" height="30"/>
+                                                <rect key="frame" x="267" y="440" width="83" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="83" id="taf-Dc-osb"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <state key="normal" title="Next"/>
                                                 <connections>
+                                                    <action selector="btnNextTapped:" destination="VPR-9y-qc6" eventType="touchUpInside" id="wgx-uO-gga"/>
                                                     <segue destination="o3y-IO-7Jp" kind="showDetail" id="2Kn-zl-ziU"/>
                                                 </connections>
                                             </button>
@@ -1065,12 +1067,14 @@
                                             <constraint firstItem="RTr-eb-Wva" firstAttribute="top" secondItem="6T1-3R-UgK" secondAttribute="bottom" constant="37" id="7pP-4h-IuV"/>
                                             <constraint firstItem="Dwn-Mm-pTM" firstAttribute="trailing" secondItem="XWP-aF-Gvm" secondAttribute="trailing" id="9td-aP-7TU"/>
                                             <constraint firstItem="acE-7n-JUB" firstAttribute="leading" secondItem="Dwn-Mm-pTM" secondAttribute="leading" id="Cs3-bg-tFA"/>
+                                            <constraint firstItem="O36-tj-Ved" firstAttribute="top" secondItem="yCy-2v-5qF" secondAttribute="top" constant="14" id="Cve-H1-PJb"/>
+                                            <constraint firstItem="6T1-3R-UgK" firstAttribute="top" secondItem="O36-tj-Ved" secondAttribute="bottom" constant="8" symbolic="YES" id="DWL-XJ-Yak"/>
+                                            <constraint firstItem="O36-tj-Ved" firstAttribute="leading" secondItem="RTr-eb-Wva" secondAttribute="leading" id="E8j-to-hs5"/>
                                             <constraint firstItem="pQv-8K-5Az" firstAttribute="top" secondItem="acE-7n-JUB" secondAttribute="bottom" constant="39" id="EG0-IU-Cao"/>
                                             <constraint firstItem="acE-7n-JUB" firstAttribute="centerY" secondItem="lah-Hc-KDa" secondAttribute="centerY" id="GpM-81-a2A"/>
                                             <constraint firstItem="RTr-eb-Wva" firstAttribute="centerY" secondItem="XWP-aF-Gvm" secondAttribute="centerY" id="J16-Nj-Xzv"/>
                                             <constraint firstItem="RTr-eb-Wva" firstAttribute="firstBaseline" secondItem="XWP-aF-Gvm" secondAttribute="baseline" id="Lli-CF-Der"/>
                                             <constraint firstAttribute="height" constant="603" id="Lub-A1-491"/>
-                                            <constraint firstItem="6T1-3R-UgK" firstAttribute="top" secondItem="O36-tj-Ved" secondAttribute="bottom" constant="8" symbolic="YES" id="NMC-9u-iiz"/>
                                             <constraint firstItem="Dwn-Mm-pTM" firstAttribute="leading" secondItem="XWP-aF-Gvm" secondAttribute="leading" id="Pmb-tm-cFT"/>
                                             <constraint firstItem="rzA-hQ-82z" firstAttribute="top" secondItem="BNG-Uh-b9W" secondAttribute="bottom" constant="31" id="QqT-pq-33u"/>
                                             <constraint firstItem="BNG-Uh-b9W" firstAttribute="top" secondItem="pQv-8K-5Az" secondAttribute="bottom" constant="1" id="R3p-Ca-iaf"/>
@@ -1083,6 +1087,7 @@
                                             <constraint firstItem="pQv-8K-5Az" firstAttribute="leading" secondItem="BNG-Uh-b9W" secondAttribute="leading" id="bQQ-ZU-bbh"/>
                                             <constraint firstItem="rzA-hQ-82z" firstAttribute="trailing" secondItem="BNG-Uh-b9W" secondAttribute="trailing" id="c03-e3-I1i"/>
                                             <constraint firstItem="RTr-eb-Wva" firstAttribute="leading" secondItem="lah-Hc-KDa" secondAttribute="leading" id="efI-Dh-ykL"/>
+                                            <constraint firstItem="O36-tj-Ved" firstAttribute="centerX" secondItem="6T1-3R-UgK" secondAttribute="centerX" id="fHQ-i8-7Ng"/>
                                             <constraint firstItem="Dwn-Mm-pTM" firstAttribute="baseline" secondItem="yr6-U9-pgr" secondAttribute="firstBaseline" id="gBu-bo-SHJ"/>
                                             <constraint firstItem="RTr-eb-Wva" firstAttribute="trailing" secondItem="lah-Hc-KDa" secondAttribute="trailing" id="gYe-OO-HSC"/>
                                             <constraint firstAttribute="trailing" secondItem="pQv-8K-5Az" secondAttribute="trailing" constant="25" id="ghq-GB-PzO"/>
@@ -1090,8 +1095,6 @@
                                             <constraint firstItem="pQv-8K-5Az" firstAttribute="trailing" secondItem="BNG-Uh-b9W" secondAttribute="trailing" id="m3W-EQ-dAi"/>
                                             <constraint firstItem="RTr-eb-Wva" firstAttribute="trailing" secondItem="yr6-U9-pgr" secondAttribute="trailing" id="mjK-TQ-PQj"/>
                                             <constraint firstItem="RTr-eb-Wva" firstAttribute="leading" secondItem="yr6-U9-pgr" secondAttribute="leading" id="qU9-kn-SHT"/>
-                                            <constraint firstItem="RTr-eb-Wva" firstAttribute="leading" secondItem="O36-tj-Ved" secondAttribute="leading" id="r5E-sx-HVN"/>
-                                            <constraint firstItem="6T1-3R-UgK" firstAttribute="centerX" secondItem="O36-tj-Ved" secondAttribute="centerX" id="tMw-Bd-KcB"/>
                                             <constraint firstItem="acE-7n-JUB" firstAttribute="trailing" secondItem="Dwn-Mm-pTM" secondAttribute="trailing" id="tid-hk-V3c"/>
                                             <constraint firstItem="yr6-U9-pgr" firstAttribute="top" secondItem="RTr-eb-Wva" secondAttribute="bottom" constant="19" id="us1-SO-Uu0"/>
                                             <constraint firstItem="6T1-3R-UgK" firstAttribute="centerX" secondItem="yCy-2v-5qF" secondAttribute="centerX" id="xO8-c2-ePA"/>
@@ -1124,6 +1127,9 @@
                     </view>
                     <connections>
                         <outlet property="scrollView" destination="Lbn-BN-cxx" id="So8-vd-id7"/>
+                        <outlet property="txtFieldSnowDepth" destination="XWP-aF-Gvm" id="6ga-hZ-AGd"/>
+                        <outlet property="txtFieldSnowTemp" destination="acE-7n-JUB" id="JwM-lk-Kza"/>
+                        <outlet property="txtFieldSnowWeight" destination="Dwn-Mm-pTM" id="4xS-Sr-3Zq"/>
                         <outlet property="txtViewComments" destination="BNG-Uh-b9W" id="aoS-xD-GWV"/>
                     </connections>
                 </viewController>
