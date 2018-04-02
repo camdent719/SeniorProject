@@ -69,9 +69,14 @@ class RootViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }   
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func btnBackTapped(_ sender: Any) {
+        if PhotoData.snowState == SnowState.snowFreeDormant || PhotoData.snowState == SnowState.snowFreeGreen {
+            let prevViewController = (self.storyboard?.instantiateViewController(withIdentifier: "SnowStateViewController"))!
+            self.present(prevViewController, animated: true)
+        } else {
+            let prevViewController = (self.storyboard?.instantiateViewController(withIdentifier: "SnowSurfaceViewController"))!
+            self.present(prevViewController, animated: true)
+        }
     }
 }

@@ -42,45 +42,33 @@ class GroundCoverViewController: UIViewController {
     }
     
     func grassTapped(grassTapped: UIGestureRecognizer) {
-        testNextViewController()
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.groundCover = GroundCover.grass
     }
     
     func wetSoilTapped(wetSoilTapped: UIGestureRecognizer) {
-        testNextViewController()
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.groundCover = GroundCover.wetSoil
     }
     
     func drySoilTapped(drySoilTapped: UIGestureRecognizer) {
-        testNextViewController()
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.groundCover = GroundCover.drySoil
     }
     
     func pavementTapped(pavementTapped: UIGestureRecognizer) {
-        testNextViewController()
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.groundCover = GroundCover.pavement
     }
     
     func woodenDeckTapped(woodenDeckTapped: UIGestureRecognizer) {
-        testNextViewController()
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.groundCover = GroundCover.woodenDeck
-    }
-    
-    // if user has indicated that there is no snow cover, skip the next view controller, which asks about snow surface age
-    private func testNextViewController() {
-        if PhotoData.snowState == SnowState.snowFreeDormant || PhotoData.snowState == SnowState.snowFreeGreen {
-            nextViewName = "RootViewController"
-        }
     }
 }
 

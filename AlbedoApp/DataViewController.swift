@@ -21,10 +21,6 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
         // get user's location
         self.locationManager.requestWhenInUseAuthorization() // user must agree to use location (first time only)
