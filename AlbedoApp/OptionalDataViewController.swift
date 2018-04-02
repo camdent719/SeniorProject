@@ -15,7 +15,10 @@ class OptionalDataViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var txtViewComments: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var activeTextView: UITextView?
+    @IBOutlet weak var errSnowDepth: UIImageView!
+    @IBOutlet weak var errSnowWeight: UIImageView!
+    @IBOutlet weak var errSnowTemp: UIImageView!    
+    @IBOutlet weak var btnNext: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,14 +26,65 @@ class OptionalDataViewController: UIViewController, UITextViewDelegate {
         view.addGestureRecognizer(tap)
         txtViewComments.delegate = self
         
-        txtFieldSnowDepth.addTarget(self, action: #selector(OptionalDataViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
-        txtFieldSnowWeight.addTarget(self, action: #selector(OptionalDataViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
-        txtFieldSnowTemp.addTarget(self, action: #selector(OptionalDataViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+        errSnowDepth.isHidden = true
+        errSnowWeight.isHidden = true
+        errSnowTemp.isHidden = true
     }
    
     // if the user taps outside of the keyboard, dismiss the keyboard
     func dismissKeyboard() {
         view.endEditing(true)
+        
+        let inputSnowDepth = txtFieldSnowDepth.text
+        let inputSnowWeight = txtFieldSnowWeight.text
+        let inputSnowTemp = txtFieldSnowTemp.text
+        let values = [inputSnowDepth, inputSnowWeight, inputSnowTemp]
+        
+        let pattern = "^[-+]?[0-9]*\\.?[0-9]+$"
+        let regex = try! NSRegularExpression(pattern: pattern, options: [])
+        var allValid = true
+        for (i, v) in values.enumerated() {
+            if (v?.isEmpty)! {
+                if i == 0 {
+                    errSnowDepth.isHidden = true
+                } else if i == 1 {
+                    errSnowWeight.isHidden = true
+                } else { // i == 2
+                    errSnowTemp.isHidden = true
+                }
+                continue // values are optional, so if empty this is valid
+            }
+            
+            let matches = regex.matches(in: v!, options: [], range: NSRange(location: 0, length: (v!.count)))
+            if i == 0 {
+                if matches.count < 1 {
+                    errSnowDepth.isHidden = false
+                    allValid = false
+                } else {
+                    errSnowDepth.isHidden = true
+                }
+            } else if i == 1 {
+                if matches.count < 1 {
+                    errSnowWeight.isHidden = false
+                    allValid = false
+                } else {
+                    errSnowWeight.isHidden = true
+                }
+            } else { // if i == 2
+                if matches.count < 1 {
+                    errSnowTemp.isHidden = false
+                    allValid = false
+                } else {
+                    errSnowTemp.isHidden = true
+                }
+            }
+        }
+        
+        if allValid {
+            btnNext.isEnabled = true
+        } else {
+            btnNext.isEnabled = false
+        }
     }
     
     // if the user taps inside the text view, scroll so the text view remains visible
@@ -52,25 +106,6 @@ class OptionalDataViewController: UIViewController, UITextViewDelegate {
         return true
     }
     
-    // validate incoming characters on the fly as they are typed to prevent invalid entries
-    @objc private func textFieldDidChange(textField: UITextField) {
-        let input = textField.text
-        if let text = input, text.count > 5 { // make sure the text is less than 5 chars
-            textField.text = input?.substring(to: (input?.index(before: (input?.endIndex)!))!) // this line removes the last char
-        } else if (input?.countInstances(of: "."))! > 1 { // make sure there is only one decimal point
-            textField.text = input?.substring(to: (input?.index(before: (input?.endIndex)!))!)
-        } else if input?.count != 0 { // make sure that there are no other characters
-            let lastChar = input?.substring(from: (input?.index((input?.endIndex)!, offsetBy: -1))!)
-            var validChars = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."] // digits, decimal pt
-            //if input?.count == 1 {
-            //    validChars.append("-") // negative sign only allowed as first character
-            //}
-            if !validChars.contains(lastChar!) {
-                textField.text = input?.substring(to: (input?.index(before: (input?.endIndex)!))!)
-            }
-        }
-    }
-    
     // save all data to the PhotoData class
     @IBAction func btnNextTapped(_ sender: Any) {
         if txtFieldSnowDepth.text?.count != 0 {
@@ -83,17 +118,5 @@ class OptionalDataViewController: UIViewController, UITextViewDelegate {
             PhotoData.snowDepth = (txtFieldSnowTemp.text! as NSString).floatValue
         }
         PhotoData.debrisDescription = txtViewComments.text
-    }
-}
-
-extension String {
-    func countInstances(of stringToFind: String) -> Int {
-        var stringToSearch = self
-        var count: Int = 0
-        while let foundRange = stringToSearch.range(of: stringToFind, options: .diacriticInsensitive) {
-            stringToSearch = stringToSearch.replacingCharacters(in: foundRange, with: "")
-            count += 1
-        }
-        return count
     }
 }
