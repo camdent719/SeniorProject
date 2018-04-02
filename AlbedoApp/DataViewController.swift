@@ -17,6 +17,11 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var lblTime: UILabel!
     @IBOutlet weak var lblAlbedo: UILabel!
     
+    @IBOutlet weak var lblSky: UILabel!
+    @IBOutlet weak var lblSnowState: UILabel!
+    @IBOutlet weak var lblGroundCover: UILabel!
+    @IBOutlet weak var lblSnowSurface: UILabel!
+    
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
@@ -37,6 +42,15 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
         lblDate.text = getDate()
         lblTime.text = getTime()
         lblAlbedo.text = PhotoData.albedo
+        
+        lblSky.text = PhotoData.skyAnalysis.rawValue
+        if PhotoData.patchinessPercentage != 0 {
+            lblSnowState.text = PhotoData.snowState.rawValue + ", \(PhotoData.patchinessPercentage)% patchiness"
+        } else {
+            lblSnowState.text = PhotoData.snowState.rawValue
+        }
+        lblGroundCover.text = PhotoData.groundCover.rawValue
+        lblSnowSurface.text = PhotoData.snowSurfaceAge.rawValue
     }
     
     // returns a tuple with string representations of the current latitude and longitude
