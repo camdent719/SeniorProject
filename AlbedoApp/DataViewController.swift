@@ -22,6 +22,11 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var lblGroundCover: UILabel!
     @IBOutlet weak var lblSnowSurface: UILabel!
     
+    @IBOutlet weak var lblSnowDepth: UILabel!
+    @IBOutlet weak var lblSnowWeight: UILabel!
+    @IBOutlet weak var lblSnowTemp: UILabel!
+    @IBOutlet weak var lblDebrisDesc: UILabel!
+    
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
@@ -51,6 +56,30 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
         }
         lblGroundCover.text = PhotoData.groundCover.rawValue
         lblSnowSurface.text = PhotoData.snowSurfaceAge.rawValue
+        
+        if !PhotoData.snowDepth.isNaN {
+            lblSnowDepth.text = String(PhotoData.snowDepth)
+        } else {
+            lblSnowDepth.text = "---"
+        }
+        
+        if !PhotoData.snowWeight.isNaN {
+            lblSnowWeight.text = String(PhotoData.snowWeight)
+        } else {
+            lblSnowWeight.text = "---"
+        }
+        
+        if !PhotoData.snowTemp.isNaN {
+            lblSnowTemp.text = String(PhotoData.snowTemp)
+        } else {
+            lblSnowTemp.text = "---"
+        }
+        
+        if PhotoData.debrisDescription != "" {
+            lblDebrisDesc.text = PhotoData.debrisDescription
+        } else {
+            lblDebrisDesc.text = "---"
+        }
     }
     
     // returns a tuple with string representations of the current latitude and longitude
