@@ -106,6 +106,21 @@ class OptionalDataViewController: UIViewController, UITextViewDelegate {
         return true
     }
     
+    // if the user clicks back, they are retaking the photos. Ask them to confirm if they want to do this
+    @IBAction func btnBackTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Retake Photos?", message: "Going back to the previous screen will require you to retake the two photos.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            print("cancelled")
+        }))
+        alert.addAction(UIAlertAction(title: "Retake", style: .default, handler: { action in
+            PhotoData.photoDownRGB.removeAll()
+            PhotoData.photoUpRGB.removeAll()
+            let prevViewController = (self.storyboard?.instantiateViewController(withIdentifier: "RootViewController"))!
+            self.present(prevViewController, animated: true)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     // save all data to the PhotoData class
     @IBAction func btnNextTapped(_ sender: Any) {
         if txtFieldSnowDepth.text?.count != 0 {

@@ -21,6 +21,7 @@
 		BE03C7D92070354000C3D329 /* PatchinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03C7D82070354000C3D329 /* PatchinessViewController.swift */; };
 		BE0718CC20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0718CB20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift */; };
 		BE135B6F2071A69600541D7C /* OptionalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE135B6E2071A69600541D7C /* OptionalDataViewController.swift */; };
+		BE501B49207527810026EB94 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE501B48207527810026EB94 /* WelcomeViewController.swift */; };
 		BE5177BA2065940F0060283A /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5177B92065940F0060283A /* DataViewController.swift */; };
 		BEA77E1820407EA000A6B9D6 /* CircularLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA77E1720407EA000A6B9D6 /* CircularLevel.swift */; };
 		BEAA10FE206B055B0098399C /* SkyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAA10FD206B055B0098399C /* SkyViewController.swift */; };
@@ -66,6 +67,7 @@
 		BE03C7D82070354000C3D329 /* PatchinessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchinessViewController.swift; sourceTree = "<group>"; };
 		BE0718CB20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbedoPhotoCaptureDelegate.swift; sourceTree = "<group>"; };
 		BE135B6E2071A69600541D7C /* OptionalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalDataViewController.swift; sourceTree = "<group>"; };
+		BE501B48207527810026EB94 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		BE5177B92065940F0060283A /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		BEA77E1720407EA000A6B9D6 /* CircularLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLevel.swift; sourceTree = "<group>"; };
 		BEAA10FD206B055B0098399C /* SkyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				BE135B6E2071A69600541D7C /* OptionalDataViewController.swift */,
 				BE5177B92065940F0060283A /* DataViewController.swift */,
 				7072E0D71FE8557D002586EC /* Main.storyboard */,
+				BE501B48207527810026EB94 /* WelcomeViewController.swift */,
 				7072E0DA1FE8557D002586EC /* Assets.xcassets */,
 				7072E0DC1FE8557D002586EC /* LaunchScreen.storyboard */,
 				BEA77E1720407EA000A6B9D6 /* CircularLevel.swift */,
@@ -304,6 +307,7 @@
 				BEAA10FE206B055B0098399C /* SkyViewController.swift in Sources */,
 				7072E0D21FE8557D002586EC /* RootViewController.swift in Sources */,
 				BE03C7D320701E5D00C3D329 /* GroundCoverViewController.swift in Sources */,
+				BE501B49207527810026EB94 /* WelcomeViewController.swift in Sources */,
 				BEA77E1820407EA000A6B9D6 /* CircularLevel.swift in Sources */,
 				7072E0D01FE8557D002586EC /* AppDelegate.swift in Sources */,
 				BE03C7D52070275C00C3D329 /* SnowSurfaceViewController.swift in Sources */,
