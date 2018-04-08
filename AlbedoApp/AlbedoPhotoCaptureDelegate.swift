@@ -57,18 +57,19 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
         }
         
         self.dngPhotoData = AVCapturePhotoOutput.dngPhotoDataRepresentation(forRawSampleBuffer: rawSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer)
-        
+       
         /*autoreleasepool {
             let imageBuffer = CMSampleBufferGetImageBuffer(rawSampleBuffer!)
             CVPixelBufferLockBaseAddress(imageBuffer!, CVPixelBufferLockFlags(rawValue: 0))
             let bytesPerRow: size_t = CVPixelBufferGetBytesPerRow(imageBuffer!)
             let width: size_t = CVPixelBufferGetWidth(imageBuffer!)
             let height: size_t = CVPixelBufferGetHeight(imageBuffer!)
-            let sourceBuffer = unsafeBitCast(CVPixelBufferGetBaseAddress(imageBuffer!), to: UnsafeMutablePointer<UInt8>.self)
+            let sourceBuffer = unsafeBitCast(CVPixelBufferGetBaseAddress(imageBuffer!), to: UnsafeMutableRawPointer)//UnsafeMutablePointer<UInt8>.self)
             CVPixelBufferUnlockBaseAddress(imageBuffer!, CVPixelBufferLockFlags(rawValue: 0))
             let bufferSize = Int((bytesPerRow * height))
             let bgraData = malloc(bufferSize)
             memcpy(bgraData, sourceBuffer, bufferSize)
+            let testArray = A
             let rgbData = malloc(width * height * 3)
             var rgbCount: Int = 0
             for i in 0..<height {
@@ -82,8 +83,8 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
                     ii += 4
                 }
             }
-            free(rgbData)
-        */
+            free(rgbData)*/
+        
         //if PhotoData.rawPhotos.count == 2 {
             //print("*** There Are 2 Photos ***")
             //PhotoData.calculate()
@@ -107,15 +108,17 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
             return
         }
         CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
-        //let int32Buffer = unsafeBitCast(CVPixelBufferGetBaseAddress(pixelBuffer), to: UnsafeMutablePointer<UInt32>.self)
+        let int32Buffer = unsafeBitCast(CVPixelBufferGetBaseAddress(pixelBuffer), to: UnsafeMutablePointer<UInt32>.self)
         let baseAddress = CVPixelBufferGetBaseAddress(pixelBuffer)
-        let int32PerRow = CVPixelBufferGetBytesPerRow(pixelBuffer) // 8064
+        let bytesPerRow = CVPixelBufferGetBytesPerRow(pixelBuffer) // 8064
         
         let width: Int = CVPixelBufferGetWidth(pixelBuffer) // 2656
         let height: Int = CVPixelBufferGetHeight(pixelBuffer) // 755
         let colorspace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo: UInt32 = CGImageAlphaInfo.premultipliedFirst.rawValue  //none.rawValue//CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
-        guard let context: CGContext = CGContext.init(data: baseAddress, width: width, height: height, bitsPerComponent: 16, bytesPerRow: int32PerRow, space: colorspace, bitmapInfo: bitmapInfo)!
+        let bitmapInfo: UInt32 = CGImageAlphaInfo.noneSkipFirst.rawValue  //none.rawValue//CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
+        
+        
+        guard let context: CGContext = CGContext.init(data: baseAddress, width: width, height: height, bitsPerComponent: 5, bytesPerRow: bytesPerRow, space: colorspace, bitmapInfo: bitmapInfo)!
         else {
             print("Could not create context");
             return

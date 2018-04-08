@@ -9,7 +9,8 @@ import UIKit
 
 class GroundCoverViewController: UIViewController {
 
-    @IBOutlet weak var btnGrass: UIImageView!
+    @IBOutlet weak var btnGrassLiving: UIImageView!
+    @IBOutlet weak var btnGrassDead: UIImageView!
     @IBOutlet weak var btnWetSoil: UIImageView!
     @IBOutlet weak var btnDrySoil: UIImageView!
     @IBOutlet weak var btnPavement: UIImageView!
@@ -20,9 +21,13 @@ class GroundCoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let grassTapped: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(grassTapped(grassTapped:)))
-        btnGrass.isUserInteractionEnabled = true
-        btnGrass.addGestureRecognizer(grassTapped)
+        let grassLivingTapped: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(grassLivingTapped(grassLivingTapped:)))
+        btnGrassLiving.isUserInteractionEnabled = true
+        btnGrassLiving.addGestureRecognizer(grassLivingTapped)
+        
+        let grassDeadTapped: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(grassDeadTapped(grassDeadTapped:)))
+        btnGrassDead.isUserInteractionEnabled = true
+        btnGrassDead.addGestureRecognizer(grassDeadTapped)
         
         let wetSoilTapped: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(wetSoilTapped(wetSoilTapped:)))
         btnWetSoil.isUserInteractionEnabled = true
@@ -41,10 +46,16 @@ class GroundCoverViewController: UIViewController {
         btnWoodenDeck.addGestureRecognizer(woodenDeckTapped)
     }
     
-    func grassTapped(grassTapped: UIGestureRecognizer) {
+    func grassLivingTapped(grassLivingTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
-        PhotoData.groundCover = GroundCover.grass
+        PhotoData.groundCover = GroundCover.grassLiving
+    }
+    
+    func grassDeadTapped(grassDeadTapped: UIGestureRecognizer) {
+        let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
+        self.present(nextViewController, animated: true)
+        PhotoData.groundCover = GroundCover.grassDead
     }
     
     func wetSoilTapped(wetSoilTapped: UIGestureRecognizer) {

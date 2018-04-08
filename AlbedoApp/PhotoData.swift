@@ -53,15 +53,20 @@ struct PhotoData {
         photoDownRGB.removeAll()
         photoUpRGB.removeAll()
         albedo = ""
+        
+        snowDepth = Float.nan
+        snowWeight = Float.nan
+        snowTemp = Float.nan
+        debrisDescription = ""
     }
 }
 
 enum SkyAnalysis: String {
     case none = "None" // default value
+    case allClear = "All clear"
     case clear = "Clear"
-    case mostlyClear = "Mostly Clear"
-    case cloudy = "Cloudy"
-    case obscured = "Obscured"
+    case cloudy = "Partly cloudy"
+    case overcast = "Overcast"
 }
 
 enum SnowState: String {
@@ -74,7 +79,8 @@ enum SnowState: String {
 
 enum GroundCover: String {
     case none = "None" // default value
-    case grass = "Grass"
+    case grassLiving = "Grass - Living"
+    case grassDead = "Grass - Dead"
     case wetSoil = "Wet Soil"
     case drySoil = "Dry Soil"
     case pavement = "Pavement"
