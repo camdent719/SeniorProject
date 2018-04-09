@@ -643,7 +643,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Observation Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERo-L8-xLL">
-                                <rect key="frame" x="15" y="178" width="117" height="17"/>
+                                <rect key="frame" x="15" y="178" width="118" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -667,7 +667,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Date]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAz-bb-xS6">
-                                <rect key="frame" x="150" y="178" width="41" height="17"/>
+                                <rect key="frame" x="151" y="178" width="41" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -730,7 +730,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[snow state]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bI9-Hf-455">
-                                <rect key="frame" x="130" y="321" width="81" height="17"/>
+                                <rect key="frame" x="131" y="321" width="81" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -815,12 +815,13 @@
                             <constraint firstItem="109-rc-yZz" firstAttribute="top" secondItem="VbA-mw-N1F" secondAttribute="bottom" constant="8" symbolic="YES" id="00m-9x-jwu"/>
                             <constraint firstItem="2cr-6P-JrK" firstAttribute="top" secondItem="nh5-ro-kr7" secondAttribute="bottom" constant="8" symbolic="YES" id="0OP-1m-Wwi"/>
                             <constraint firstItem="w2R-q2-qLi" firstAttribute="centerX" secondItem="G4k-xg-fC8" secondAttribute="centerX" id="16E-8n-t3R"/>
+                            <constraint firstItem="bI9-Hf-455" firstAttribute="baseline" secondItem="2cr-6P-JrK" secondAttribute="firstBaseline" id="2Hn-Vb-YHc"/>
                             <constraint firstItem="G4k-xg-fC8" firstAttribute="top" secondItem="QkU-Ua-5bQ" secondAttribute="bottom" id="2Vi-2i-kkY"/>
                             <constraint firstItem="4ps-jB-2YJ" firstAttribute="leading" secondItem="T0E-a0-hq2" secondAttribute="leading" id="3AO-Bn-ISs"/>
                             <constraint firstItem="vv0-lk-bin" firstAttribute="leading" secondItem="Sob-yD-kUI" secondAttribute="leading" constant="239" id="3Jg-av-i9V"/>
                             <constraint firstItem="G4k-xg-fC8" firstAttribute="leading" secondItem="Sob-yD-kUI" secondAttribute="leading" id="3Mc-hw-xCe"/>
                             <constraint firstItem="xN5-hv-Wwh" firstAttribute="leading" secondItem="adt-xm-VQQ" secondAttribute="trailing" constant="16" id="47p-0h-3un"/>
-                            <constraint firstItem="bI9-Hf-455" firstAttribute="centerX" secondItem="tAz-bb-xS6" secondAttribute="centerX" id="5GH-XF-SGv"/>
+                            <constraint firstItem="bI9-Hf-455" firstAttribute="centerX" secondItem="tAz-bb-xS6" secondAttribute="centerX" id="4Gn-WW-Im0"/>
                             <constraint firstItem="SyI-EI-mEx" firstAttribute="leading" secondItem="Y2x-ZU-h4w" secondAttribute="leading" id="5jb-Zh-cAX"/>
                             <constraint firstItem="nh5-ro-kr7" firstAttribute="top" secondItem="hmQ-4e-poH" secondAttribute="bottom" constant="7" id="6ec-PR-nKI"/>
                             <constraint firstItem="riR-Jj-oiq" firstAttribute="top" secondItem="SyI-EI-mEx" secondAttribute="bottom" constant="9" id="6ic-30-Xlo"/>
@@ -857,7 +858,7 @@
                             <constraint firstItem="hmQ-4e-poH" firstAttribute="top" secondItem="hWK-vg-4eu" secondAttribute="bottom" constant="15" id="SP9-NK-aQm"/>
                             <constraint firstItem="2cr-6P-JrK" firstAttribute="leading" secondItem="Sob-yD-kUI" secondAttribute="leadingMargin" id="Scy-wF-2dP"/>
                             <constraint firstItem="4ps-jB-2YJ" firstAttribute="leading" secondItem="adt-xm-VQQ" secondAttribute="leading" id="T1e-sk-nfA"/>
-                            <constraint firstItem="bI9-Hf-455" firstAttribute="baseline" secondItem="2cr-6P-JrK" secondAttribute="baseline" id="TcY-I3-IQR"/>
+                            <constraint firstItem="bI9-Hf-455" firstAttribute="leading" secondItem="hKv-iM-iGh" secondAttribute="leading" id="TMP-zl-Ifd"/>
                             <constraint firstItem="Y2x-ZU-h4w" firstAttribute="leading" secondItem="nh5-ro-kr7" secondAttribute="leading" id="UCa-M3-wRY"/>
                             <constraint firstItem="adt-xm-VQQ" firstAttribute="baseline" secondItem="xN5-hv-Wwh" secondAttribute="baseline" id="UXC-cM-4Kl"/>
                             <constraint firstItem="vv0-lk-bin" firstAttribute="top" secondItem="w2R-q2-qLi" secondAttribute="bottom" constant="8" symbolic="YES" id="VsE-aQ-g8p"/>
@@ -872,6 +873,7 @@
                             <constraint firstItem="Xn5-sb-Zxa" firstAttribute="leading" secondItem="G4k-xg-fC8" secondAttribute="leading" id="ccg-sV-2dL"/>
                             <constraint firstItem="MKe-B7-AY7" firstAttribute="leading" secondItem="uak-Rr-OYs" secondAttribute="leading" id="d8l-Lv-W4T"/>
                             <constraint firstItem="LHV-a7-CZp" firstAttribute="top" secondItem="w2R-q2-qLi" secondAttribute="bottom" constant="77" id="eDI-6D-c7V"/>
+                            <constraint firstItem="bI9-Hf-455" firstAttribute="baseline" secondItem="2cr-6P-JrK" secondAttribute="baseline" id="eic-yR-Ra3"/>
                             <constraint firstItem="Xn5-sb-Zxa" firstAttribute="top" secondItem="G4k-xg-fC8" secondAttribute="bottom" id="fcR-cN-VbC"/>
                             <constraint firstItem="uak-Rr-OYs" firstAttribute="leading" secondItem="SyI-EI-mEx" secondAttribute="trailing" constant="13" id="gGs-oo-Hb1"/>
                             <constraint firstItem="VbA-mw-N1F" firstAttribute="leading" secondItem="CG0-sq-hol" secondAttribute="trailing" constant="21" id="gLy-hX-yAI"/>
@@ -886,7 +888,6 @@
                             <constraint firstItem="hKv-iM-iGh" firstAttribute="baseline" secondItem="nh5-ro-kr7" secondAttribute="baseline" id="pt1-u0-VzJ"/>
                             <constraint firstAttribute="trailing" secondItem="G4k-xg-fC8" secondAttribute="trailing" id="q8b-Kg-6rG"/>
                             <constraint firstItem="gFl-wF-85a" firstAttribute="leading" secondItem="ERo-L8-xLL" secondAttribute="leading" constant="1" id="qBy-85-G3T"/>
-                            <constraint firstItem="bI9-Hf-455" firstAttribute="baseline" secondItem="2cr-6P-JrK" secondAttribute="firstBaseline" id="qqW-7j-Suv"/>
                             <constraint firstItem="SyI-EI-mEx" firstAttribute="baseline" secondItem="uak-Rr-OYs" secondAttribute="baseline" id="rIu-vm-Mx3"/>
                             <constraint firstItem="SyI-EI-mEx" firstAttribute="centerY" secondItem="uak-Rr-OYs" secondAttribute="centerY" id="rPg-QQ-lqn"/>
                             <constraint firstItem="f5n-MT-viN" firstAttribute="baseline" secondItem="RPK-yc-aP6" secondAttribute="baseline" id="rX8-h9-biG"/>

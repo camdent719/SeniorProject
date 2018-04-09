@@ -42,11 +42,15 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
         
         // update labels
         let strLoc = printLocation(manager: locationManager)
-        lblLatitude.text = strLoc.0
-        lblLongitude.text = strLoc.1
+        lblLatitude.text = roundToFourPlaces(num: strLoc.0)
+        lblLongitude.text = roundToFourPlaces(num: strLoc.1)
         lblDate.text = getDate()
         lblTime.text = getTime()
-        lblAlbedo.text = PhotoData.albedo
+        if PhotoData.albedo == "nan" {
+            lblAlbedo.text = "None"
+        } else {
+            lblAlbedo.text = PhotoData.albedo
+        }
         
         lblSky.text = PhotoData.skyAnalysis.rawValue
         if PhotoData.patchinessPercentage != 0 {
@@ -107,5 +111,10 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
         formatter.dateStyle = .none
         formatter.timeStyle = .short
         return formatter.string(from: now)
+    }
+    
+    // rounds a number to 4 decimal places
+    func roundToFourPlaces(num: String) -> String {
+        return String(round(10000 * Double(num)!) / 10000)
     }
 }

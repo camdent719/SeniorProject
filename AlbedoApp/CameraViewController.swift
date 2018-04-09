@@ -48,7 +48,7 @@ class CameraViewController: UIViewController {
     let levelingThreshold = 1.5 // within how many degrees the device must be in order to count as level
     let updateInterval = 0.02 // measured in seconds
     
-    var circularLevel:CircularLevel! // create a circular level object
+    var circularLevel: CircularLevel! // create a circular level object
     
     override var prefersStatusBarHidden: Bool { return true }
     
