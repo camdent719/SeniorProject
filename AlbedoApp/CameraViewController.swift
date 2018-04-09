@@ -40,7 +40,7 @@ class CameraViewController: UIViewController {
     private var rearCameraInput: AVCaptureDeviceInput?
     private var inProgressPhotoCaptureDelegates: [Int64: AlbedoPhotoCaptureDelegateType] = [:]
     
-    private let exposureDuration: Int32 = 500 // expsoure duration will be 1 / exposureDuration seconds
+    private let exposureDuration: Int32 = 500 // expsoure duration will be (1 / exposureDuration) seconds
     private let iso: Float = 50.0
     
     // MotionGraphContainer properties
