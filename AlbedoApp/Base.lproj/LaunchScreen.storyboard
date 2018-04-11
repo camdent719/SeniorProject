@@ -22,16 +22,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-App-72x72" translatesAutoresizingMaskIntoConstraints="NO" id="bgo-xu-D01">
-                                <rect key="frame" x="67" y="195" width="240" height="240"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iTunesArtwork" translatesAutoresizingMaskIntoConstraints="NO" id="WrC-NG-Yuy">
+                                <rect key="frame" x="67" y="213" width="240" height="240"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.93000000000000005" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="bgo-xu-D01" secondAttribute="bottom" constant="232" id="Q5P-OD-FL1"/>
-                            <constraint firstItem="bgo-xu-D01" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Qss-vw-UmS"/>
-                            <constraint firstItem="bgo-xu-D01" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="51" id="o8R-4d-nnX"/>
-                            <constraint firstItem="bgo-xu-D01" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="175" id="xBv-nP-Rfh"/>
+                            <constraint firstItem="WrC-NG-Yuy" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="8P7-w0-Xwt"/>
+                            <constraint firstItem="WrC-NG-Yuy" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Dsn-M1-cUu"/>
+                            <constraint firstItem="WrC-NG-Yuy" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="51" id="H6n-ib-0CN"/>
+                            <constraint firstItem="WrC-NG-Yuy" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="193" id="da9-CL-RDc"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -41,6 +41,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon-App-72x72" width="72" height="72"/>
+        <image name="iTunesArtwork" width="512" height="512"/>
     </resources>
 </document>

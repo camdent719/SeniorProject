@@ -1616,7 +1616,7 @@
                                     <navigationItem title="Welcome to Albedo App" id="KOd-dA-Gec"/>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-App-72x72" translatesAutoresizingMaskIntoConstraints="NO" id="w7S-Cg-Up8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iTunesArtwork" translatesAutoresizingMaskIntoConstraints="NO" id="w7S-Cg-Up8">
                                 <rect key="frame" x="48" y="98" width="278" height="278"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="278" id="fFh-og-bcP"/>
@@ -1715,11 +1715,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon-App-72x72" width="72" height="72"/>
         <image name="deck" width="960" height="720"/>
         <image name="error" width="110" height="110"/>
         <image name="grass" width="640" height="480"/>
         <image name="grass-dead" width="259" height="194"/>
+        <image name="iTunesArtwork" width="512" height="512"/>
         <image name="pavement" width="960" height="720"/>
         <image name="photoDownEdit" width="627" height="627"/>
         <image name="photoUpEdit" width="627" height="627"/>
@@ -1733,7 +1733,6 @@
         <image name="soil-wet" width="275" height="183"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FCj-Lj-e9g"/>
         <segue reference="JjF-vR-d5A"/>
         <segue reference="3Sv-XG-vcs"/>
         <segue reference="2Kn-zl-ziU"/>
