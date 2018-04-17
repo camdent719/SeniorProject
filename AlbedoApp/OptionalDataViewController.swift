@@ -127,10 +127,10 @@ class OptionalDataViewController: UIViewController, UITextViewDelegate {
             PhotoData.snowDepth = (txtFieldSnowDepth.text! as NSString).floatValue
         }
         if txtFieldSnowWeight.text?.count != 0 {
-            PhotoData.snowDepth = (txtFieldSnowWeight.text! as NSString).floatValue
+            PhotoData.snowWeight = (txtFieldSnowWeight.text! as NSString).floatValue
         }
         if txtFieldSnowTemp.text?.count != 0 {
-            PhotoData.snowDepth = (txtFieldSnowTemp.text! as NSString).floatValue
+            PhotoData.snowTemp = (txtFieldSnowTemp.text! as NSString).floatValue
         }
         PhotoData.debrisDescription = txtViewComments.text
     }

@@ -41,9 +41,9 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         // update labels
-        let strLoc = printLocation(manager: locationManager)
-        lblLatitude.text = roundToFourPlaces(num: strLoc.0)
-        lblLongitude.text = roundToFourPlaces(num: strLoc.1)
+        //let strLoc = printLocation(manager: locationManager)
+        //lblLatitude.text = roundToFourPlaces(num: strLoc.0)
+        //lblLongitude.text = roundToFourPlaces(num: strLoc.1)
         lblDate.text = getDate()
         lblTime.text = getTime()
         if PhotoData.albedo == "nan" {
@@ -84,6 +84,13 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
         } else {
             lblDebrisDesc.text = "---"
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let strLoc = printLocation(manager: locationManager)
+        lblLatitude.text = roundToFourPlaces(num: strLoc.0)
+        lblLongitude.text = roundToFourPlaces(num: strLoc.1)
     }
     
     // returns a tuple with string representations of the current latitude and longitude

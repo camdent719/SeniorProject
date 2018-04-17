@@ -760,25 +760,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snow Weight (lbs):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SyI-EI-mEx">
-                                <rect key="frame" x="16" y="451" width="131" height="17"/>
+                                <rect key="frame" x="16" y="451" width="122" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[depth]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEN-qj-nes">
-                                <rect key="frame" x="160" y="426" width="49" height="17"/>
+                                <rect key="frame" x="151" y="426" width="49" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[weight]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uak-Rr-OYs">
-                                <rect key="frame" x="160" y="450" width="54" height="18"/>
+                                <rect key="frame" x="151" y="450" width="54" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[temp]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKe-B7-AY7">
-                                <rect key="frame" x="160" y="476" width="44" height="18"/>
+                                <rect key="frame" x="151" y="476" width="44" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -848,7 +848,6 @@
                             <constraint firstItem="7N8-v4-ZOH" firstAttribute="trailing" secondItem="hmQ-4e-poH" secondAttribute="trailing" id="O8j-Gh-s7j"/>
                             <constraint firstItem="cNn-qg-SMr" firstAttribute="top" secondItem="RPK-yc-aP6" secondAttribute="bottom" constant="7" id="OEu-BN-Sv8"/>
                             <constraint firstItem="hmQ-4e-poH" firstAttribute="leading" secondItem="T0E-a0-hq2" secondAttribute="leading" id="OQD-VF-yWn"/>
-                            <constraint firstItem="w2R-q2-qLi" firstAttribute="centerX" secondItem="uak-Rr-OYs" secondAttribute="centerX" id="Oy8-Kt-GOE"/>
                             <constraint firstAttribute="trailing" secondItem="vv0-lk-bin" secondAttribute="trailing" constant="17" id="OyU-3H-drH"/>
                             <constraint firstItem="gFl-wF-85a" firstAttribute="top" secondItem="cNn-qg-SMr" secondAttribute="bottom" constant="14" id="PCX-dr-2E3"/>
                             <constraint firstItem="7N8-v4-ZOH" firstAttribute="leading" secondItem="sHO-Fh-5m8" secondAttribute="leading" id="Pae-U8-fce"/>
@@ -1392,7 +1391,7 @@
                                                 <rect key="frame" x="194" y="177" width="124" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snow Weight (lbs):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yr6-U9-pgr">
                                                 <rect key="frame" x="16" y="183" width="170" height="18"/>
