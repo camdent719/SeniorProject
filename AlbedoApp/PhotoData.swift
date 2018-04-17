@@ -14,8 +14,8 @@ struct PhotoData {
     static var groundCover: GroundCover = GroundCover.none
     static var snowSurfaceAge: SnowSurfaceAge = SnowSurfaceAge.none
     
-    static var photoDownRGB: [UInt64] = []
-    static var photoUpRGB: [UInt64] = []
+    static var photoDownRGB: [CGFloat] = []
+    static var photoUpRGB: [CGFloat] = []
     static var albedo: String = "" // saves a string representation of the albedo measurement
     
     static var snowDepth: Float = Float.nan

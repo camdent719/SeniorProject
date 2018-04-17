@@ -38,7 +38,7 @@ class WelcomeViewController: UIViewController {
         super.viewDidAppear(animated)
         
         // determine whether or not the device is too old to support this app
-        var modelName: String { // gets a string representation of this device
+        /*var modelName: String { // gets a string representation of this device
             var systemInfo = utsname()
             uname(&systemInfo)
             let machineMirror = Mirror(reflecting: systemInfo.machine)
@@ -64,6 +64,6 @@ class WelcomeViewController: UIViewController {
                 self.btnBegin.isEnabled = false
             }))
             self.present(alert, animated: true, completion: nil)
-        }
+        }*/
     }
 }

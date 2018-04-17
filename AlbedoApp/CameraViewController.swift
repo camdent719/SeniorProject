@@ -26,7 +26,7 @@ class CameraViewController: UIViewController {
     // Currently, there is not a way to analyze the RAW bayer filter pixel data to get RGB, so if this flag is set
     // to true, the app will run by taking a JPEG and doing the RGB calculation. The resulting albedo value will not
     // be accurate, but this is merely to demonstrate the app's capabilities.
-    private let JPEG_MODE = false
+    private let JPEG_MODE = true
     
     // Camera and UI properties
     @IBOutlet var capturePreviewViews: [CameraPreviewView]!
@@ -230,7 +230,7 @@ class CameraViewController: UIViewController {
         var settings: AVCapturePhotoSettings
         if JPEG_MODE { // For non-RAW proof of concept: use kCVPixelFormatType_32BGRA
             let formatType = kCVPixelFormatType_32BGRA
-            guard (photoOutput?.availablePhotoPixelFormatTypes.contains(NSNumber(value: formatType)))! else { print("ERROR - The kCVPixelFormatType_14Bayer_RGGB format is not available"); return }
+            guard (photoOutput?.availablePhotoPixelFormatTypes.contains(NSNumber(value: formatType)))! else { print("ERROR - The kCVPixelFormatType_32BGRA format is not available"); return }
             settings = AVCapturePhotoSettings(format: [kCVPixelBufferPixelFormatTypeKey as String : NSNumber(value: formatType)])
         } else { // For RAW capture: use kCVPixelFormatType_14Bayer_RGGB
             let rawFormatType = kCVPixelFormatType_14Bayer_RGGB

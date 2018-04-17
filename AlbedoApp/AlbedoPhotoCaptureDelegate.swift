@@ -22,7 +22,7 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
     var willCapturePhotoAnimation: ()->Void
     var completed: (AlbedoPhotoCaptureDelegate)->Void
     
-    var jpegPhotoData: Data? // holds JPEG, which we don't need
+    var jpegPhotoData: Data?
     var dngPhotoData: Data?
     
     init(requestedPhotoSettings: AVCapturePhotoSettings, willCapturePhotoAnimation: @escaping ()->Void, completed: @escaping (AlbedoPhotoCaptureDelegate)->Void) {
@@ -47,7 +47,39 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
             return
         }
         
-        self.jpegPhotoData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer!)
+        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(photoSampleBuffer!) else {
+            print("ERROR - could not create pixel buffer")
+            return
+        }
+        
+        let ciimage = CIImage(cvPixelBuffer: pixelBuffer)
+        let context = CIContext(options: nil)
+        let cgimage = context.createCGImage(ciimage, from: ciimage.extent)
+        
+        let width = cgimage?.width
+        let height = cgimage?.height
+        let pixelData = cgimage?.dataProvider?.data
+        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
+        
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        
+        for w in 0 ..< width! {
+            for h in 0 ..< height! {
+                let pixel: Int = ((width! * h) + w) * 4
+                r += CGFloat(data[pixel]) / CGFloat(255.0)
+                g += CGFloat(data[pixel+1]) / CGFloat(255.0)
+                b += CGFloat(data[pixel+2]) / CGFloat(255.0)
+            }
+        }
+        
+        if PhotoData.photoDownRGB.isEmpty { // if the first photo (down) hasn't been taken, then this is the down photo
+            PhotoData.photoDownRGB = [r, g, b]
+        } else { // if the first photo hasn't been taken, then this is the up photo
+            PhotoData.photoUpRGB = [r, g, b]
+            PhotoData.calculateAlbedo()
+        }
     }
     
     // this is the RAW capture delegate method
@@ -133,9 +165,9 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
         //print("width:\(width)")
         //print("height:\(height)")
     
-        var b: UInt64 = 0
-        var g: UInt64 = 0
-        var r: UInt64 = 0
+        //var b: UInt64 = 0
+        //var g: UInt64 = 0
+        //var r: UInt64 = 0
         /*for h in 0 ..< height {
             for w in 0 ..< width {
                 b += UInt64(int32Buffer[(w * 4) + (h * int32PerRow)]);
@@ -157,12 +189,12 @@ class AlbedoPhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, Albed
             }
         }*/
     
-        if PhotoData.photoDownRGB.isEmpty { // if the first photo (down) hasn't been taken, then this is the down photo
+        /*if PhotoData.photoDownRGB.isEmpty { // if the first photo (down) hasn't been taken, then this is the down photo
             PhotoData.photoDownRGB = [r, g, b]
         } else { // if the first photo hasn't been taken, then this is the up photo
             PhotoData.photoUpRGB = [r, g, b]
             PhotoData.calculateAlbedo()
-        }
+        }*/
         //print("PhotoDownRGB: \(PhotoData.photoDownRGB)")
         //print("PhotoUpRGB:   \(PhotoData.photoUpRGB)")
         
