@@ -453,13 +453,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Spe-hi-Cmp">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Take Upwards Photo" id="sPn-df-xrd">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Qe4-Ga-JDq">
-                                            <connections>
-                                                <segue destination="703-4V-yAM" kind="showDetail" id="V0c-K3-AjF"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Take Upwards Photo" id="sPn-df-xrd"/>
                                 </items>
                             </navigationBar>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="KFE-uL-60V">

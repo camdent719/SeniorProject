@@ -32,6 +32,9 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // clear anything from previous submissions
+        PhotoData.clearData()
     }
     
     override func viewDidAppear(_ animated: Bool) {

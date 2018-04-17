@@ -22,9 +22,6 @@ struct PhotoData {
     static var snowWeight: Float = Float.nan
     static var snowTemp: Float = Float.nan
     static var debrisDescription: String = ""
-    
-    static var screenWidth: Int = 0
-    static var screenHeight: Int = 0
 
     static func calculateAlbedo() {
         if PhotoData.photoDownRGB.isEmpty && PhotoData.photoUpRGB.isEmpty { // error check: this function only works if there are two sample buffers

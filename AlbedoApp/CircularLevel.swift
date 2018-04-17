@@ -27,8 +27,6 @@ class CircularLevel: UIView {
         
         self.width = frame.width // get the device's screen width
         self.height = frame.height // get the device's screen height
-        PhotoData.screenWidth = Int(self.width)
-        PhotoData.screenHeight = Int(self.height)
         
         self.outerCircle = makeCircle(diameter: 150, borderWidth: 8, color: UIColor.black)
         self.innerCircle = makeCircle(diameter: 30, borderWidth: 2, color: UIColor.black)
