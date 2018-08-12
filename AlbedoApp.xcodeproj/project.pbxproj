@@ -15,6 +15,9 @@
 		7072E0DE1FE8557D002586EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7072E0DC1FE8557D002586EC /* LaunchScreen.storyboard */; };
 		7072E0E91FE8557D002586EC /* AlbedoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0E81FE8557D002586EC /* AlbedoAppTests.swift */; };
 		7072E0F41FE8557D002586EC /* AlbedoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072E0F31FE8557D002586EC /* AlbedoAppUITests.swift */; };
+		74CE5AE1211E3C6700CBB6CE /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CE5AE0211E3C6700CBB6CE /* LocationViewController.swift */; };
+		74CE5AE5211E592600CBB6CE /* StartTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CE5AE4211E592600CBB6CE /* StartTimeViewController.swift */; };
+		74CE5AE7211E5D0800CBB6CE /* EndTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CE5AE6211E5D0800CBB6CE /* EndTimeViewController.swift */; };
 		BE03C7D320701E5D00C3D329 /* GroundCoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03C7D220701E5D00C3D329 /* GroundCoverViewController.swift */; };
 		BE03C7D52070275C00C3D329 /* SnowSurfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03C7D42070275C00C3D329 /* SnowSurfaceViewController.swift */; };
 		BE03C7D720702BF700C3D329 /* SnowStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03C7D620702BF700C3D329 /* SnowStateViewController.swift */; };
@@ -61,6 +64,9 @@
 		7072E0EF1FE8557D002586EC /* AlbedoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbedoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7072E0F31FE8557D002586EC /* AlbedoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbedoAppUITests.swift; sourceTree = "<group>"; };
 		7072E0F51FE8557D002586EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74CE5AE0211E3C6700CBB6CE /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		74CE5AE4211E592600CBB6CE /* StartTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTimeViewController.swift; sourceTree = "<group>"; };
+		74CE5AE6211E5D0800CBB6CE /* EndTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTimeViewController.swift; sourceTree = "<group>"; };
 		BE03C7D220701E5D00C3D329 /* GroundCoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundCoverViewController.swift; sourceTree = "<group>"; };
 		BE03C7D42070275C00C3D329 /* SnowSurfaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowSurfaceViewController.swift; sourceTree = "<group>"; };
 		BE03C7D620702BF700C3D329 /* SnowStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowStateViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +130,10 @@
 			isa = PBXGroup;
 			children = (
 				7072E0CF1FE8557D002586EC /* AppDelegate.swift */,
+				BEA77E1720407EA000A6B9D6 /* CircularLevel.swift */,
+				BE501B48207527810026EB94 /* WelcomeViewController.swift */,
+				74CE5AE0211E3C6700CBB6CE /* LocationViewController.swift */,
+				74CE5AE4211E592600CBB6CE /* StartTimeViewController.swift */,
 				BEAA10FD206B055B0098399C /* SkyViewController.swift */,
 				BE03C7D620702BF700C3D329 /* SnowStateViewController.swift */,
 				BE03C7D82070354000C3D329 /* PatchinessViewController.swift */,
@@ -135,12 +145,11 @@
 				BED3767F2049932300B3601E /* CameraPreviewView.swift */,
 				BE0718CB20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift */,
 				BE135B6E2071A69600541D7C /* OptionalDataViewController.swift */,
+				74CE5AE6211E5D0800CBB6CE /* EndTimeViewController.swift */,
 				BE5177B92065940F0060283A /* DataViewController.swift */,
 				7072E0D71FE8557D002586EC /* Main.storyboard */,
-				BE501B48207527810026EB94 /* WelcomeViewController.swift */,
-				7072E0DA1FE8557D002586EC /* Assets.xcassets */,
 				7072E0DC1FE8557D002586EC /* LaunchScreen.storyboard */,
-				BEA77E1720407EA000A6B9D6 /* CircularLevel.swift */,
+				7072E0DA1FE8557D002586EC /* Assets.xcassets */,
 				7072E0DF1FE8557D002586EC /* Info.plist */,
 			);
 			path = AlbedoApp;
@@ -308,6 +317,7 @@
 				7072E0D21FE8557D002586EC /* RootViewController.swift in Sources */,
 				BE03C7D320701E5D00C3D329 /* GroundCoverViewController.swift in Sources */,
 				BE501B49207527810026EB94 /* WelcomeViewController.swift in Sources */,
+				74CE5AE7211E5D0800CBB6CE /* EndTimeViewController.swift in Sources */,
 				BEA77E1820407EA000A6B9D6 /* CircularLevel.swift in Sources */,
 				7072E0D01FE8557D002586EC /* AppDelegate.swift in Sources */,
 				BE03C7D52070275C00C3D329 /* SnowSurfaceViewController.swift in Sources */,
@@ -315,7 +325,9 @@
 				BEDE099C204D9E7A00CA5E7F /* PhotoData.swift in Sources */,
 				BED376802049932300B3601E /* CameraPreviewView.swift in Sources */,
 				BE0718CC20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift in Sources */,
+				74CE5AE5211E592600CBB6CE /* StartTimeViewController.swift in Sources */,
 				7022532B1FEC191100D6820F /* CameraViewController.swift in Sources */,
+				74CE5AE1211E3C6700CBB6CE /* LocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
