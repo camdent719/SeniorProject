@@ -16,7 +16,7 @@ class GroundCoverViewController: UIViewController {
     @IBOutlet weak var btnPavement: UIImageView!
     @IBOutlet weak var btnWoodenDeck: UIImageView!
     
-    private var nextViewName = "SnowSurfaceViewController"
+    private var nextViewName = "RootViewController"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +80,16 @@ class GroundCoverViewController: UIViewController {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.groundCover = GroundCover.woodenDeck
+    }
+    
+    @IBAction func btnBackTapped(_ sender: Any) {
+        if PhotoData.snowState == SnowState.snowFreeDormant || PhotoData.snowState == SnowState.snowFreeGreen {
+            let prevViewController = (self.storyboard?.instantiateViewController(withIdentifier: "SnowStateViewController"))!
+            self.present(prevViewController, animated: true)
+        } else {
+            let prevViewController = (self.storyboard?.instantiateViewController(withIdentifier: "SnowSurfaceAgeViewController"))!
+            self.present(prevViewController, animated: true)
+        }
     }
 }
 

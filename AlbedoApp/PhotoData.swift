@@ -82,6 +82,7 @@ enum GroundCover: String {
     case drySoil = "Dry Soil"
     case pavement = "Pavement"
     case woodenDeck = "Wooden Deck"
+    case other = "" //TODO
 }
 
 enum SnowSurfaceAge: String {

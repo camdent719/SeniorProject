@@ -19,7 +19,7 @@
 		74CE5AE5211E592600CBB6CE /* StartTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CE5AE4211E592600CBB6CE /* StartTimeViewController.swift */; };
 		74CE5AE7211E5D0800CBB6CE /* EndTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CE5AE6211E5D0800CBB6CE /* EndTimeViewController.swift */; };
 		BE03C7D320701E5D00C3D329 /* GroundCoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03C7D220701E5D00C3D329 /* GroundCoverViewController.swift */; };
-		BE03C7D52070275C00C3D329 /* SnowSurfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03C7D42070275C00C3D329 /* SnowSurfaceViewController.swift */; };
+		BE03C7D52070275C00C3D329 /* SnowSurfaceAgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03C7D42070275C00C3D329 /* SnowSurfaceAgeViewController.swift */; };
 		BE03C7D720702BF700C3D329 /* SnowStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03C7D620702BF700C3D329 /* SnowStateViewController.swift */; };
 		BE03C7D92070354000C3D329 /* PatchinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03C7D82070354000C3D329 /* PatchinessViewController.swift */; };
 		BE0718CC20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0718CB20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift */; };
@@ -68,7 +68,7 @@
 		74CE5AE4211E592600CBB6CE /* StartTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTimeViewController.swift; sourceTree = "<group>"; };
 		74CE5AE6211E5D0800CBB6CE /* EndTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTimeViewController.swift; sourceTree = "<group>"; };
 		BE03C7D220701E5D00C3D329 /* GroundCoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundCoverViewController.swift; sourceTree = "<group>"; };
-		BE03C7D42070275C00C3D329 /* SnowSurfaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowSurfaceViewController.swift; sourceTree = "<group>"; };
+		BE03C7D42070275C00C3D329 /* SnowSurfaceAgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowSurfaceAgeViewController.swift; sourceTree = "<group>"; };
 		BE03C7D620702BF700C3D329 /* SnowStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowStateViewController.swift; sourceTree = "<group>"; };
 		BE03C7D82070354000C3D329 /* PatchinessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchinessViewController.swift; sourceTree = "<group>"; };
 		BE0718CB20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbedoPhotoCaptureDelegate.swift; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 				BE03C7D620702BF700C3D329 /* SnowStateViewController.swift */,
 				BE03C7D82070354000C3D329 /* PatchinessViewController.swift */,
 				BE03C7D220701E5D00C3D329 /* GroundCoverViewController.swift */,
-				BE03C7D42070275C00C3D329 /* SnowSurfaceViewController.swift */,
+				BE03C7D42070275C00C3D329 /* SnowSurfaceAgeViewController.swift */,
 				7072E0D11FE8557D002586EC /* RootViewController.swift */,
 				702253281FEC191100D6820F /* CameraViewController.swift */,
 				BEDE099B204D9E7A00CA5E7F /* PhotoData.swift */,
@@ -320,7 +320,7 @@
 				74CE5AE7211E5D0800CBB6CE /* EndTimeViewController.swift in Sources */,
 				BEA77E1820407EA000A6B9D6 /* CircularLevel.swift in Sources */,
 				7072E0D01FE8557D002586EC /* AppDelegate.swift in Sources */,
-				BE03C7D52070275C00C3D329 /* SnowSurfaceViewController.swift in Sources */,
+				BE03C7D52070275C00C3D329 /* SnowSurfaceAgeViewController.swift in Sources */,
 				BE03C7D720702BF700C3D329 /* SnowStateViewController.swift in Sources */,
 				BEDE099C204D9E7A00CA5E7F /* PhotoData.swift in Sources */,
 				BED376802049932300B3601E /* CameraPreviewView.swift in Sources */,

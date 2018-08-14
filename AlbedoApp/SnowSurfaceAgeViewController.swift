@@ -1,5 +1,5 @@
 //
-//  SnowSurfaceViewController.swift
+//  SnowSurfaceAgeViewController.swift
 //  AlbedoApp
 //
 //  Created by AlbedoDev on 3/31/18.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SnowSurfaceViewController: UIViewController {
+class SnowSurfaceAgeViewController: UIViewController {
     
     @IBOutlet weak var btnFreshSnow: UIImageView!
     @IBOutlet weak var btnSnow2Days: UIImageView!
@@ -16,7 +16,7 @@ class SnowSurfaceViewController: UIViewController {
     @IBOutlet weak var btnSnowOver4Days: UIImageView!
     @IBOutlet weak var btnDontKnow: UIImageView!
     
-    private let nextViewName = "RootViewController"
+    private let nextViewName = "GroundCoverViewController"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +80,17 @@ class SnowSurfaceViewController: UIViewController {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.snowSurfaceAge = SnowSurfaceAge.dontKnow
+    }
+    
+    @IBAction func btnBackTapped(_ sender: Any) {
+        //Is the snow patchy? If so, go back to the patchiness view controller. Otherwise, go to the snow surface view controller.
+        if PhotoData.patchinessPercentage > 0 && PhotoData.patchinessPercentage < 100 {
+            let prevViewController = (self.storyboard?.instantiateViewController(withIdentifier: "PatchinessViewController"))!
+            self.present(prevViewController, animated: true)
+        } else {
+            let prevViewController = (self.storyboard?.instantiateViewController(withIdentifier: "SnowStateViewController"))!
+            self.present(prevViewController, animated: true)
+        }
     }
 }
 

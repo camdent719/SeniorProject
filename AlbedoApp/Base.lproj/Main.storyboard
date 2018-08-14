@@ -327,6 +327,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="03D-Am-6cQ">
                                             <connections>
                                                 <action selector="btnBackTapped:" destination="703-4V-yAM" id="Iz1-Ni-WPW"/>
+                                                <segue destination="RO9-hH-Nce" kind="showDetail" id="aKu-AV-QMP"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -972,7 +973,7 @@
                                     <navigationItem title="Ground Cover" id="3V8-lV-CI8">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="sV3-Tp-UB2">
                                             <connections>
-                                                <segue destination="cAD-pL-Ub4" kind="showDetail" id="n6N-1C-lPA"/>
+                                                <action selector="btnBackTapped:" destination="RO9-hH-Nce" id="Kw5-h8-NKa"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1074,6 +1075,15 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="-1" height="1"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Other" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhV-vj-XX8">
+                                <rect key="frame" x="31" y="538" width="313" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="shadowOffset" width="-1" height="1"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.93000000000000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1137,16 +1147,17 @@
                         <outlet property="btnPavement" destination="IiA-tL-poh" id="Hwm-b8-C0D"/>
                         <outlet property="btnWetSoil" destination="G4R-Ke-7wg" id="HIE-QP-cCr"/>
                         <outlet property="btnWoodenDeck" destination="gMh-Aa-rhM" id="q6W-2s-cVz"/>
+                        <segue destination="703-4V-yAM" kind="showDetail" id="3Hc-XO-aCR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zRq-zH-dl7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1943.2" y="-288.30584707646182"/>
+            <point key="canvasLocation" x="-1209" y="-288"/>
         </scene>
-        <!--Snow Surface View Controller-->
+        <!--Snow Surface Age View Controller-->
         <scene sceneID="EGV-Ew-Jbd">
             <objects>
-                <viewController storyboardIdentifier="SnowSurfaceViewController" title="Snow Surface View Controller" id="FC2-S7-sqj" customClass="SnowSurfaceViewController" customModule="AlbedoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SnowSurfaceAgeViewController" title="Snow Surface Age View Controller" id="FC2-S7-sqj" customClass="SnowSurfaceAgeViewController" customModule="AlbedoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zrC-Vv-IvL"/>
                         <viewControllerLayoutGuide type="bottom" id="wyz-Os-IVz"/>
@@ -1158,10 +1169,10 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrQ-e1-5HJ">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Snow Surface" id="n5h-6V-OHG">
+                                    <navigationItem title="Snow Surface Age" id="n5h-6V-OHG">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="KTQ-tn-Jox">
                                             <connections>
-                                                <segue destination="RO9-hH-Nce" kind="showDetail" id="3Sv-XG-vcs"/>
+                                                <action selector="btnBackTapped:" destination="FC2-S7-sqj" id="6Ut-e4-aB6"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1315,11 +1326,12 @@
                         <outlet property="btnSnow3Days" destination="Me0-3V-gAR" id="r1l-Tc-uYn"/>
                         <outlet property="btnSnow4Days" destination="znf-yc-LgN" id="KuE-02-n8G"/>
                         <outlet property="btnSnowOver4Days" destination="pNR-tp-Pnb" id="KoL-CP-foj"/>
+                        <segue destination="RO9-hH-Nce" kind="showDetail" id="Kt2-ZN-00V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tE-rc-FOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1210.4000000000001" y="-288.30584707646182"/>
+            <point key="canvasLocation" x="-1954" y="-288"/>
         </scene>
         <!--Optional Data View Controller-->
         <scene sceneID="6cm-AX-eZJ">
@@ -1591,7 +1603,7 @@
                                 <state key="normal" title="Next"/>
                                 <connections>
                                     <action selector="btnNextTapped:" destination="JSV-U2-F3u" eventType="touchUpInside" id="LVG-O4-cXi"/>
-                                    <segue destination="RO9-hH-Nce" kind="showDetail" id="cyg-K6-Mvr"/>
+                                    <segue destination="FC2-S7-sqj" kind="showDetail" id="4If-gP-7jb"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="MJy-Gg-1M1">
@@ -1667,8 +1679,8 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Duty Station:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOr-PB-6by">
-                                <rect key="frame" x="16" y="237" width="100" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Station ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOr-PB-6by">
+                                <rect key="frame" x="16" y="237" width="80" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1944,10 +1956,9 @@
         <segue reference="JjF-vR-d5A"/>
         <segue reference="D81-cX-AHY"/>
         <segue reference="7XY-0g-iKs"/>
-        <segue reference="8YE-Oz-jnK"/>
-        <segue reference="3Sv-XG-vcs"/>
+        <segue reference="P1d-Vl-FIk"/>
+        <segue reference="Kt2-ZN-00V"/>
         <segue reference="49c-Fs-ojJ"/>
-        <segue reference="n6N-1C-lPA"/>
         <segue reference="6oQ-Ib-IDe"/>
     </inferredMetricsTieBreakers>
 </document>

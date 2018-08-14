@@ -21,7 +21,7 @@ PhotoData.swift. This list of classes is ordered by appearance of the view that 
 * SnowStateViewController.swift
 * PatchinessViewController.swift
 * GroundCoverViewController.swift
-* SnowSurfaceViewController.swift
+* SnowSurfaceAgeViewController.swift
 * RootViewController.swift
 * OptionalDataViewController.swift
 * DataViewController.swift
