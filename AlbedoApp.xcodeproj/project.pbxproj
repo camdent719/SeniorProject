@@ -131,6 +131,7 @@
 			children = (
 				7072E0CF1FE8557D002586EC /* AppDelegate.swift */,
 				BEA77E1720407EA000A6B9D6 /* CircularLevel.swift */,
+				BEDE099B204D9E7A00CA5E7F /* PhotoData.swift */,
 				BE501B48207527810026EB94 /* WelcomeViewController.swift */,
 				74CE5AE0211E3C6700CBB6CE /* LocationViewController.swift */,
 				74CE5AE4211E592600CBB6CE /* StartTimeViewController.swift */,
@@ -141,7 +142,6 @@
 				BE03C7D220701E5D00C3D329 /* GroundCoverViewController.swift */,
 				7072E0D11FE8557D002586EC /* RootViewController.swift */,
 				702253281FEC191100D6820F /* CameraViewController.swift */,
-				BEDE099B204D9E7A00CA5E7F /* PhotoData.swift */,
 				BED3767F2049932300B3601E /* CameraPreviewView.swift */,
 				BE0718CB20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift */,
 				BE135B6E2071A69600541D7C /* OptionalDataViewController.swift */,
