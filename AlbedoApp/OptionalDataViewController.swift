@@ -108,11 +108,11 @@ class OptionalDataViewController: UIViewController, UITextViewDelegate {
     
     // if the user clicks back, they are retaking the photos. Ask them to confirm if they want to do this
     @IBAction func btnBackTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Retake Photos?", message: "Going back to the previous screen will require you to retake the two photos.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+        let alert = UIAlertController(title: "Warning", message: "Are you sure you want to go back? Both photos will need to be retaken.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { action in
             print("cancelled")
         }))
-        alert.addAction(UIAlertAction(title: "Retake", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
             PhotoData.photoDownRGB.removeAll()
             PhotoData.photoUpRGB.removeAll()
             let prevViewController = (self.storyboard?.instantiateViewController(withIdentifier: "RootViewController"))!

@@ -1694,7 +1694,7 @@
                                     <navigationItem title="Location" id="2od-CT-dLT">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="UqB-1E-2w4">
                                             <connections>
-                                                <segue destination="09W-MV-ZfU" kind="showDetail" id="PHp-gz-fJi"/>
+                                                <action selector="btnBackTapped:" destination="gpb-MH-6i7" id="0Cq-Cr-DhS"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1710,33 +1710,33 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xuX-fn-Q5E">
-                                <rect key="frame" x="102" y="429" width="171" height="174"/>
+                                <rect key="frame" x="87.5" y="429" width="200" height="174"/>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latitude:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7G-8x-KDz">
-                                <rect key="frame" x="102" y="433.5" width="79" height="21"/>
+                                <rect key="frame" x="87.5" y="433.5" width="68" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPe-WN-Q7B">
-                                <rect key="frame" x="102" y="466.5" width="92.5" height="21"/>
+                                <rect key="frame" x="87.5" y="466.5" width="81.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M80-lk-Zyw">
-                                <rect key="frame" x="202.5" y="429" width="70" height="30"/>
+                                <rect key="frame" x="177" y="429" width="110" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="hsc-Yy-AX8"/>
+                                    <constraint firstAttribute="width" constant="110" id="hsc-Yy-AX8"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bH2-I9-ZlQ">
-                                <rect key="frame" x="202.5" y="462" width="70" height="30"/>
+                                <rect key="frame" x="177" y="462" width="110" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="JxP-VO-C2b"/>
+                                    <constraint firstAttribute="width" constant="110" id="JxP-VO-C2b"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1747,23 +1747,34 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
+                                    <action selector="btnNextTapped:" destination="gpb-MH-6i7" eventType="touchUpInside" id="jcp-bT-xS6"/>
                                     <action selector="btnNextTapped:" destination="JSV-U2-F3u" eventType="touchUpInside" id="rBa-5a-99Z"/>
                                     <segue destination="4IB-gr-rSD" kind="showDetail" id="qyB-AL-7TL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKe-AI-Xvu">
-                                <rect key="frame" x="102" y="500" width="170" height="32"/>
+                                <rect key="frame" x="87.5" y="500" width="199" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Use Current Location"/>
+                                <connections>
+                                    <action selector="btnCurrLocationTapped:" destination="gpb-MH-6i7" eventType="touchUpInside" id="Nhs-js-J52"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Station ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOr-PB-6by">
-                                <rect key="frame" x="10" y="277" width="79.5" height="20.5"/>
+                                <rect key="frame" x="10" y="277" width="80" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="3GF-Gx-na2"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gfc-WL-ag9">
-                                <rect key="frame" x="101.5" y="179" width="263.5" height="216"/>
+                                <rect key="frame" x="102.5" y="179" width="262.5" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="gpb-MH-6i7" id="W8M-kZ-DKr"/>
+                                    <outlet property="delegate" destination="gpb-MH-6i7" id="xWK-Db-tQi"/>
+                                </connections>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="0.90530056423611116" alpha="1" colorSpace="calibratedWhite"/>
@@ -1781,7 +1792,6 @@
                             <constraint firstItem="Gfc-WL-ag9" firstAttribute="leading" secondItem="HOr-PB-6by" secondAttribute="trailing" constant="12" id="KfI-J4-Y8Z"/>
                             <constraint firstItem="HOr-PB-6by" firstAttribute="centerY" secondItem="Gfc-WL-ag9" secondAttribute="centerY" id="KlU-Az-8Lx"/>
                             <constraint firstItem="M80-lk-Zyw" firstAttribute="leading" secondItem="C7G-8x-KDz" secondAttribute="trailing" constant="22" id="Nk7-mn-owi"/>
-                            <constraint firstItem="Gfc-WL-ag9" firstAttribute="leading" secondItem="C7G-8x-KDz" secondAttribute="leading" id="OGW-4R-ddu"/>
                             <constraint firstItem="M80-lk-Zyw" firstAttribute="trailing" secondItem="xuX-fn-Q5E" secondAttribute="trailing" id="Ok3-m1-Lcf"/>
                             <constraint firstItem="bH2-I9-ZlQ" firstAttribute="top" secondItem="M80-lk-Zyw" secondAttribute="bottom" constant="3" id="P6r-bD-NRJ"/>
                             <constraint firstItem="bH2-I9-ZlQ" firstAttribute="trailing" secondItem="xuX-fn-Q5E" secondAttribute="trailing" id="PUy-kC-DI1"/>
@@ -1808,6 +1818,13 @@
                             <constraint firstItem="t3G-bX-e4O" firstAttribute="top" secondItem="xuX-fn-Q5E" secondAttribute="bottom" constant="8" id="zBC-ix-sua"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="UqB-1E-2w4" id="qie-AN-RRZ"/>
+                        <outlet property="latitudeTextField" destination="M80-lk-Zyw" id="TqU-i9-i3X"/>
+                        <outlet property="locationButton" destination="dKe-AI-Xvu" id="MJ5-t6-jDm"/>
+                        <outlet property="longitudeTextField" destination="bH2-I9-ZlQ" id="K7N-XV-7cM"/>
+                        <outlet property="stationPicker" destination="Gfc-WL-ag9" id="AYb-Cx-diG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FfV-4v-Urq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1957,7 +1974,7 @@
         <!--Thank You View Controller-->
         <scene sceneID="Vy0-V0-USy">
             <objects>
-                <viewController storyboardIdentifier="ThankYouViewController" title="Thank You View Controller" id="i7s-IV-Imr" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ThankYouViewController" title="Thank You View Controller" id="i7s-IV-Imr" customClass="ThankYouViewController" customModule="AlbedoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="i1P-Bx-ySv"/>
                         <viewControllerLayoutGuide type="bottom" id="lu5-zz-DyO"/>
@@ -1986,6 +2003,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Return Home"/>
                                 <connections>
+                                    <action selector="btnReturnHomeTapped:" destination="i7s-IV-Imr" eventType="touchUpInside" id="QH4-WE-fYM"/>
                                     <segue destination="09W-MV-ZfU" kind="showDetail" id="JjF-vR-d5A"/>
                                 </connections>
                             </button>
@@ -2006,6 +2024,9 @@
                             <constraint firstItem="o2m-O4-mnN" firstAttribute="top" secondItem="dHj-Eo-qDT" secondAttribute="bottom" constant="100" id="xsF-E0-j8h"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnReturnHome" destination="eGa-xD-nDf" id="cfc-YO-ZBG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ai9-Gt-xyw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2031,12 +2052,11 @@
         <image name="soil-wet" width="275" height="183"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PHp-gz-fJi"/>
         <segue reference="qyB-AL-7TL"/>
         <segue reference="7XY-0g-iKs"/>
         <segue reference="8YE-Oz-jnK"/>
         <segue reference="Kt2-ZN-00V"/>
-        <segue reference="xXu-Gl-JSh"/>
+        <segue reference="49c-Fs-ojJ"/>
         <segue reference="pya-4w-eak"/>
     </inferredMetricsTieBreakers>
 </document>

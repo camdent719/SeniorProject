@@ -53,6 +53,7 @@ class SnowStateViewController: UIViewController {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.snowState = SnowState.snowFreeDormant
+        PhotoData.patchinessPercentage = 0
         PhotoData.groundCover = GroundCover.grassDead // if there is no snow and is dormant, we know the ground cover is grass
     }
     
@@ -60,6 +61,7 @@ class SnowStateViewController: UIViewController {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.snowState = SnowState.snowFreeGreen
+        PhotoData.patchinessPercentage = 0
         PhotoData.groundCover = GroundCover.grassLiving // if there is no snow and is green, we know the ground cover is grass
     }
 }

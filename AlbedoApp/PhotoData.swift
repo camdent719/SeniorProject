@@ -8,6 +8,9 @@
 import AVFoundation
 
 struct PhotoData {
+    static var stationIndex: Int = 0; // "None" by default
+    static var latitude: Double! = nil
+    static var longitude: Double! = nil
     static var skyAnalysis: SkyAnalysis = SkyAnalysis.none
     static var snowState: SnowState = SnowState.none
     static var patchinessPercentage: Int = 0
@@ -41,6 +44,9 @@ struct PhotoData {
     }
     
     static func clearData() {
+        stationIndex = 0
+        latitude = nil
+        longitude = nil
         skyAnalysis = SkyAnalysis.none
         snowState = SnowState.none
         patchinessPercentage = 0
