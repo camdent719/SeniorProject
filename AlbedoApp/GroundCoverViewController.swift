@@ -52,43 +52,43 @@ class GroundCoverViewController: UIViewController {
         btnOther.addGestureRecognizer(otherTapped)
     }
     
-    func grassLivingTapped(grassLivingTapped: UIGestureRecognizer) {
+    @objc func grassLivingTapped(grassLivingTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.groundCover = GroundCover.grassLiving
     }
     
-    func grassDeadTapped(grassDeadTapped: UIGestureRecognizer) {
+    @objc func grassDeadTapped(grassDeadTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.groundCover = GroundCover.grassDead
     }
     
-    func wetSoilTapped(wetSoilTapped: UIGestureRecognizer) {
+    @objc func wetSoilTapped(wetSoilTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.groundCover = GroundCover.wetSoil
     }
     
-    func drySoilTapped(drySoilTapped: UIGestureRecognizer) {
+    @objc func drySoilTapped(drySoilTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.groundCover = GroundCover.drySoil
     }
     
-    func pavementTapped(pavementTapped: UIGestureRecognizer) {
+    @objc func pavementTapped(pavementTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.groundCover = GroundCover.pavement
     }
     
-    func woodenDeckTapped(woodenDeckTapped: UIGestureRecognizer) {
+    @objc func woodenDeckTapped(woodenDeckTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.groundCover = GroundCover.woodenDeck
     }
     
-    func otherTapped(otherTapped: UIGestureRecognizer) {
+    @objc func otherTapped(otherTapped: UIGestureRecognizer) {
         // display a popup box for user to enter what "other" is
         openAlertView()
     }

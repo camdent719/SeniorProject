@@ -66,6 +66,8 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
         print(date)
         print(time)*/
         
+        lblLatitude.text = String(PhotoData.latitude)
+        lblLongitude.text = String(PhotoData.longitude)
         let dateFormatter = DateFormatter()
         let timeFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
@@ -130,9 +132,9 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let strLoc = printLocation(manager: locationManager)
-        lblLatitude.text = roundToFourPlaces(num: strLoc.0)
-        lblLongitude.text = roundToFourPlaces(num: strLoc.1)
+        //let strLoc = printLocation(manager: locationManager)
+        //lblLatitude.text = roundToFourPlaces(num: strLoc.0)
+        //lblLongitude.text = roundToFourPlaces(num: strLoc.1)
     }
     
     // returns a tuple with string representations of the current latitude and longitude

@@ -244,7 +244,7 @@
                                 <size key="shadowOffset" width="-1" height="1"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="5Zj-ju-fbX">
-                                <rect key="frame" x="30" y="496" width="313" height="90"/>
+                                <rect key="frame" x="30" y="496" width="315" height="90"/>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <string key="text">Snow-free/Dormant means that there is no snow on the ground and dead grass.  Snow-free/Green means that there is no snow on the ground and living grass.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -258,6 +258,7 @@
                             <constraint firstItem="ISV-pb-mXi" firstAttribute="top" secondItem="HfF-5s-KrY" secondAttribute="bottom" constant="15" id="2zw-fa-Ztv"/>
                             <constraint firstItem="FBh-cP-0Pl" firstAttribute="trailing" secondItem="ISV-pb-mXi" secondAttribute="trailing" id="3Qh-fU-HLj"/>
                             <constraint firstItem="7Xw-LS-gRr" firstAttribute="trailing" secondItem="Qpg-cE-hTy" secondAttribute="trailing" id="4mp-Mj-eGm"/>
+                            <constraint firstItem="5Zj-ju-fbX" firstAttribute="centerX" secondItem="bkf-4r-Obj" secondAttribute="centerX" id="4sG-Wp-L63"/>
                             <constraint firstItem="FBh-cP-0Pl" firstAttribute="top" secondItem="ISV-pb-mXi" secondAttribute="top" id="7hc-uG-Om6"/>
                             <constraint firstItem="EQI-Cr-xNM" firstAttribute="bottom" secondItem="S50-k5-jOm" secondAttribute="bottom" id="7kx-jy-3wB"/>
                             <constraint firstItem="cdS-xM-PtQ" firstAttribute="leading" secondItem="bkf-4r-Obj" secondAttribute="leading" constant="30" id="9LN-A8-p5D"/>
@@ -273,7 +274,6 @@
                             <constraint firstItem="1gy-bg-j2D" firstAttribute="leading" secondItem="cdS-xM-PtQ" secondAttribute="leading" id="TIS-R0-04b"/>
                             <constraint firstAttribute="trailing" secondItem="HfF-5s-KrY" secondAttribute="trailing" constant="32" id="VfH-mg-0jo"/>
                             <constraint firstItem="EQI-Cr-xNM" firstAttribute="trailing" secondItem="S50-k5-jOm" secondAttribute="trailing" id="X0Y-Ft-zVV"/>
-                            <constraint firstAttribute="trailing" secondItem="5Zj-ju-fbX" secondAttribute="trailing" constant="32" id="XGR-A8-VGQ"/>
                             <constraint firstAttribute="trailing" secondItem="Qpg-cE-hTy" secondAttribute="trailing" id="Y9U-YU-O7g"/>
                             <constraint firstItem="S50-k5-jOm" firstAttribute="leading" secondItem="bkf-4r-Obj" secondAttribute="leading" constant="30" id="a5E-ws-gYg"/>
                             <constraint firstItem="7Xw-LS-gRr" firstAttribute="leading" secondItem="Qpg-cE-hTy" secondAttribute="leading" id="aHg-A9-LRp"/>
@@ -1778,7 +1778,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Station ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOr-PB-6by">
                                 <rect key="frame" x="10" y="277" width="80" height="20.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="3GF-Gx-na2"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="3GF-Gx-na2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -2072,7 +2072,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qyB-AL-7TL"/>
-        <segue reference="Kt2-ZN-00V"/>
+        <segue reference="aKu-AV-QMP"/>
         <segue reference="49c-Fs-ojJ"/>
         <segue reference="pya-4w-eak"/>
     </inferredMetricsTieBreakers>

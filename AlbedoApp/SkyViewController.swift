@@ -36,25 +36,25 @@ class SkyViewController: UIViewController {
         btnOvercast.addGestureRecognizer(overcastTapped)
     }
     
-    func allClearTapped(allClearTapped: UIGestureRecognizer) {
+    @objc func allClearTapped(allClearTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.skyAnalysis = SkyAnalysis.allClear
     }
     
-    func clearTapped(clearTapped: UIGestureRecognizer) {
+    @objc func clearTapped(clearTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.skyAnalysis = SkyAnalysis.clear
     }
     
-    func cloudyTapped(cloudyTapped: UIGestureRecognizer) {
+    @objc func cloudyTapped(cloudyTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.skyAnalysis = SkyAnalysis.cloudy
     }
     
-    func overcastTapped(overcastTapped: UIGestureRecognizer) {
+    @objc func overcastTapped(overcastTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.skyAnalysis = SkyAnalysis.overcast

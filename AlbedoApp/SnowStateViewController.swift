@@ -36,20 +36,20 @@ class SnowStateViewController: UIViewController {
         btnSnowFreeGreen.addGestureRecognizer(snowFreeGreenTapped)
     }
     
-    func snowCoveredTapped(snowCoveredTapped: UIGestureRecognizer) {
+    @objc func snowCoveredTapped(snowCoveredTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: "SnowSurfaceAgeViewController"))!
         self.present(nextViewController, animated: true)
         PhotoData.snowState = SnowState.snowCovered
         PhotoData.patchinessPercentage = 100
     }
     
-    func patchySnowTapped(patchySnowTapped: UIGestureRecognizer) {
+    @objc func patchySnowTapped(patchySnowTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: "PatchinessViewController"))!
         self.present(nextViewController, animated: true)
         PhotoData.snowState = SnowState.patchySnow
     }
     
-    func snowFreeDormantTapped(snowFreeDormantTapped: UIGestureRecognizer) {
+    @objc func snowFreeDormantTapped(snowFreeDormantTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.snowState = SnowState.snowFreeDormant
@@ -57,7 +57,7 @@ class SnowStateViewController: UIViewController {
         PhotoData.groundCover = GroundCover.grassDead // if there is no snow and is dormant, we know the ground cover is grass
     }
     
-    func snowFreeGreenTapped(snowFreeGreenTapped: UIGestureRecognizer) {
+    @objc func snowFreeGreenTapped(snowFreeGreenTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.snowState = SnowState.snowFreeGreen

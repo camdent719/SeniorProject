@@ -46,37 +46,37 @@ class SnowSurfaceAgeViewController: UIViewController {
         btnDontKnow.addGestureRecognizer(dontKnowTapped)
     }
     
-    func freshSnowTapped(freshSnowTapped: UIGestureRecognizer) {
+    @objc func freshSnowTapped(freshSnowTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.snowSurfaceAge = SnowSurfaceAge.fresh
     }
     
-    func snow2DaysTapped(snow2DaysTapped: UIGestureRecognizer) {
+    @objc func snow2DaysTapped(snow2DaysTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.snowSurfaceAge = SnowSurfaceAge.snow2Days
     }
     
-    func snow3DaysTapped(snow3DaysTapped: UIGestureRecognizer) {
+    @objc func snow3DaysTapped(snow3DaysTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.snowSurfaceAge = SnowSurfaceAge.snow3Days
     }
     
-    func snow4DaysTapped(snow4DaysTapped: UIGestureRecognizer) {
+    @objc func snow4DaysTapped(snow4DaysTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.snowSurfaceAge = SnowSurfaceAge.snow4Days
     }
     
-    func snowOver4DaysTapped(snowOver4DaysTapped: UIGestureRecognizer) {
+    @objc func snowOver4DaysTapped(snowOver4DaysTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.snowSurfaceAge = SnowSurfaceAge.snowOver4Days
     }
     
-    func dontKnowTapped(dontKnowTapped: UIGestureRecognizer) {
+    @objc func dontKnowTapped(dontKnowTapped: UIGestureRecognizer) {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.snowSurfaceAge = SnowSurfaceAge.dontKnow

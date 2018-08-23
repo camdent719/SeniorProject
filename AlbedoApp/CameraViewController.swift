@@ -33,7 +33,7 @@ class CameraViewController: UIViewController {
     private var sessionQueue: DispatchQueue!
     private var isSessionRunning: Bool = false
     private var setupResult: CameraSetupResult = .success
-    private var videoDeviceDiscoverySession: AVCaptureDeviceDiscoverySession?
+    private var videoDeviceDiscoverySession: AVCaptureDevice.DiscoverySession?
     private var captureSession: AVCaptureSession?
     private var photoOutput: AVCapturePhotoOutput?
     private var rearCamera: AVCaptureDevice?
@@ -61,11 +61,11 @@ class CameraViewController: UIViewController {
         // camera setup
         self.captureSession = AVCaptureSession()
         let deviceTypes: [AVCaptureDevice.DeviceType] = [AVCaptureDevice.DeviceType.builtInWideAngleCamera, AVCaptureDevice.DeviceType.builtInDualCamera, AVCaptureDevice.DeviceType.builtInTelephotoCamera]
-        self.videoDeviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: deviceTypes, mediaType: AVMediaTypeVideo, position: .unspecified)
+        self.videoDeviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: deviceTypes, mediaType: AVMediaType.video, position: .unspecified)
         
         // Setup the preview view.
         self.capturePreviewViews.last?.session = self.captureSession
-        self.capturePreviewViews.last?.previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        self.capturePreviewViews.last?.previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         
         // Communicate with the session and other session objects on this queue.
         self.sessionQueue = DispatchQueue(label: "session queue", attributes: [])
@@ -73,7 +73,7 @@ class CameraViewController: UIViewController {
         
         // Check video authorization status. Video access is required and audio access is optional.
         // If audio access is denied, audio is not recorded during movie recording.
-        switch AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) {
+        switch AVCaptureDevice.authorizationStatus(for: AVMediaType.video) {
         case .authorized:
             break // The user has previously granted access to the camera.
         case .notDetermined:
@@ -81,7 +81,7 @@ class CameraViewController: UIViewController {
             // We suspend the session queue to delay session running until the access request has completed.
             // Note that audio access will be implicitly requested when we create an AVCaptureDeviceInput for audio during session setup.
             self.sessionQueue.suspend()
-            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo) {granted in
+            AVCaptureDevice.requestAccess(for: AVMediaType.video) {granted in
                 if !granted {
                     self.setupResult = .cameraNotAuthorized
                 }
@@ -156,18 +156,18 @@ class CameraViewController: UIViewController {
         }
         
         self.captureSession?.beginConfiguration()
-        self.captureSession?.sessionPreset = AVCaptureSessionPresetPhoto
+        self.captureSession?.sessionPreset = AVCaptureSession.Preset.photo
         
         // Add video input - get the rear camera and create a video input object for the rear camera
         let videoDevice: AVCaptureDevice!
-        videoDevice = AVCaptureDevice.defaultDevice(withDeviceType: AVCaptureDevice.DeviceType.builtInWideAngleCamera, mediaType:AVMediaTypeVideo, position: .unspecified)
+        videoDevice = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for:AVMediaType.video, position: .unspecified)
         
         // set the exposure mode to ensure that the pictures are always captured with the same exposure
         do {
             try videoDevice.lockForConfiguration()
-            if videoDevice.isExposureModeSupported(AVCaptureExposureMode.locked) {
+            if videoDevice.isExposureModeSupported(AVCaptureDevice.ExposureMode.locked) {
                 let exposureDuration:CMTime = CMTimeMake(1, self.exposureDuration)
-                videoDevice.setExposureModeCustomWithDuration(exposureDuration, iso: self.iso, completionHandler: nil)
+                videoDevice.setExposureModeCustom(duration: exposureDuration, iso: self.iso, completionHandler: nil)
             }
         } catch {
             print("Error - could not set exposure")
@@ -230,11 +230,11 @@ class CameraViewController: UIViewController {
         var settings: AVCapturePhotoSettings
         if JPEG_MODE { // For non-RAW proof of concept: use kCVPixelFormatType_32BGRA
             let formatType = kCVPixelFormatType_32BGRA
-            guard (photoOutput?.availablePhotoPixelFormatTypes.contains(NSNumber(value: formatType)))! else { print("ERROR - The kCVPixelFormatType_32BGRA format is not available"); return }
+            guard (photoOutput?.availablePhotoPixelFormatTypes.contains(OSType(truncating: NSNumber(value: formatType))))! else { print("ERROR - The kCVPixelFormatType_32BGRA format is not available"); return }
             settings = AVCapturePhotoSettings(format: [kCVPixelBufferPixelFormatTypeKey as String : NSNumber(value: formatType)])
         } else { // For RAW capture: use kCVPixelFormatType_14Bayer_RGGB
             let rawFormatType = kCVPixelFormatType_14Bayer_RGGB
-            guard (photoOutput?.availableRawPhotoPixelFormatTypes.contains(NSNumber(value: rawFormatType)))! else { print("ERROR - The kCVPixelFormatType_14Bayer_RGGB format is not available"); return }
+            guard (photoOutput?.availableRawPhotoPixelFormatTypes.contains(OSType(truncating: NSNumber(value: rawFormatType))))! else { print("ERROR - The kCVPixelFormatType_14Bayer_RGGB format is not available"); return }
             settings = AVCapturePhotoSettings(rawPixelFormatType: rawFormatType)
         }
         

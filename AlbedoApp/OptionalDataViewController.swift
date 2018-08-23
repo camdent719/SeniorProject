@@ -43,7 +43,7 @@ class OptionalDataViewController: UIViewController, UITextViewDelegate {
     }
    
     // if the user taps outside of the keyboard, dismiss the keyboard
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
         
         let inputSnowDepth = txtFieldSnowDepth.text
