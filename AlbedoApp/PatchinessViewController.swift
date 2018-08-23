@@ -35,7 +35,7 @@ class PatchinessViewController: UIViewController {
         slider.setValue(val, animated: false)
         currPatchyVal = Int(sender.value)
         lblValue.text = "\(currPatchyVal)% Covered"
-        //PhotoData.patchinessPercentage = currPatchyVal // remember if slider was moved
+        PhotoData.patchinessPercentage = currPatchyVal // remember if slider was moved
     }
     
     @IBAction func btnNextTapped(_ sender: Any) {

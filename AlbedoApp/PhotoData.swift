@@ -11,10 +11,14 @@ struct PhotoData {
     static var stationIndex: Int = 0; // "None" by default
     static var latitude: Double! = nil
     static var longitude: Double! = nil
+    static var date: Date! = nil
+    static var startTime: Date! = nil
+    static var endTime: Date! = nil
     static var skyAnalysis: SkyAnalysis = SkyAnalysis.none
     static var snowState: SnowState = SnowState.none
     static var patchinessPercentage: Int = 0
     static var groundCover: GroundCover = GroundCover.none
+    static var otherGroundCover: String = "" // non-empty if other ground cover applies
     static var snowSurfaceAge: SnowSurfaceAge = SnowSurfaceAge.none
     
     static var photoDownRGB: [CGFloat] = []
@@ -23,6 +27,7 @@ struct PhotoData {
     
     static var snowDepth: Float = Float.nan
     static var snowWeight: Float = Float.nan
+    static var snowTubeTareWeight = Float.nan
     static var snowTemp: Float = Float.nan
     static var debrisDescription: String = ""
 
@@ -47,6 +52,9 @@ struct PhotoData {
         stationIndex = 0
         latitude = nil
         longitude = nil
+        date = nil
+        startTime = nil
+        endTime = nil
         skyAnalysis = SkyAnalysis.none
         snowState = SnowState.none
         patchinessPercentage = 0
@@ -59,6 +67,7 @@ struct PhotoData {
         
         snowDepth = Float.nan
         snowWeight = Float.nan
+        snowTubeTareWeight = Float.nan
         snowTemp = Float.nan
         debrisDescription = ""
     }
@@ -88,8 +97,38 @@ enum GroundCover: String {
     case drySoil = "Dry Soil"
     case pavement = "Pavement"
     case woodenDeck = "Wooden Deck"
-    case other = "" //TODO
+    case other = "Other"
+    // enum Other {
+    //     case value(String)
+    // }
 }
+
+/*enum GroundCover: String {
+    case none = "None" // default value
+    case grassLiving = "Grass - Living"
+    case grassDead = "Grass - Dead"
+    case wetSoil = "Wet Soil"
+    case drySoil = "Dry Soil"
+    case pavement = "Pavement"
+    case woodenDeck = "Wooden Deck"
+    // enum Other {
+    //     case value(String)
+    // }
+}*/
+
+/*enum GroundCover {
+    // name will be filled with one of the following:
+    // none = "None"
+    // grassLiving = "Grass - Living"
+    // grassDead = "Grass - Dead"
+    // wetSoil = "Wet Soil"
+    // drySoil = "Dry Soil"
+    // pavement = "Pavement"
+    // woodenDeck = "Wooden Deck"
+    //
+    // if a different ground cover applies, the name will be that
+    case name(String) // default value
+}*/
 
 enum SnowSurfaceAge: String {
     case none = "None" // default value

@@ -54,18 +54,11 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, UIPic
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // round up to six decimal places
         formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale?
         formatter.maximumFractionDigits = 6
         formatter.minimumFractionDigits = 1
-        
-        // get user's location
-        self.locationManager.requestWhenInUseAuthorization() // user must agree to use location (first time only)
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-        }
         
         stationPicker.selectRow(PhotoData.stationIndex, inComponent: 0, animated: false)
         if PhotoData.latitude == nil && PhotoData.longitude == nil {
@@ -114,6 +107,14 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, UIPic
     }
     
     @IBAction func btnCurrLocationTapped(_ sender: Any) {
+        // get user's location
+        self.locationManager.requestWhenInUseAuthorization() // user must agree to use location (first time only)
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
         // set latitude and longitude textboxes
         guard let location: CLLocationCoordinate2D = locationManager.location?.coordinate else {
             // failed to get location

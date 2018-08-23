@@ -13,8 +13,11 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var lblLatitude: UILabel!
     @IBOutlet weak var lblLongitude: UILabel!
+    
     @IBOutlet weak var lblDate: UILabel!
-    @IBOutlet weak var lblTime: UILabel!
+    @IBOutlet weak var lblStartTime: UILabel!
+    @IBOutlet weak var lblEndTime: UILabel!
+    
     @IBOutlet weak var lblAlbedo: UILabel!
     
     @IBOutlet weak var lblSky: UILabel!
@@ -24,7 +27,9 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var lblSnowDepth: UILabel!
     @IBOutlet weak var lblSnowWeight: UILabel!
+    @IBOutlet weak var lblSnowTubeTareWeight: UILabel!
     @IBOutlet weak var lblSnowTemp: UILabel!
+    
     @IBOutlet weak var lblDebrisDesc: UILabel!
     
     let locationManager = CLLocationManager()
@@ -41,11 +46,36 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         // update labels
-        //let strLoc = printLocation(manager: locationManager)
-        //lblLatitude.text = roundToFourPlaces(num: strLoc.0)
-        //lblLongitude.text = roundToFourPlaces(num: strLoc.1)
-        lblDate.text = getDate()
-        lblTime.text = getTime()
+        
+        // format date/time data
+        /*let startDate = PhotoData.startDate.index(PhotoData.startDate.startIndex, offsetBy: 0)
+        let endDate = PhotoData.startDate.index(PhotoData.startDate.startIndex, offsetBy: 9)
+        let dateRange = startDate...endDate
+        let date: String = PhotoData.startDate[dateRange]
+        
+        let startTime = PhotoData.startTime.index(PhotoData.startTime.startIndex, offsetBy: 11)
+        let endTime = PhotoData.startTime.index(PhotoData.startTime.startIndex, offsetBy: 18)
+        let timeRange = startTime...endTime
+        let time = PhotoData.startTime[timeRange]
+        
+        let startTime2 = PhotoData.endTime.description.index(PhotoData.endTime.startIndex, offsetBy: 11)
+        let endTime2 = PhotoData.endTime.index(PhotoData.endTime.startIndex, offsetBy: 18)
+        let timeRange2 = startTime2...endTime2
+        let time2 = PhotoData.endTime[timeRange2]
+        
+        print(date)
+        print(time)*/
+        
+        let dateFormatter = DateFormatter()
+        let timeFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
+        timeFormatter.dateStyle = .none
+        timeFormatter.timeStyle = .short
+        lblDate.text = dateFormatter.string(from: PhotoData.date)
+        lblStartTime.text = timeFormatter.string(from: PhotoData.startTime)
+        lblEndTime.text = timeFormatter.string(from: PhotoData.endTime)
+        
         if PhotoData.albedo == "nan" {
             lblAlbedo.text = "None"
         } else {
@@ -55,10 +85,16 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
         lblSky.text = PhotoData.skyAnalysis.rawValue
         if PhotoData.patchinessPercentage != 0 {
             lblSnowState.text = PhotoData.snowState.rawValue + ", \(PhotoData.patchinessPercentage)% patchiness"
-        } else {
+        }
+        else {
             lblSnowState.text = PhotoData.snowState.rawValue
         }
-        lblGroundCover.text = PhotoData.groundCover.rawValue
+        if (PhotoData.groundCover == GroundCover.other) {
+            lblGroundCover.text = PhotoData.otherGroundCover
+        }
+        else {
+            lblGroundCover.text = PhotoData.groundCover.rawValue
+        }
         lblSnowSurface.text = PhotoData.snowSurfaceAge.rawValue
         
         if !PhotoData.snowDepth.isNaN {
@@ -71,6 +107,12 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
             lblSnowWeight.text = String(PhotoData.snowWeight)
         } else {
             lblSnowWeight.text = "---"
+        }
+        
+        if !PhotoData.snowTubeTareWeight.isNaN {
+            lblSnowTubeTareWeight.text = String(PhotoData.snowTubeTareWeight)
+        } else {
+            lblSnowTubeTareWeight.text = "---"
         }
         
         if !PhotoData.snowTemp.isNaN {

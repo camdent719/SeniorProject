@@ -15,7 +15,9 @@ class GroundCoverViewController: UIViewController {
     @IBOutlet weak var btnDrySoil: UIImageView!
     @IBOutlet weak var btnPavement: UIImageView!
     @IBOutlet weak var btnWoodenDeck: UIImageView!
+    @IBOutlet weak var btnOther: UIImageView!
     
+    var otherTextField: UITextField?
     private var nextViewName = "RootViewController"
     
     override func viewDidLoad() {
@@ -44,6 +46,10 @@ class GroundCoverViewController: UIViewController {
         let woodenDeckTapped: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(woodenDeckTapped(woodenDeckTapped:)))
         btnWoodenDeck.isUserInteractionEnabled = true
         btnWoodenDeck.addGestureRecognizer(woodenDeckTapped)
+        
+        let otherTapped: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(otherTapped(otherTapped:)))
+        btnOther.isUserInteractionEnabled = true
+        btnOther.addGestureRecognizer(otherTapped)
     }
     
     func grassLivingTapped(grassLivingTapped: UIGestureRecognizer) {
@@ -80,6 +86,39 @@ class GroundCoverViewController: UIViewController {
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: nextViewName))!
         self.present(nextViewController, animated: true)
         PhotoData.groundCover = GroundCover.woodenDeck
+    }
+    
+    func otherTapped(otherTapped: UIGestureRecognizer) {
+        // display a popup box for user to enter what "other" is
+        openAlertView()
+    }
+    
+    func configurationTextField(textField: UITextField!) {
+        if (textField) != nil {
+            self.otherTextField = textField! // Save reference to the UITextField
+            self.otherTextField?.placeholder = "Enter ground cover here...";
+        }
+    }
+    
+    func openAlertView() {
+        let alert = UIAlertController(title: "Other", message: "Enter the ground cover.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+        }))
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { action in
+            if let enteredText = self.otherTextField?.text {
+                print("entered", enteredText)
+                PhotoData.groundCover = GroundCover.other
+                PhotoData.otherGroundCover = enteredText
+            }
+            else {
+                print("No text entered in 'other' field")
+            }
+            /*PhotoData.groundCover = GroundCover(rawValue: (self.otherTextField?.text)!)!*/
+            let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: self.nextViewName))!
+            self.present(nextViewController, animated: true)
+        }))
+        alert.addTextField(configurationHandler: configurationTextField)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func btnBackTapped(_ sender: Any) {
