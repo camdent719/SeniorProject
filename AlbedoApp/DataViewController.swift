@@ -80,7 +80,8 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
         
         if PhotoData.albedo == "nan" {
             lblAlbedo.text = "None"
-        } else {
+        }
+        else {
             lblAlbedo.text = PhotoData.albedo
         }
         
@@ -101,31 +102,36 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
         
         if !PhotoData.snowDepth.isNaN {
             lblSnowDepth.text = String(PhotoData.snowDepth)
-        } else {
+        }
+        else {
             lblSnowDepth.text = "---"
         }
         
         if !PhotoData.snowWeight.isNaN {
             lblSnowWeight.text = String(PhotoData.snowWeight)
-        } else {
+        }
+        else {
             lblSnowWeight.text = "---"
         }
         
         if !PhotoData.snowTubeTareWeight.isNaN {
             lblSnowTubeTareWeight.text = String(PhotoData.snowTubeTareWeight)
-        } else {
+        }
+        else {
             lblSnowTubeTareWeight.text = "---"
         }
         
         if !PhotoData.snowTemp.isNaN {
             lblSnowTemp.text = String(PhotoData.snowTemp)
-        } else {
+        }
+        else {
             lblSnowTemp.text = "---"
         }
         
         if PhotoData.debrisDescription != "" {
             lblDebrisDesc.text = PhotoData.debrisDescription
-        } else {
+        }
+        else {
             lblDebrisDesc.text = "---"
         }
     }

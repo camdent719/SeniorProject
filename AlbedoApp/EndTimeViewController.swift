@@ -28,7 +28,7 @@ class EndTimeViewController: UIViewController {
     @IBAction func btnBackTapped(_ sender: Any) {
         PhotoData.endTime = endTimePicker.date
         
-        let prevViewController = (self.storyboard?.instantiateViewController(withIdentifier: "OptionalDataViewController"))!
+        let prevViewController = (self.storyboard?.instantiateViewController(withIdentifier: "NotesViewController"))!
         self.present(prevViewController, animated: true)
     }
     

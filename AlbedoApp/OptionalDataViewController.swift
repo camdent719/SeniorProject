@@ -13,16 +13,12 @@ class OptionalDataViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var txtFieldSnowWeight: UITextField!
     @IBOutlet weak var txtFieldSnowTubeTareWeight: UITextField!
     @IBOutlet weak var txtFieldSnowTemp: UITextField!
-    @IBOutlet weak var txtViewComments: UITextView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    
     @IBOutlet weak var btnNext: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(OptionalDataViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        txtViewComments.delegate = self
         if !PhotoData.snowDepth.isNaN {
             txtFieldSnowDepth.text = String(PhotoData.snowDepth)
         }
@@ -35,7 +31,6 @@ class OptionalDataViewController: UIViewController, UITextViewDelegate {
         if !PhotoData.snowTemp.isNaN {
             txtFieldSnowTemp.text = String(PhotoData.snowTemp)
         }
-        txtViewComments.text = PhotoData.debrisDescription
         
         //errSnowDepth.isHidden = true
         //errSnowWeight.isHidden = true
@@ -59,9 +54,11 @@ class OptionalDataViewController: UIViewController, UITextViewDelegate {
             if (v?.isEmpty)! {
                 if i == 0 {
                     txtFieldSnowDepth.layer.borderWidth = 0
-                } else if i == 1 {
+                }
+                else if i == 1 {
                     txtFieldSnowWeight.layer.borderWidth = 0
-                } else if i == 2 {
+                }
+                else if i == 2 {
                     txtFieldSnowTubeTareWeight.layer.borderWidth = 0
                 }
                 else { // i == 3
@@ -78,7 +75,6 @@ class OptionalDataViewController: UIViewController, UITextViewDelegate {
                     //errSnowDepth.isHidden = false
                     txtFieldSnowDepth.layer.borderColor = errColor
                     txtFieldSnowDepth.layer.borderWidth = 2
-                    
                     allValid = false
                 } else {
                     //errSnowDepth.isHidden = true
@@ -128,37 +124,8 @@ class OptionalDataViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    // if the user taps inside the text view, scroll so the text view remains visible
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        self.scrollView.setContentOffset(CGPoint(x: 0, y: txtViewComments.center.y - 100), animated: true)
-    }
-    
-    // when text view editing ends, reset scroll point
-    func textViewDidEndEditing(_ textView: UITextView) {
-        self.scrollView.setContentOffset(CGPoint.zero, animated: true)
-        txtViewComments.resignFirstResponder()
-    }
-    
-    // when Done key on keyboard tapped, dismiss keyboard
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {
-            textView.resignFirstResponder()
-        }
-        return true
-    }
-    
     // if the user clicks back, they are retaking the photos. Ask them to confirm if they want to do this
     @IBAction func btnBackTapped(_ sender: Any) {
-        /*let alert = UIAlertController(title: "Warning", message: "Are you sure you want to go back? Both photos will need to be retaken.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { action in
-        }))
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-            //PhotoData.photoDownRGB.removeAll()
-            //PhotoData.photoUpRGB.removeAll()
-            let prevViewController = (self.storyboard?.instantiateViewController(withIdentifier: "RootViewController"))!
-            self.present(prevViewController, animated: true)
-        }))
-        self.present(alert, animated: true, completion: nil)*/
         if !(txtFieldSnowDepth.text?.isEmpty)! {
             PhotoData.snowDepth = (txtFieldSnowDepth.text! as NSString).floatValue
         }
@@ -183,7 +150,6 @@ class OptionalDataViewController: UIViewController, UITextViewDelegate {
         else {
             PhotoData.snowTemp = Float.nan
         }
-        PhotoData.debrisDescription = txtViewComments.text
         let prevViewController = (self.storyboard?.instantiateViewController(withIdentifier: "RootViewController"))!
         self.present(prevViewController, animated: true)
     }
@@ -214,6 +180,7 @@ class OptionalDataViewController: UIViewController, UITextViewDelegate {
         else {
             PhotoData.snowTemp = Float.nan
         }
-        PhotoData.debrisDescription = txtViewComments.text
+        let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: "NotesViewController"))!
+        self.present(nextViewController, animated: true)
     }
 }

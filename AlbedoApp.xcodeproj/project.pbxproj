@@ -18,6 +18,7 @@
 		74CE5AE1211E3C6700CBB6CE /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CE5AE0211E3C6700CBB6CE /* LocationViewController.swift */; };
 		74CE5AE5211E592600CBB6CE /* StartTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CE5AE4211E592600CBB6CE /* StartTimeViewController.swift */; };
 		74CE5AE7211E5D0800CBB6CE /* EndTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CE5AE6211E5D0800CBB6CE /* EndTimeViewController.swift */; };
+		8460861A213303A600151531 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84608619213303A600151531 /* NotesViewController.swift */; };
 		84AA62D6212BB37E004EDBEF /* ThankYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA62D5212BB37E004EDBEF /* ThankYouViewController.swift */; };
 		BE03C7D320701E5D00C3D329 /* GroundCoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03C7D220701E5D00C3D329 /* GroundCoverViewController.swift */; };
 		BE03C7D52070275C00C3D329 /* SnowSurfaceAgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03C7D42070275C00C3D329 /* SnowSurfaceAgeViewController.swift */; };
@@ -68,6 +69,7 @@
 		74CE5AE0211E3C6700CBB6CE /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		74CE5AE4211E592600CBB6CE /* StartTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTimeViewController.swift; sourceTree = "<group>"; };
 		74CE5AE6211E5D0800CBB6CE /* EndTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTimeViewController.swift; sourceTree = "<group>"; };
+		84608619213303A600151531 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		84AA62D5212BB37E004EDBEF /* ThankYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankYouViewController.swift; sourceTree = "<group>"; };
 		BE03C7D220701E5D00C3D329 /* GroundCoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundCoverViewController.swift; sourceTree = "<group>"; };
 		BE03C7D42070275C00C3D329 /* SnowSurfaceAgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowSurfaceAgeViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				BED3767F2049932300B3601E /* CameraPreviewView.swift */,
 				BE0718CB20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift */,
 				BE135B6E2071A69600541D7C /* OptionalDataViewController.swift */,
+				84608619213303A600151531 /* NotesViewController.swift */,
 				74CE5AE6211E5D0800CBB6CE /* EndTimeViewController.swift */,
 				BE5177B92065940F0060283A /* DataViewController.swift */,
 				84AA62D5212BB37E004EDBEF /* ThankYouViewController.swift */,
@@ -331,6 +334,7 @@
 				BEDE099C204D9E7A00CA5E7F /* PhotoData.swift in Sources */,
 				BED376802049932300B3601E /* CameraPreviewView.swift in Sources */,
 				BE0718CC20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift in Sources */,
+				8460861A213303A600151531 /* NotesViewController.swift in Sources */,
 				74CE5AE5211E592600CBB6CE /* StartTimeViewController.swift in Sources */,
 				7022532B1FEC191100D6820F /* CameraViewController.swift in Sources */,
 				74CE5AE1211E3C6700CBB6CE /* LocationViewController.swift in Sources */,
