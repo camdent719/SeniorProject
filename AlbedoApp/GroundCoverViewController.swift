@@ -94,7 +94,7 @@ class GroundCoverViewController: UIViewController {
     }
     
     func configurationTextField(textField: UITextField!) {
-        if (textField) != nil {
+        if textField != nil {
             self.otherTextField = textField! // Save reference to the UITextField
             self.otherTextField?.placeholder = "Enter ground cover here...";
         }

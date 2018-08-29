@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OptionalDataViewController: UIViewController, UITextViewDelegate {
+class OptionalDataViewController: UIViewController {
 
     @IBOutlet weak var txtFieldSnowDepth: UITextField!
     @IBOutlet weak var txtFieldSnowWeight: UITextField!

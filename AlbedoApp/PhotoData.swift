@@ -8,7 +8,7 @@
 import AVFoundation
 
 struct PhotoData {
-    static var stationIndex: Int = 0; // "None" by default
+    static var stationIndex: Int = 0 // "None" by default
     static var latitude: Double! = nil
     static var longitude: Double! = nil
     static var date: Date! = nil
@@ -17,6 +17,7 @@ struct PhotoData {
     static var skyAnalysis: SkyAnalysis = SkyAnalysis.none
     static var snowState: SnowState = SnowState.none
     static var patchinessPercentage: Int = 0
+    static var snowSurfaceIndex: Int = 0 // "Current" by default
     static var groundCover: GroundCover = GroundCover.none
     static var otherGroundCover: String = "" // non-empty if other ground cover applies
     static var snowSurfaceAge: SnowSurfaceAge = SnowSurfaceAge.none
@@ -56,9 +57,11 @@ struct PhotoData {
         startTime = nil
         endTime = nil
         skyAnalysis = SkyAnalysis.none
+        snowSurfaceIndex = 0
         snowState = SnowState.none
         patchinessPercentage = 0
         groundCover = GroundCover.none
+        otherGroundCover = ""
         snowSurfaceAge = SnowSurfaceAge.none
         
         photoDownRGB.removeAll()
@@ -132,12 +135,18 @@ enum GroundCover: String {
 
 enum SnowSurfaceAge: String {
     case none = "None" // default value
-    case fresh = "Fresh Snow"
-    case snow2Days = "Snow Within Past 2 Days"
-    case snow3Days = "Snow Within Past 3 Days"
-    case snow4Days = "Snow Within Past 4 Days"
-    case snowOver4Days = "Snow Older Than 4 Days"
-    case dontKnow = "Don't Know"
+    case current = "Currently Snowing"
+    case snow1Day = "< 1 Day Old"
+    case snow2Days = "1 Full Day Old"
+    case snow3Days = "2 Full Days Old"
+    case snow4Days = "3 Full Days Old"
+    case snow5Days = "4 Full Days Old"
+    case snow6Days = "5 Full Days Old"
+    case snow1Week = "6 Full Days Old"
+    case snow2Weeks = "1 Full Week Old"
+    case snow3Weeks = "2 Full Weeks Old"
+    case snow4Weeks = "3 Full Weeks Old"
+    case snowAtLeast4Weeks = "≥ 4 Full Weeks Old"
 }
 
 
