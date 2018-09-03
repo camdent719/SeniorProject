@@ -24,7 +24,7 @@ class PatchinessViewController: UIViewController {
         }
         else {
             // we have not moved the slider yet or we chose another snow state previously
-            currPatchyVal = 50; // default value
+            currPatchyVal = 50 // default value
         }
         slider.setValue(Float(currPatchyVal), animated: false)
         lblValue.text = "\(currPatchyVal)% Covered"

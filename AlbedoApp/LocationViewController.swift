@@ -16,31 +16,32 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, UIPic
         var longitude: Double!
     }
     
+    @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var stationPicker: UIPickerView!
     @IBOutlet weak var latitudeTextField: UITextField!
     @IBOutlet weak var longitudeTextField: UITextField!
     @IBOutlet weak var locationButton: UIButton!
-    @IBOutlet weak var backButton: UIBarButtonItem!
     
     let formatter = NumberFormatter()
     let locationManager = CLLocationManager()
     
-    private var latitudeStartingText: String = "";
-    private var longitudeStartingText: String = "";
+    private var latitudeStartingText: String = ""
+    private var longitudeStartingText: String = ""
     private var prevViewName = "NewMeasurementViewController"
-    let stationNames = ["None", "NH-BK-24", "NH-CH-19", "NH-CS-7", "NH-CS-10", "NH-GR-1", "NH-GR-11", "NH-HL-25", "NH-HL-58", "NH-MR-4", "NH-MR-6", "NH-MR-58", "NH-RC-46", "NH-ST-99"]
-    let stationLocs = [LocationPair(latitude: nil, longitude: nil), LocationPair(latitude: -71.213364, longitude: 43.437617), LocationPair(latitude: -72.313214, longitude: 42.93995), LocationPair(latitude: -71.57639, longitude: 44.49611), LocationPair(latitude: -71.269535, longitude: 44.388238), LocationPair(latitude: -71.7414, longitude: 43.5949), LocationPair(latitude: -71.688856, longitude: 43.760317), LocationPair(latitude: -71.610217, longitude: 42.914089), LocationPair(latitude: -71.472811, longitude: 42.739811), LocationPair(latitude: -71.556467, longitude: 43.149944), LocationPair(latitude: -71.819, longitude: 43.52), LocationPair(latitude: -71.4697, longitude: 43.2783), LocationPair(latitude: -70.999, longitude: 43.0171), LocationPair(latitude: -70.94871, longitude: 43.10876)]
+    static let stationNames = ["None", "NH-BK-24", "NH-CH-19", "NH-CS-7", "NH-CS-10", "NH-GR-1", "NH-GR-11", "NH-HL-25", "NH-HL-58", "NH-MR-4", "NH-MR-6", "NH-MR-58", "NH-RC-46", "NH-ST-99"]
+    static let stationIDs = [-1, 48, 34, 5, 16, 47, 9, 12, 28, 8, 13, 49, 23, 26]
+    static let stationLocs = [LocationPair(latitude: nil, longitude: nil), LocationPair(latitude: -71.213364, longitude: 43.437617), LocationPair(latitude: -72.313214, longitude: 42.93995), LocationPair(latitude: -71.57639, longitude: 44.49611), LocationPair(latitude: -71.269535, longitude: 44.388238), LocationPair(latitude: -71.7414, longitude: 43.5949), LocationPair(latitude: -71.688856, longitude: 43.760317), LocationPair(latitude: -71.610217, longitude: 42.914089), LocationPair(latitude: -71.472811, longitude: 42.739811), LocationPair(latitude: -71.556467, longitude: 43.149944), LocationPair(latitude: -71.819, longitude: 43.52), LocationPair(latitude: -71.4697, longitude: 43.2783), LocationPair(latitude: -70.999, longitude: 43.0171), LocationPair(latitude: -70.94871, longitude: 43.10876)]
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return stationNames[row]
+        return LocationViewController.stationNames[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return stationNames.count
+        return LocationViewController.stationNames.count
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -50,13 +51,15 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, UIPic
             longitudeTextField.text = ""
         }
         else {
-            latitudeTextField.text = formatter.string(from: stationLocs[row].latitude! as NSNumber)!
-            longitudeTextField.text = formatter.string(from: stationLocs[row].longitude! as NSNumber)!
+            latitudeTextField.text = formatter.string(from: LocationViewController.stationLocs[row].latitude! as NSNumber)!
+            longitudeTextField.text = formatter.string(from: LocationViewController.stationLocs[row].longitude! as NSNumber)!
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LocationViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         
         // round up to six decimal places
         formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale?
@@ -77,6 +80,11 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, UIPic
         else {
             longitudeTextField.text = formatter.string(from: PhotoData.longitude! as NSNumber)!
         }
+    }
+    
+    // if the user taps outside of the keyboard, dismiss the keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @IBAction func latitudeEditingBegan(_ sender: Any) {
@@ -104,7 +112,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, UIPic
     @IBAction func btnNextTapped(_ sender: Any) {
         let currentRow = stationPicker.selectedRow(inComponent: 0)
         if currentRow != 0 {
-            if stationLocs[currentRow].latitude! != Double(latitudeTextField.text!) || stationLocs[currentRow].longitude! != Double(longitudeTextField.text!) {
+            if LocationViewController.stationLocs[currentRow].latitude! != Double(latitudeTextField.text!) || LocationViewController.stationLocs[currentRow].longitude! != Double(longitudeTextField.text!) {
                 PhotoData.stationIndex = 0
             }
             else {
@@ -153,7 +161,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, UIPic
         //remember current selections
         let currentRow = stationPicker.selectedRow(inComponent: 0)
         if currentRow != 0 {
-            if stationLocs[currentRow].latitude! != Double(latitudeTextField.text!) || stationLocs[currentRow].longitude! != Double(longitudeTextField.text!) {
+            if LocationViewController.stationLocs[currentRow].latitude! != Double(latitudeTextField.text!) || LocationViewController.stationLocs[currentRow].longitude! != Double(longitudeTextField.text!) {
                 PhotoData.stationIndex = 0
             }
             else {

@@ -13,24 +13,51 @@ class OptionalDataViewController: UIViewController {
     @IBOutlet weak var txtFieldSnowWeight: UITextField!
     @IBOutlet weak var txtFieldSnowTubeTareWeight: UITextField!
     @IBOutlet weak var txtFieldSnowTemp: UITextField!
+    @IBOutlet weak var controlSegmentDepth: UISegmentedControl!
+    @IBOutlet weak var controlSegmentWeight: UISegmentedControl!
     @IBOutlet weak var btnNext: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(OptionalDataViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        if !PhotoData.snowDepth.isNaN {
-            txtFieldSnowDepth.text = String(PhotoData.snowDepth)
+        
+        if let depth = PhotoData.snowDepth {
+            if !depth.isNaN {
+                txtFieldSnowDepth.text = String(depth)
+            }
         }
-        if !PhotoData.snowWeight.isNaN {
-            txtFieldSnowWeight.text = String(PhotoData.snowWeight)
+        
+        if let weight = PhotoData.snowWeight {
+            if !weight.isNaN {
+                txtFieldSnowWeight.text = String(weight)
+            }
         }
+        
         if !PhotoData.snowTubeTareWeight.isNaN {
             txtFieldSnowTubeTareWeight.text = String(PhotoData.snowTubeTareWeight)
         }
+        
         if !PhotoData.snowTemp.isNaN {
             txtFieldSnowTemp.text = String(PhotoData.snowTemp)
         }
+        
+        if PhotoData.depthUnits.rawValue == LengthUnit.inches.rawValue {
+            controlSegmentDepth.selectedSegmentIndex = 0
+        }
+        else {
+            controlSegmentDepth.selectedSegmentIndex = 1
+        }
+        
+        if PhotoData.weightUnits.rawValue == WeightUnit.pounds.rawValue {
+            controlSegmentWeight.selectedSegmentIndex = 0
+        }
+        else {
+            controlSegmentWeight.selectedSegmentIndex = 1
+        }
+        
+        /*controlSegmentDepth.selectedSegmentIndex = PhotoData.depthUnits.hashValue
+        controlSegmentWeight.selectedSegmentIndex = PhotoData.weightUnits.hashValue*/
         
         //errSnowDepth.isHidden = true
         //errSnowWeight.isHidden = true
@@ -124,31 +151,49 @@ class OptionalDataViewController: UIViewController {
         }
     }
     
+    @IBAction func depthControlValueChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            PhotoData.depthUnits = LengthUnit.inches
+        }
+        else {
+            PhotoData.depthUnits = LengthUnit.centimeters
+        }
+    }
+    
+    @IBAction func weightControlValueChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            PhotoData.weightUnits = WeightUnit.pounds
+        }
+        else {
+            PhotoData.weightUnits = WeightUnit.grams
+        }
+    }
+    
     // if the user clicks back, they are retaking the photos. Ask them to confirm if they want to do this
     @IBAction func btnBackTapped(_ sender: Any) {
         if !(txtFieldSnowDepth.text?.isEmpty)! {
-            PhotoData.snowDepth = (txtFieldSnowDepth.text! as NSString).floatValue
+            PhotoData.snowDepth = (txtFieldSnowDepth.text! as NSString).doubleValue
         }
         else {
-            PhotoData.snowDepth = Float.nan
+            PhotoData.snowDepth = Double.nan
         }
         if !(txtFieldSnowWeight.text?.isEmpty)! {
-            PhotoData.snowWeight = (txtFieldSnowWeight.text! as NSString).floatValue
+            PhotoData.snowWeight = (txtFieldSnowWeight.text! as NSString).doubleValue
         }
         else {
-            PhotoData.snowWeight = Float.nan
+            PhotoData.snowWeight = Double.nan
         }
         if !(txtFieldSnowTubeTareWeight.text?.isEmpty)! {
-            PhotoData.snowTubeTareWeight = (txtFieldSnowTubeTareWeight.text! as NSString).floatValue
+            PhotoData.snowTubeTareWeight = (txtFieldSnowTubeTareWeight.text! as NSString).doubleValue
         }
         else {
-            PhotoData.snowTubeTareWeight = Float.nan
+            PhotoData.snowTubeTareWeight = Double.nan
         }
         if !(txtFieldSnowTemp.text?.isEmpty)! {
-            PhotoData.snowTemp = (txtFieldSnowTemp.text! as NSString).floatValue
+            PhotoData.snowTemp = (txtFieldSnowTemp.text! as NSString).doubleValue
         }
         else {
-            PhotoData.snowTemp = Float.nan
+            PhotoData.snowTemp = Double.nan
         }
         let prevViewController = (self.storyboard?.instantiateViewController(withIdentifier: "RootViewController"))!
         self.present(prevViewController, animated: true)
@@ -157,28 +202,28 @@ class OptionalDataViewController: UIViewController {
     // save all data to the PhotoData class
     @IBAction func btnNextTapped(_ sender: Any) {
         if !(txtFieldSnowDepth.text?.isEmpty)! {
-            PhotoData.snowDepth = (txtFieldSnowDepth.text! as NSString).floatValue
+            PhotoData.snowDepth = (txtFieldSnowDepth.text! as NSString).doubleValue
         }
         else {
-            PhotoData.snowDepth = Float.nan
+            PhotoData.snowDepth = Double.nan
         }
         if !(txtFieldSnowWeight.text?.isEmpty)! {
-            PhotoData.snowWeight = (txtFieldSnowWeight.text! as NSString).floatValue
+            PhotoData.snowWeight = (txtFieldSnowWeight.text! as NSString).doubleValue
         }
         else {
-            PhotoData.snowWeight = Float.nan
+            PhotoData.snowWeight = Double.nan
         }
         if !(txtFieldSnowTubeTareWeight.text?.isEmpty)! {
-            PhotoData.snowTubeTareWeight = (txtFieldSnowTubeTareWeight.text! as NSString).floatValue
+            PhotoData.snowTubeTareWeight = (txtFieldSnowTubeTareWeight.text! as NSString).doubleValue
         }
         else {
-            PhotoData.snowTubeTareWeight = Float.nan
+            PhotoData.snowTubeTareWeight = Double.nan
         }
         if !(txtFieldSnowTemp.text?.isEmpty)! {
-            PhotoData.snowTemp = (txtFieldSnowTemp.text! as NSString).floatValue
+            PhotoData.snowTemp = (txtFieldSnowTemp.text! as NSString).doubleValue
         }
         else {
-            PhotoData.snowTemp = Float.nan
+            PhotoData.snowTemp = Double.nan
         }
         let nextViewController = (self.storyboard?.instantiateViewController(withIdentifier: "NotesViewController"))!
         self.present(nextViewController, animated: true)

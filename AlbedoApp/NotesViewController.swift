@@ -18,6 +18,9 @@ class NotesViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NotesViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(OptionalDataViewController.dismissKeyboard))
         //view.addGestureRecognizer(tap)
         txtViewComments.delegate = self
@@ -35,9 +38,9 @@ class NotesViewController: UIViewController, UITextViewDelegate {
     }
     
     // if the user taps outside of the keyboard, dismiss the keyboard
-    /*@objc func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
-    }*/
+    }
     
     // if the user taps inside the text view, scroll so the text view remains visible
     func textViewDidBeginEditing(_ textView: UITextView) {

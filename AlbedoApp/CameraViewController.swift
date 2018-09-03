@@ -277,7 +277,7 @@ class CameraViewController: UIViewController {
     // threshold set by the property levelingThreshold
     func startMotionUpdates() {
         if !motionManager.isDeviceMotionAvailable {
-            print("ERROR - dev motion not available");
+            print("ERROR - dev motion not available")
             return
         }
         motionManager.deviceMotionUpdateInterval = self.updateInterval

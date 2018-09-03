@@ -9,9 +9,13 @@ import UIKit
 
 var history: [String] = ["Click to see summary of older submission"]
 var myIndex = 0
+var loggedIn: Bool = false
 
 class HistoryViewController: UITableViewController {
     
+    private var loginViewName = "LoginViewController"
+    
+    @IBOutlet weak var logInOrOutButton: UIBarButtonItem!
     @IBOutlet weak var beginButton: UIBarButtonItem!
     
     // This array contains string representations of different iPhone models. This app will not work on any iPhone that is older
@@ -56,8 +60,19 @@ class HistoryViewController: UITableViewController {
         //performSegue(withIdentifier: "segue", sender: self)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if loggedIn {
+            logInOrOutButton.title = "Log Out"
+        }
+        else {
+            logInOrOutButton.title = "Log In"
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         // determine whether or not the device is too old to support this app
         var modelName: String { // gets a string representation of this device
             var systemInfo = utsname()
@@ -87,5 +102,20 @@ class HistoryViewController: UITableViewController {
              }))
              self.present(alert, animated: true, completion: nil)
          }
+    }
+    
+    @IBAction func btnLogInOrOutTapped(_ sender: Any) {
+        if loggedIn {
+            // Logout
+            loggedIn = false
+            
+            // Change text
+            logInOrOutButton.title = "Log In"
+        }
+        else {
+            // Begin login process; Initiate login screen
+            let loginViewController = (self.storyboard?.instantiateViewController(withIdentifier: loginViewName))!
+            self.present(loginViewController, animated: true)
+        }
     }
 }

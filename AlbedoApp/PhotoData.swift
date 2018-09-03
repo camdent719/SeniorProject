@@ -8,6 +8,8 @@
 import AVFoundation
 
 struct PhotoData {
+    static var userID: Int = 0
+    static var snowTubeNumber: Int = 0
     static var stationIndex: Int = 0 // "None" by default
     static var latitude: Double! = nil
     static var longitude: Double! = nil
@@ -24,13 +26,90 @@ struct PhotoData {
     
     static var photoDownRGB: [CGFloat] = []
     static var photoUpRGB: [CGFloat] = []
-    static var albedo: String = "" // saves a string representation of the albedo measurement
+    static var albedo: String = ""
     
-    static var snowDepth: Float = Float.nan
-    static var snowWeight: Float = Float.nan
-    static var snowTubeTareWeight = Float.nan
-    static var snowTemp: Float = Float.nan
+    static var snowDepth: Double? = nil
+    static var snowWeight: Double? = nil
+    static var snowTubeTareWeight = Double.nan
+    static var snowTemp: Double = Double.nan
+    static var depthUnits: LengthUnit = LengthUnit.inches // Inches by default
+    static var weightUnits: WeightUnit = WeightUnit.pounds // Pounds by default
     static var debrisDescription: String = ""
+    
+    // JSON info
+    struct StationInfo: Codable
+    {
+        var id: Int //ex: 47
+        var station_id: String //ex: "NH-GR-1"
+        var lon: Double //ex: -71.7414
+        var lat: Double //ex: 43.5949
+        var date_modified: String //ex: "2016-09-26T11:53:11.016"
+    }
+    
+    struct TubeInfo: Codable
+    {
+        var id: Int //ex: 3
+        var tube_number: String //ex: "13"
+        var tube_weight: Double? //ex: null or 1.2 or 1.205
+        var station: Int //ex: 2
+    }
+    
+    /*struct UserInfo: Codable
+    {
+        var id: Int //ex: 48
+        var username: String //ex: "AlbedoDev"
+    }*/
+    
+    struct DataEntryInfo: Codable
+    {
+        var id: Int
+        var user_id: Int
+        var date: String
+        var station_Number: String
+        var observation_Date: Date
+        var observation_Time: String
+        var end_Albedo_Observation_Time: String
+        var cloud_Coverage: String
+        var incoming_Shortwave_1: Double
+        var incoming_Shortwave_2: Double
+        var incoming_Shortwave_3: Double
+        var outgoing_Shortwave_1: Double
+        var outgoing_Shortwave_2: Double
+        var outgoing_Shortwave_3: Double
+        var tube_Number: Int
+        var snow_Depth: Double?
+        var snow_Weight_with_tube: Double?
+        var snow_Tube_Tare_Weight: Double
+        // var snow_Depth_Units: String
+        // var snow_Weight_Units: String
+        var snowing_At_Observation: String
+        var snowfall_Last_24Hours: String
+        var observation_Notes: String
+        var albedo: Double
+        var snow_density: Double
+        var surface_Skin_Temperature: String?
+    }
+    
+    /*struct Measurement: Codable
+    {
+        var firstName: String?
+        var lastName: String?
+        var country: String?
+        
+        enum CodingKeys: String, CodingKey {
+            case firstName = "first_name"
+            case lastName = "last_name"
+            case country
+        }
+        
+        init(firstName: String? = nil,
+             lastName: String? = nil,
+             country: String? = nil) {
+            self.firstName = firstName
+            self.lastName = lastName
+            self.country = country
+        }
+    }*/
 
     static func calculateAlbedo() {
         if PhotoData.photoDownRGB.isEmpty && PhotoData.photoUpRGB.isEmpty { // error check: this function only works if there are two sample buffers
@@ -43,13 +122,15 @@ struct PhotoData {
         let albedoB: Double = Double(photoDownRGB[2]) / Double(photoUpRGB[2]) // calculate albedo for B
         let albedo: Double = albedoR + albedoG + albedoB
         
-        // format albedo to 2 decimal places
-        PhotoData.albedo = String(format: "%.2f", arguments: [albedo])
+        // format albedo to 6 decimal places
+        PhotoData.albedo = String(format: "%.6f", arguments: [albedo])
         
         print("******* Albedo Value: \(PhotoData.albedo)")
     }
     
     static func clearData() {
+        userID = 0
+        snowTubeNumber = 0
         stationIndex = 0
         latitude = nil
         longitude = nil
@@ -64,24 +145,42 @@ struct PhotoData {
         otherGroundCover = ""
         snowSurfaceAge = SnowSurfaceAge.none
         
+        RootViewController.picturesTaken = false
         photoDownRGB.removeAll()
         photoUpRGB.removeAll()
         albedo = ""
         
-        snowDepth = Float.nan
-        snowWeight = Float.nan
-        snowTubeTareWeight = Float.nan
-        snowTemp = Float.nan
+        snowDepth = nil
+        snowWeight = nil
+        snowTubeTareWeight = Double.nan
+        snowTemp = Double.nan
+        depthUnits = LengthUnit.inches
+        weightUnits = WeightUnit.pounds
         debrisDescription = ""
     }
 }
 
 enum SkyAnalysis: String {
     case none = "None" // default value
-    case allClear = "All clear"
-    case clear = "Clear"
-    case cloudy = "Partly cloudy"
-    case overcast = "Overcast"
+    case allClear = "ACLR" // All clear
+    case clear = "CLR" // Clear
+    case cloudy = "PCL" // Partly cloudy
+    case overcast = "OVC" // Overcast
+    
+    var description: String {
+        switch self {
+        case .none:
+            return "None"
+        case .allClear:
+            return "All Clear"
+        case .clear:
+            return "Clear"
+        case .cloudy:
+            return "Partly cloudy"
+        case .overcast:
+            return "Overcast"
+        }
+    }
 }
 
 enum SnowState: String {
@@ -149,4 +248,12 @@ enum SnowSurfaceAge: String {
     case snowAtLeast4Weeks = "≥ 4 Full Weeks Old"
 }
 
+enum LengthUnit: String {
+    case inches = "in"
+    case centimeters = "cm"
+}
 
+enum WeightUnit: String {
+    case pounds = "lbs"
+    case grams = "g"
+}

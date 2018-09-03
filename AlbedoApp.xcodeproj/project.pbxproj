@@ -21,6 +21,7 @@
 		8460861A213303A600151531 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84608619213303A600151531 /* NotesViewController.swift */; };
 		8460861C2134B01000151531 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460861B2134B01000151531 /* HistoryViewController.swift */; };
 		84AA62D6212BB37E004EDBEF /* ThankYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA62D5212BB37E004EDBEF /* ThankYouViewController.swift */; };
+		84FA0682213C44D30088DB4D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA0681213C44D30088DB4D /* LoginViewController.swift */; };
 		BE03C7D320701E5D00C3D329 /* GroundCoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03C7D220701E5D00C3D329 /* GroundCoverViewController.swift */; };
 		BE03C7D52070275C00C3D329 /* SnowSurfaceAgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03C7D42070275C00C3D329 /* SnowSurfaceAgeViewController.swift */; };
 		BE03C7D720702BF700C3D329 /* SnowStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03C7D620702BF700C3D329 /* SnowStateViewController.swift */; };
@@ -73,6 +74,7 @@
 		84608619213303A600151531 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		8460861B2134B01000151531 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		84AA62D5212BB37E004EDBEF /* ThankYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankYouViewController.swift; sourceTree = "<group>"; };
+		84FA0681213C44D30088DB4D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BE03C7D220701E5D00C3D329 /* GroundCoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundCoverViewController.swift; sourceTree = "<group>"; };
 		BE03C7D42070275C00C3D329 /* SnowSurfaceAgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowSurfaceAgeViewController.swift; sourceTree = "<group>"; };
 		BE03C7D620702BF700C3D329 /* SnowStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowStateViewController.swift; sourceTree = "<group>"; };
@@ -135,10 +137,11 @@
 		7072E0CE1FE8557D002586EC /* AlbedoApp */ = {
 			isa = PBXGroup;
 			children = (
-				8460861B2134B01000151531 /* HistoryViewController.swift */,
 				7072E0CF1FE8557D002586EC /* AppDelegate.swift */,
 				BEA77E1720407EA000A6B9D6 /* CircularLevel.swift */,
 				BEDE099B204D9E7A00CA5E7F /* PhotoData.swift */,
+				84FA0681213C44D30088DB4D /* LoginViewController.swift */,
+				8460861B2134B01000151531 /* HistoryViewController.swift */,
 				BE501B48207527810026EB94 /* NewMeasurementViewController.swift */,
 				74CE5AE0211E3C6700CBB6CE /* LocationViewController.swift */,
 				74CE5AE4211E592600CBB6CE /* StartTimeViewController.swift */,
@@ -148,8 +151,8 @@
 				BE03C7D42070275C00C3D329 /* SnowSurfaceAgeViewController.swift */,
 				BE03C7D220701E5D00C3D329 /* GroundCoverViewController.swift */,
 				7072E0D11FE8557D002586EC /* RootViewController.swift */,
-				702253281FEC191100D6820F /* CameraViewController.swift */,
 				BED3767F2049932300B3601E /* CameraPreviewView.swift */,
+				702253281FEC191100D6820F /* CameraViewController.swift */,
 				BE0718CB20489D41004844C9 /* AlbedoPhotoCaptureDelegate.swift */,
 				BE135B6E2071A69600541D7C /* OptionalDataViewController.swift */,
 				84608619213303A600151531 /* NotesViewController.swift */,
@@ -331,6 +334,7 @@
 				84AA62D6212BB37E004EDBEF /* ThankYouViewController.swift in Sources */,
 				74CE5AE7211E5D0800CBB6CE /* EndTimeViewController.swift in Sources */,
 				BEA77E1820407EA000A6B9D6 /* CircularLevel.swift in Sources */,
+				84FA0682213C44D30088DB4D /* LoginViewController.swift in Sources */,
 				7072E0D01FE8557D002586EC /* AppDelegate.swift in Sources */,
 				BE03C7D52070275C00C3D329 /* SnowSurfaceAgeViewController.swift in Sources */,
 				8460861C2134B01000151531 /* HistoryViewController.swift in Sources */,

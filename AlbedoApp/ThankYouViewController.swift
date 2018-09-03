@@ -12,7 +12,6 @@ class ThankYouViewController: UIViewController {
     @IBOutlet weak var btnReturnHome: UIButton!
     
     @IBAction func btnReturnHomeTapped(_ sender: Any) {
-        // clear anything from previous submissions
-        PhotoData.clearData()
+        
     }
 }
