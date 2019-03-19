@@ -37,7 +37,7 @@ class SnowSurfaceAgeViewController: UIViewController, UIPickerViewDelegate, UIPi
         PhotoData.snowSurfaceIndex = selectedRow
         switch selectedRow {
         case 0:
-            PhotoData.snowSurfaceAge = SnowSurfaceAge.current
+            PhotoData.snowSurfaceAge = SnowSurfaceAge.none
         case 1:
             PhotoData.snowSurfaceAge = SnowSurfaceAge.snow1Day
         case 2:
@@ -80,7 +80,7 @@ class SnowSurfaceAgeViewController: UIViewController, UIPickerViewDelegate, UIPi
         PhotoData.snowSurfaceIndex = selectedRow
         switch selectedRow {
         case 0:
-            PhotoData.snowSurfaceAge = SnowSurfaceAge.current
+            PhotoData.snowSurfaceAge = SnowSurfaceAge.none
         case 1:
             PhotoData.snowSurfaceAge = SnowSurfaceAge.snow1Day
         case 2:

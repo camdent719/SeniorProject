@@ -18,12 +18,14 @@ struct PhotoData {
     static var endTime: Date! = nil
     static var skyAnalysis: SkyAnalysis = SkyAnalysis.none
     static var snowState: SnowState = SnowState.none
+    static var snowfallLast24hours: SnowfallLast24hours = SnowfallLast24hours.YES
     static var patchinessPercentage: Int = 0
+    static var patchiness: Patchiness = Patchiness.none
     static var snowSurfaceIndex: Int = 0 // "Current" by default
     static var groundCover: GroundCover = GroundCover.none
     static var otherGroundCover: String = "" // non-empty if other ground cover applies
     static var snowSurfaceAge: SnowSurfaceAge = SnowSurfaceAge.none
-    
+    static var snowmelt: SnowMelt = SnowMelt.YES
     static var photoDownRGB: [CGFloat] = []
     static var photoUpRGB: [CGFloat] = []
     static var albedo: String = ""
@@ -80,8 +82,7 @@ struct PhotoData {
         var snow_Depth: Double?
         var snow_Weight_with_tube: Double?
         var snow_Tube_Tare_Weight: Double
-        // var snow_Depth_Units: String
-        // var snow_Weight_Units: String
+
         var snowing_At_Observation: String
         var snowfall_Last_24Hours: String
         var observation_Notes: String
@@ -90,26 +91,6 @@ struct PhotoData {
         var surface_Skin_Temperature: String?
     }
     
-    /*struct Measurement: Codable
-    {
-        var firstName: String?
-        var lastName: String?
-        var country: String?
-        
-        enum CodingKeys: String, CodingKey {
-            case firstName = "first_name"
-            case lastName = "last_name"
-            case country
-        }
-        
-        init(firstName: String? = nil,
-             lastName: String? = nil,
-             country: String? = nil) {
-            self.firstName = firstName
-            self.lastName = lastName
-            self.country = country
-        }
-    }*/
 
     static func calculateAlbedo() {
         if PhotoData.photoDownRGB.isEmpty && PhotoData.photoUpRGB.isEmpty { // error check: this function only works if there are two sample buffers
@@ -127,7 +108,7 @@ struct PhotoData {
         
         print("******* Albedo Value: \(PhotoData.albedo)")
     }
-    
+    //?
     static func clearData() {
         userID = 0
         snowTubeNumber = 0
@@ -144,6 +125,7 @@ struct PhotoData {
         groundCover = GroundCover.none
         otherGroundCover = ""
         snowSurfaceAge = SnowSurfaceAge.none
+        
         
         RootViewController.picturesTaken = false
         photoDownRGB.removeAll()
@@ -184,70 +166,64 @@ enum SkyAnalysis: String {
 }
 
 enum SnowState: String {
-    case none = "None" // default value
-    case snowCovered = "Snow-covered"
-    case patchySnow = "Patchy Snow"
-    case snowFreeDormant = "Snow-free/Dormant"
-    case snowFreeGreen = "Snow-free/Green"
+    case none = "N/A" // default value
+    case snowCovered = "SC"
+    case patchySnow = "PS"
+    case snowFreeDormant = "SFD"
+    case snowFreeGreen = "SFG"
+}
+
+
+enum SnowMelt: String {
+    case YES = "Y"
+    case NO = "N"
+}
+
+enum SnowfallLast24hours: String {
+    case YES = "Y"
+    case NO = "N"
 }
 
 enum GroundCover: String {
     case none = "None" // default value
-    case grassLiving = "Grass - Living"
-    case grassDead = "Grass - Dead"
-    case wetSoil = "Wet Soil"
-    case drySoil = "Dry Soil"
-    case pavement = "Pavement"
-    case woodenDeck = "Wooden Deck"
-    case other = "Other"
-    // enum Other {
-    //     case value(String)
-    // }
+    case grassLiving = "GL"
+    case grassDead = "GD"
+    case wetSoil = "WS"
+    case drySoil = "DS"
+    case pavement = "P"
+    case woodenDeck = "WD"
+    case other = "Ot"
 }
 
-/*enum GroundCover: String {
-    case none = "None" // default value
-    case grassLiving = "Grass - Living"
-    case grassDead = "Grass - Dead"
-    case wetSoil = "Wet Soil"
-    case drySoil = "Dry Soil"
-    case pavement = "Pavement"
-    case woodenDeck = "Wooden Deck"
-    // enum Other {
-    //     case value(String)
-    // }
-}*/
-
-/*enum GroundCover {
-    // name will be filled with one of the following:
-    // none = "None"
-    // grassLiving = "Grass - Living"
-    // grassDead = "Grass - Dead"
-    // wetSoil = "Wet Soil"
-    // drySoil = "Dry Soil"
-    // pavement = "Pavement"
-    // woodenDeck = "Wooden Deck"
-    //
-    // if a different ground cover applies, the name will be that
-    case name(String) // default value
-}*/
+enum Patchiness: String {
+    case none = "" // default value
+    case s10 = "10"
+    case s20 = "20"
+    case s30 = "30"
+    case s40 = "40"
+    case s50 = "50"
+    case s60 = "60"
+    case s70 = "70"
+    case s80 = "80"
+    case s90 = "90"
+}
 
 enum SnowSurfaceAge: String {
-    case none = "None" // default value
-    case current = "Currently Snowing"
-    case snow1Day = "< 1 Day Old"
-    case snow2Days = "1 Full Day Old"
-    case snow3Days = "2 Full Days Old"
-    case snow4Days = "3 Full Days Old"
-    case snow5Days = "4 Full Days Old"
-    case snow6Days = "5 Full Days Old"
-    case snow1Week = "6 Full Days Old"
-    case snow2Weeks = "1 Full Week Old"
-    case snow3Weeks = "2 Full Weeks Old"
-    case snow4Weeks = "3 Full Weeks Old"
-    case snowAtLeast4Weeks = "≥ 4 Full Weeks Old"
+    case none = "" // default value
+    case snow1Day = "<1d"
+    case snow2Days = "1d"
+    case snow3Days = "2d"
+    case snow4Days = "3d"
+    case snow5Days = "4d"
+    case snow6Days = "5d"
+    case snow1Week = "6d"
+    case snow2Weeks = "1w"
+    case snow3Weeks = "2w"
+    case snow4Weeks = "3w"
+    case snowAtLeast4Weeks = "4w"
 }
-
+//remember, when we upload it to server, the unit gonna transfer to cm automatically
+// determine if the unit is inch and transfer before upload.
 enum LengthUnit: String {
     case inches = "in"
     case centimeters = "cm"
